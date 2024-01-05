@@ -19,47 +19,47 @@
 | RoomNumber                    | int              | Номер класу (аудиторії). |
 | BuildingID                    | int              | Зовнішній ключ, пов'язаний із BuildingID у таблиці Buildings. |
 
-| **ТаблицяComputers**          |                  |                   |                    
+| **Таблиця Computers**         |                  |                   |                    
 |-------------------------------|------------------|-------------------|
 | **Стовпець**                  | **Тип даних**    | **Опис**          | 
-| ComputerID (int, PK)          | int              | Унікальний ідентифікатор комп'ютера. |
-| SerialNumber (varchar)        | varchar          | Серійний номер комп'ютера. |
-| CharacteristicID (int, FK)    | int              | Зовнішній ключ, пов'язаний із CharacteristicID у таблиці ComputerCharacteristics. |
-| PurchaseDate (date)           | date             | Дата придбання комп'ютера. |
-| RoomID (int, FK)              | int              | Зовнішній ключ, пов'язаний із RoomID у таблиці ClassRooms. |
+| ComputerID                    | int              | Унікальний ідентифікатор комп'ютера. |
+| SerialNumber                  | varchar          | Серійний номер комп'ютера. |
+| CharacteristicID              | int              | Зовнішній ключ, пов'язаний із CharacteristicID у таблиці ComputerCharacteristics. |
+| PurchaseDate                  | date             | Дата придбання комп'ютера. |
+| RoomID                        | int              | Зовнішній ключ, пов'язаний із RoomID у таблиці ClassRooms. |
 
 | **Таблиця NetworkEquipment**  |                  |                   |
 |-------------------------------|------------------|-------------------|
 | **Стовпець**                  | **Тип даних**    | **Опис**          | 
-| NetworkEquipmentID (int, PK)  | int              | Унікальний ідентифікатор мережевого обладнання. |
-| SerialNumber (varchar)        | varchar          | Серійний номер мережевого обладнання. |
-| BuildingID (int, FK)          | int              | Зовнішній ключ, пов'язаний із BuildingID у таблиці Buildings. |
-| DeviceTypeID (int, FK)        | int              | Зовнішній ключ, пов'язаний із DeviceTypeID у таблиці DeviceTypes. |
-| Manufacturer (varchar)        | varchar          | Виробник мережевого обладнання. |
-| Model (varchar)               | varchar          | Модель мережевого обладнання. |
+| NetworkEquipmentID            | int              | Унікальний ідентифікатор мережевого обладнання. |
+| SerialNumber                  | varchar          | Серійний номер мережевого обладнання. |
+| BuildingID                    | int              | Зовнішній ключ, пов'язаний із BuildingID у таблиці Buildings. |
+| DeviceTypeID                  | int              | Зовнішній ключ, пов'язаний із DeviceTypeID у таблиці DeviceTypes. |
+| Manufacturer                  | varchar          | Виробник мережевого обладнання. |
+| Model                         | varchar          | Модель мережевого обладнання. |
 
 | **Таблиця DeviceTypes**       |                  |                   | 
 |-------------------------------|------------------|-------------------|
 | **Стовпець**                  | **Тип даних**    | **Опис**          | 
-| DeviceTypeID (int, PK)        | int              | Унікальний ідентифікатор типу пристрою. |
-| TypeName (varchar)            | varchar          | Назва типу пристрою. |
-| Description (varchar)         | varchar          | Опис типу пристрою. |
+| DeviceTypeID                  | int              | Унікальний ідентифікатор типу пристрою. |
+| TypeName                      | varchar          | Назва типу пристрою. |
+| Description                   | varchar          | Опис типу пристрою. |
 
 | **Таблиця ComputerCharacteristics** |            |                   |                  
 |-------------------------------|------------------|-------------------|
 | **Стовпець**                  | **Тип даних**    | **Опис**          | 
-| CharacteristicID (int, PK)    | int              | Унікальний ідентифікатор характеристик комп'ютера. |
-| Memory (varchar)              | varchar          | Обсяг пам'яті комп'ютера. |
-| RAM (varchar)                 | varchar          | Оперативна пам'ять комп'ютера. |
-| CPU (varchar)                 | varchar          | Процесор комп'ютера. |
-| VideoCard (varchar)           | varchar          | Відеокарта комп'ютера. |
+| CharacteristicID              | int              | Унікальний ідентифікатор характеристик комп'ютера. |
+| Memory                        | varchar          | Обсяг пам'яті комп'ютера. |
+| RAM                           | varchar          | Оперативна пам'ять комп'ютера. |
+| CPU                           | varchar          | Процесор комп'ютера. |
+| VideoCard                     | varchar          | Відеокарта комп'ютера. |
 
 | **Таблиця Peripherals**       |                  |                   |                  
 |-------------------------------|------------------|-------------------|
 | **Стовпець**                  | **Тип даних**    | **Опис**          | 
-| PeripheralID (int, PK)        | int              | Унікальний ідентифікатор периферійного пристрою. |
-| Type (varchar)                | varchar          | Тип периферійного пристрою. |
-| Brand (varchar)               | varchar          | Бренд периферійного пристрою. |
-| Model (varchar)               | varchar          | Модель периферійного пристрою. |
-| ComputerID (int, FK)          | int              | Зовнішній ключ, пов'язаний із ComputerID у таблиці Computers. |
+| PeripheralID                  | varchar          | Унікальний ідентифікатор периферійного пристрою. |
+| Type                          | varchar          | Тип периферійного пристрою. |
+| Brand                         | varchar          | Бренд периферійного пристрою. |
+| Model                         | varchar          | Модель периферійного пристрою. |
+| ComputerID                    | int              | Зовнішній ключ, пов'язаний із ComputerID у таблиці Computers. |
 
