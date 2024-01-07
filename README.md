@@ -97,7 +97,7 @@
     ```sql
     SELECT c.SerialNumber, cc.VideoCard
     FROM Computers c
-    JOIN ComputerCharacteristics cc ON c.CharacteristicID = cc CharacteristicID
+    JOIN ComputerCharacteristics cc ON c.CharacteristicID = cc.CharacteristicID
     WHERE cc.VideoCard LIKE 'NVIDIA%';
     ```
 
