@@ -113,8 +113,7 @@
 5. Виведення інформації про придбані до 2022 року комп'ютери, включаючи характеристику. Відсортовано за зростанням дати придбання.
 
     ```sql
-    SELECT с.SerialNumber, с.PurchaseDate, сс.Memory,
-    сс.RAM,сс.CPU, сс.VideoCard
+    SELECT с.SerialNumber, с.PurchaseDate, сс.Memory, сс.RAM,сс.CPU, сс.VideoCard
     FROM Computers с
     JOIN ComputerCharacteristics сс ON с.CharacteristicID = сс.CharacteristicID
     WHERE с.PurchaseDate < '2022-01-01'
