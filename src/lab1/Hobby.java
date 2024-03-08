@@ -2,10 +2,10 @@ package lab1;
 
 public class Hobby {
     private String name;
-    private int duration;
+    private String duration;
     private int usefulnessScore;
 
-    public Hobby(String name, int duration, int usefulnessScore) {
+    public Hobby(String name, String duration, int usefulnessScore) {
         this.name = name;
         this.duration = duration;
         this.usefulnessScore = usefulnessScore;
@@ -15,7 +15,7 @@ public class Hobby {
         return name;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
@@ -27,7 +27,7 @@ public class Hobby {
         this.name = name;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
