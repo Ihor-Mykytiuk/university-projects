@@ -3,6 +3,7 @@ package lab1;
 import java.util.ArrayList;
 import java.time.LocalDate;
 public class Form {
+    private static int count = 0;
     private int id;
     private String fullName;
     private LocalDate date;
@@ -11,16 +12,14 @@ public class Form {
     private Contact contact;
     private ArrayList<Expense> expenses;
     private float monthlyExpense;
-
-    public Form(int id, String fullName, LocalDate date, ArrayList<Language> languages, ArrayList<Hobby> hobbies, Contact contact, ArrayList<Expense> expenses, float monthlyExpense) {
-        this.id = id;
+    public Form(String fullName) {
+        this.id = count++;
         this.fullName = fullName;
-        this.date = date;
-        this.languages = languages;
-        this.hobbies = hobbies;
-        this.contact = contact;
-        this.expenses = expenses;
-        this.monthlyExpense = monthlyExpense;
+        this.date = LocalDate.now();
+        this.languages = new ArrayList<>();
+        this.hobbies = new ArrayList<>();
+        this.contact = new Contact();
+        this.expenses = new ArrayList<>();
     }
 
     public int getId() {
@@ -94,9 +93,23 @@ public class Form {
     public void addHobby(Hobby hobby) {
         hobbies.add(hobby);
     }
-
+    private float calculateMonthlyExpense() {
+        float sum = 0;
+        for (Expense expense : expenses) {
+            sum += expense.getEstimatedAmount();
+        }
+        return sum;
+    }
     public void addExpense(Expense expense) {
         expenses.add(expense);
+        this.monthlyExpense = calculateMonthlyExpense();
+
+    }
+    public void addEmail(String email) {
+        contact.addEmail(email);
     }
 
+    public void addPhoneNumber(PhoneNumber phoneNumber) {
+        contact.addPhoneNumber(phoneNumber);
+    }
 }

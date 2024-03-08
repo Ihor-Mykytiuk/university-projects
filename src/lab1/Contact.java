@@ -6,9 +6,9 @@ public class Contact {
     private ArrayList<String> emails;
     private ArrayList<PhoneNumber> phoneNumbers;
 
-    public Contact(ArrayList<String> emails, ArrayList<PhoneNumber> phoneNumbers) {
-        this.emails = emails;
-        this.phoneNumbers = phoneNumbers;
+    public Contact() {
+        this.emails = new ArrayList<>();
+        this.phoneNumbers = new ArrayList<>();
     }
 
     public ArrayList<String> getEmails() {
@@ -27,5 +27,11 @@ public class Contact {
         this.phoneNumbers = phoneNumbers;
     }
 
+    public void addEmail(String email) {
+        this.emails.add(email);
+    }
 
+    public void addPhoneNumber(PhoneNumber phoneNumber) {
+        this.phoneNumbers.add(phoneNumber);
+    }
 }
