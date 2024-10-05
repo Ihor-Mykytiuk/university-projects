@@ -28,6 +28,8 @@ class ArraySort(BaseWidget):
                 self.array_handler.create_random_array(size)
             elif array_text:
                 self.array_handler.create_array_from_input(array_text)
+            else:
+                raise ValueError("Введіть розмір масиву або сам масив.")
             self.display_array(self.array_handler.array)
             self.display_message("Масив успішно створено.")
         except ValueError as e:
