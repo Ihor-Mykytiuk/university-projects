@@ -1,0 +1,90 @@
+QWidget {
+    background-color: #2E2E2E;
+    color: #F0F0F0;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+}
+
+QPushButton {
+    background-color: #444444;
+    border: 2px solid #555555;
+    border-radius: 5px;
+    padding: 5px;
+    color: #F0F0F0;
+}
+
+QPushButton:hover {
+    background-color: #555555;
+    border-color: #666666;
+}
+
+QPushButton:pressed {
+    background-color: #333333;
+    border-color: #888888;
+}
+
+QLineEdit {
+    background-color: #3C3C3C;
+    border: 1px solid #666666;
+    color: #F0F0F0;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #AAAAAA;
+}
+
+QLineEdit:disabled {
+    background-color: #4D4D4D;
+    color: #AAAAAA;
+    border: 1px solid #666666;
+}
+
+QLabel {
+    color: #F0F0F0;
+}
+
+QLabel#title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#error {
+    color: red;
+}
+
+QLabel#array_result, QLabel#list_result {
+    color: #87CEFA; /* Світло-блакитний для виділення */
+    font-weight: bold;
+}
+
+QLabel#status_label {
+    font-style: italic;
+}
+
+QComboBox {
+    background-color: #3C3C3C;
+    color: #F0F0F0;
+    border: 1px solid #666666;
+}
+
+QScrollBar:vertical {
+    background-color: #2E2E2E;
+    width: 15px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #555555;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #666666;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background-color: #444444;
+    height: 15px;
+}
