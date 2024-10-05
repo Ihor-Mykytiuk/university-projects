@@ -13,8 +13,10 @@ class ArraySort(BaseWidget):
         # Підключення сигналів до функцій
         self.ui.create_array_button.clicked.connect(self.create_array)
         self.ui.transform_array_button.clicked.connect(self.perform_transformation)
-        self.ui.size_input.textChanged.connect(self.size_input_changed)
-        self.ui.array_input.textChanged.connect(self.array_input_changed)
+
+        # Обробка змін в полях введення
+        self.ui.size_input.textChanged.connect(self.input_changed)
+        self.ui.array_input.textChanged.connect(self.input_changed)
 
     def create_array(self):
         """Обробка натискання кнопки створення масиву"""
@@ -40,21 +42,14 @@ class ArraySort(BaseWidget):
         except ValueError as e:
             self.display_message(str(e), error=True)
 
-    def size_input_changed(self):
-        """Блокує введення масиву, якщо вказано розмір."""
-        if self.ui.size_input.text():
-            self.ui.array_input.clear()
-            self.ui.array_input.setDisabled(True)
-        else:
-            self.ui.array_input.setDisabled(False)
+    def input_changed(self):
+        """Блокує одне поле, якщо введено дані в інше."""
+        size_text = self.ui.size_input.text()
+        array_text = self.ui.array_input.text()
 
-    def array_input_changed(self):
-        """Блокує введення розміру, якщо введено масив."""
-        if self.ui.array_input.text():
-            self.ui.size_input.clear()
-            self.ui.size_input.setDisabled(True)
-        else:
-            self.ui.size_input.setDisabled(False)
+        # Якщо є текст в одному з полів, блокуємо інше
+        self.ui.array_input.setDisabled(bool(size_text))
+        self.ui.size_input.setDisabled(bool(array_text))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
