@@ -17,6 +17,10 @@ class BaseWidget(QWidget):
         """Відображає масив у QLabel"""
         self.ui.array_result.setText(", ".join(map(str, array)))
 
+    def display_matrix(self, matrix):
+        """Відображає матрицю у QLabel"""
+        self.ui.array_result.setText("\n".join(" ".join(map(str, row)) for row in matrix))
+
     def display_message(self, message, error=False):
         """Виводить повідомлення у QLabel для статусу."""
         color = "red" if error else "green"
