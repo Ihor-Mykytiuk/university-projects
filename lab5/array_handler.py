@@ -7,6 +7,10 @@ class ArrayHandler:
 
     def create_random_array(self, size):
         """Створює масив випадкових чисел."""
+        try:
+            size = int(size)
+        except ValueError:
+            raise ValueError("Розмір масиву має бути цілим числом.")
         if size < 2:
             raise ValueError("Розмір масиву має бути більшим за 1.")
 
@@ -15,7 +19,10 @@ class ArrayHandler:
 
     def create_array_from_input(self, str_array):
         """Створює масив з введених користувачем значень."""
-        self.array = list(map(int, str_array.split()))
+        try:
+            self.array = list(map(int, str_array.split()))
+        except ValueError:
+            raise ValueError("Введіть числа через пробіл.")
         if len(self.array) < 2:
             raise ValueError("Масив має містити принаймні два елементи.")
         return self.array

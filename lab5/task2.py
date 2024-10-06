@@ -25,11 +25,8 @@ class ArraySort(BaseWidget):
             array_text = self.ui.array_input.text()
             if not size_text and not array_text:
                 raise ValueError("Введіть розмір масиву або сам масив.")
-            if not self.is_valid_number(size_text):
-                raise ValueError("Введене значення не є натуральним числом")
-            size = int(size_text) if size_text else None
-            if size is not None:
-                self.array_handler.create_random_array(size)
+            if size_text:
+                self.array_handler.create_random_array(size_text)
             elif array_text:
                 self.array_handler.create_array_from_input(array_text)
             self.display_array(self.array_handler.array)
