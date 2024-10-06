@@ -25,7 +25,7 @@ class ArrayTransform(BaseWidget):
             size_text = self.ui.size_input.text()
             array_text = self.ui.array_input.text()
             if not size_text and not array_text:
-                raise ValueError("Введіть розмір масиву або сам масив.")
+                raise ValueError("Помилка: введіть розмір масиву або сам масив.")
             if size_text:
                 self.array_handler.create_random_array(size_text)
             elif array_text:

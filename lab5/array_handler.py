@@ -11,9 +11,9 @@ class ArrayHandler:
         try:
             size = int(size)
         except ValueError:
-            raise ValueError("Розмір масиву має бути цілим числом.")
+            raise ValueError("Помилка: розмір масиву має бути цілим числом.")
         if size < 2:
-            raise ValueError("Розмір масиву має бути більшим за 1.")
+            raise ValueError("Помилка: розмір масиву має бути більшим за 1.")
         self.array = np.random.randint(1, 101, size=size).tolist()
         return self.array
 
@@ -22,9 +22,9 @@ class ArrayHandler:
         try:
             self.array = list(map(int, str_array.split()))
         except ValueError:
-            raise ValueError("Введіть числа через пробіл.")
+            raise ValueError("Помилка: введіть числа через пробіл.")
         if len(self.array) < 2:
-            raise ValueError("Масив має містити принаймні два елементи.")
+            raise ValueError("Помилка: масив має містити принаймні два елементи.")
         return self.array
 
     def transform(self):
@@ -35,7 +35,7 @@ class TransformArray(ArrayHandler):
     def transform(self):
         """Перетворення масиву: додаємо перший елемент до парних, крім першого й останнього."""
         if not self.array:
-            raise ValueError("Спочатку створіть масив.")
+            raise ValueError("Помилка: спочатку створіть масив.")
         first_element = self.array[0]
         transformed_array = [first_element]
         for i in range(1, len(self.array) - 1):
