@@ -1,4 +1,6 @@
+#base_widget.py
 from PySide6.QtWidgets import QWidget
+
 
 class BaseWidget(QWidget):
     def __init__(self, Ui_Form):
@@ -26,3 +28,12 @@ class BaseWidget(QWidget):
         color = "red" if error else "green"
         self.ui.status_label.setStyleSheet(f"color: {color};")
         self.ui.status_label.setText(message)
+
+    def input_changed(self):
+        """Блокує одне поле, якщо введено дані в інше."""
+        size_text = self.ui.size_input.text()
+        array_text = self.ui.array_input.text()
+
+        # Якщо є текст в одному з полів, блокуємо інше
+        self.ui.array_input.setDisabled(bool(size_text))
+        self.ui.size_input.setDisabled(bool(array_text))

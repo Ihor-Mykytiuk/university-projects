@@ -1,6 +1,7 @@
 # array_handler.py
 import numpy as np
 
+
 class ArrayHandler:
     def __init__(self):
         self.array = []
@@ -13,7 +14,6 @@ class ArrayHandler:
             raise ValueError("Розмір масиву має бути цілим числом.")
         if size < 2:
             raise ValueError("Розмір масиву має бути більшим за 1.")
-
         self.array = np.random.randint(1, 101, size=size).tolist()
         return self.array
 

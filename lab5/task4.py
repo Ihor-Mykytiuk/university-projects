@@ -1,8 +1,10 @@
+#task4.py
 import sys
 from PySide6.QtWidgets import QApplication
 from lab5.ui.task4_interface import Ui_Form
 from base_widget import BaseWidget
 from matrix_handler import MatrixHandler
+
 
 class MatrixTransform(BaseWidget):
     def __init__(self):

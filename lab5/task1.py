@@ -4,6 +4,8 @@ from PySide6.QtWidgets import QApplication
 from lab5.ui.task1_interface import Ui_Form
 from base_widget import BaseWidget
 from array_handler import TransformArray
+
+
 class ArrayTransform(BaseWidget):
     def __init__(self):
         super().__init__(Ui_Form)
@@ -42,14 +44,6 @@ class ArrayTransform(BaseWidget):
         except ValueError as e:
             self.display_message(str(e), error=True)
 
-    def input_changed(self):
-        """Блокує одне поле, якщо введено дані в інше."""
-        size_text = self.ui.size_input.text()
-        array_text = self.ui.array_input.text()
-
-        # Якщо є текст в одному з полів, блокуємо інше
-        self.ui.array_input.setDisabled(bool(size_text))
-        self.ui.size_input.setDisabled(bool(array_text))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
