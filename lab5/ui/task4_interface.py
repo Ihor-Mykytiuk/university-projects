@@ -23,7 +23,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(400, 698)
+        Form.resize(398, 698)
         self.verticalLayout_3 = QVBoxLayout(Form)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.title = QLabel(Form)
@@ -51,6 +51,7 @@ class Ui_Form(object):
         self.frame.setObjectName(u"frame")
         self.horizontalLayout = QHBoxLayout(self.frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, -1, 0, -1)
         self.m_input = QLineEdit(self.frame)
         self.m_input.setObjectName(u"m_input")
 

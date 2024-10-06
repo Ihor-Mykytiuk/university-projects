@@ -22,7 +22,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(400, 691)
+        Form.resize(391, 691)
         self.verticalLayout_3 = QVBoxLayout(Form)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(15, -1, 15, -1)
@@ -77,6 +77,7 @@ class Ui_Form(object):
         self.array_result = QLabel(Form)
         self.array_result.setObjectName(u"array_result")
         self.array_result.setMaximumSize(QSize(16777215, 140))
+        self.array_result.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_3.addWidget(self.array_result)
 
@@ -87,6 +88,7 @@ class Ui_Form(object):
 
         self.status_label = QLabel(Form)
         self.status_label.setObjectName(u"status_label")
+        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_3.addWidget(self.status_label)
 

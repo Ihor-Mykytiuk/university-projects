@@ -63,8 +63,14 @@
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="">
+        <widget class="QFrame" name="frame">
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="m_input">
             <property name="placeholderText">

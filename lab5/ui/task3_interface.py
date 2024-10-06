@@ -51,6 +51,7 @@ class Ui_Form(object):
         self.frame.setObjectName(u"frame")
         self.horizontalLayout = QHBoxLayout(self.frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, -1, 0, -1)
         self.m_input = QLineEdit(self.frame)
         self.m_input.setObjectName(u"m_input")
 
