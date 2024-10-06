@@ -11,10 +11,6 @@ class MatrixHandler:
         self.matrix = np.random.randint(1, 101, size=(m, n))
         return self.matrix
 
-    def get_matrix(self):
-        """Повертає матрицю у вигляді рядків для виведення"""
-        return '\n'.join(', '.join(map(str, row)) for row in self.matrix)
-
     def sum_columns(self, even=True):
         """Обчислює суму елементів парних або непарних стовпців"""
         if self.matrix is None:

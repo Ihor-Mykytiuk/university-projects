@@ -21,8 +21,8 @@ class MatrixTransform(BaseWidget):
             self.matrix_handler.generate_matrix(m, n)
             self.display_matrix(self.matrix_handler.matrix)
             self.display_message("Матрицю згенеровано!")
-        except ValueError:
-            self.display_message("Помилка: введіть коректні розміри матриці.", error=True)
+        except ValueError as e:
+            self.display_message(str(e), error=True)
 
     def transform_matrix(self):
         """Перетворює матрицю: міняє місцями мінімальний і максимальний елементи"""

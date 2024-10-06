@@ -26,3 +26,12 @@ class BaseWidget(QWidget):
         color = "red" if error else "green"
         self.ui.status_label.setStyleSheet(f"color: {color};")
         self.ui.status_label.setText(message)
+
+    @staticmethod
+    def is_valid_number(text):
+        """Метод для перевірки, чи введений текст є дійсним числом."""
+        try:
+            float(text)
+            return True
+        except ValueError:
+            return False

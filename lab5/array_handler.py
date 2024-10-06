@@ -9,6 +9,7 @@ class ArrayHandler:
         """Створює масив випадкових чисел."""
         if size < 2:
             raise ValueError("Розмір масиву має бути більшим за 1.")
+
         self.array = np.random.randint(1, 101, size=size).tolist()
         return self.array
 
