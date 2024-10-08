@@ -29,10 +29,23 @@ class MainWindow(QMainWindow):
 
     def select_input_file(self):
         """Вибір вхідного файлу через QFileDialog"""
-        pass
+        file_name, _ = QFileDialog.getOpenFileName(self, "Вибрати вхідний файл", "",
+                                                   "Text Files (*.txt);;All Files (*)")
+        if file_name:  # Якщо користувач вибрав файл
+            self.input_file_path = file_name  # Зберігаємо шлях до вибраного файлу
+            self.ui.labelInputFile.setText(f"Вхідний файл: {os.path.basename(file_name)}")
+        else:
+            self.ui.labelMessages.setText("Вхідний файл не вибрано.")
 
     def select_output_file(self):
-        pass
+        """Вибір вихідного файлу через QFileDialog"""
+        file_name, _ = QFileDialog.getSaveFileName(self, "Вибрати вихідний файл", "",
+                                                   "Text Files (*.txt);;All Files (*)")
+        if file_name:
+            self.output_file_path = file_name  # Зберігаємо шлях до вибраного файлу
+            self.ui.labelOutputFile.setText(f"Вихідний файл: {os.path.basename(file_name)}")
+        else:
+            self.ui.labelMessages.setText("Вихідний файл не вибрано.")
 
     def select_standard_files(self):
         """Автоматичний вибір стандартних файлів з директорії проєкту"""
