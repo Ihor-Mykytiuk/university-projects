@@ -2,7 +2,8 @@ import sys
 import os
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem
 from ui.task1_interface import Ui_MainWindow
-from PySide6.QtCore import QFile, QIODevice
+from PySide6.QtCore import QFile, QIODevice, QTextStream
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -55,6 +56,29 @@ class MainWindow(QMainWindow):
 
         self.ui.labelInputFile.setText(f"Вхідний файл: f.txt")
         self.ui.labelOutputFile.setText(f"Вихідний файл: g.txt")
+
+    def read_input_file(self):
+        """Зчитування даних з вхідного файлу за допомогою QFile."""
+        if not self.input_file_path:
+            self.ui.labelMessages.setText("Спочатку виберіть вхідний файл.")
+            return []
+
+        file = QFile(self.input_file_path)
+        if not file.open(QFile.OpenModeFlag.ReadOnly | QFile.OpenModeFlag.Text):  # Спробуємо відкрити файл
+            self.ui.labelMessages.setText(f"Не вдалося відкрити файл: {file.errorString()}")
+            return []
+
+        try:
+            stream = QTextStream(file)
+            data = stream.readAll()
+            numbers = list(map(int, data.split()))
+            return numbers
+
+        except Exception as e:  # Обробка помилок
+            self.ui.labelMessages.setText(f"Виникла помилка під час зчитування файлу: {str(e)}")
+            return []
+        finally:
+            file.close()
 
     def process_file(self):
         """Обробка файлу"""
