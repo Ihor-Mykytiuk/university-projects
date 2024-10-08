@@ -80,6 +80,22 @@ class MainWindow(QMainWindow):
         finally:
             file.close()
 
+    def process_numbers(self):
+        """Обробка чисел"""
+        try:
+            numbers = self.read_input_file()
+            results = []
+            for i in range(0, len(numbers), 5):
+                group = numbers[i:i + 5]
+                max_in_group = max(group)
+                results.append(max_in_group)
+
+            return results  # Повертаємо список максимальних значень
+
+        except Exception as e:
+            self.ui.labelMessages.setText(f"Помилка обробки чисел: {str(e)}")
+            return []
+
     def process_file(self):
         """Обробка файлу"""
         pass
