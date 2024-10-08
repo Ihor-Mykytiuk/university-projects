@@ -1,7 +1,7 @@
 import sys
 import os
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem
-from ui.task1_interface import Ui_MainWindow  # Імпорт вашого згенерованого інтерфейсу
+from ui.task1_interface import Ui_MainWindow
 from PySide6.QtCore import QFile, QIODevice
 
 class MainWindow(QMainWindow):
@@ -20,7 +20,7 @@ class MainWindow(QMainWindow):
         self.setup_connections()
 
     def setup_connections(self):
-        # Підключаємо кнопки до відповідних методів
+        """Налаштування зв'язків кнопок"""
         self.ui.btnSelectInputFile.clicked.connect(self.select_input_file)
         self.ui.btnSelectOutputFile.clicked.connect(self.select_output_file)
         self.ui.btnSelectStandardFiles.clicked.connect(self.select_standard_files)
@@ -35,8 +35,13 @@ class MainWindow(QMainWindow):
         pass
 
     def select_standard_files(self):
-        """Автоматичний вибір стандартних файлів з папки 'standard_files'"""
-        pass
+        """Автоматичний вибір стандартних файлів з директорії проєкту"""
+        base_path = os.path.dirname(os.path.abspath(__file__)) # Шлях до поточної директорії
+        self.input_file_path = os.path.join(base_path, 'f.txt')
+        self.output_file_path = os.path.join(base_path, 'g.txt')
+
+        self.ui.labelInputFile.setText(f"Вхідний файл: f.txt")
+        self.ui.labelOutputFile.setText(f"Вихідний файл: g.txt")
 
     def process_file(self):
         """Обробка файлу"""

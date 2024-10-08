@@ -85,14 +85,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
 
         self.tableResults = QTableWidget(self.centralwidget)
-        if (self.tableResults.columnCount() < 3):
-            self.tableResults.setColumnCount(3)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.tableResults.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableResults.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableResults.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableResults.setObjectName(u"tableResults")
 
         self.verticalLayout_3.addWidget(self.tableResults)
@@ -133,12 +125,6 @@ class Ui_MainWindow(object):
         self.btnSelectOutputFile.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0432\u0438\u0445\u0456\u0434\u043d\u0438\u0439 \u0444\u0430\u0439\u043b", None))
         self.labelInputFile.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.labelOutputFile.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        ___qtablewidgetitem = self.tableResults.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u0430", None));
-        ___qtablewidgetitem1 = self.tableResults.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u0427\u0438\u0441\u043b\u0430", None));
-        ___qtablewidgetitem2 = self.tableResults.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0430\u043a\u0441 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f", None));
         self.labelMessages.setText(QCoreApplication.translate("MainWindow", u"\u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f", None))
         self.btnRunProcessing.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043a\u0443", None))
         self.btnClearResults.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0440\u0435\u0437\u0443\u043b\u0442\u044c\u0442\u0430\u0442", None))
