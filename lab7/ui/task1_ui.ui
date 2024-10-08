@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
      <widget class="QLabel" name="label">
       <property name="text">
@@ -23,7 +23,7 @@
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QPushButton" name="btnSelectStandardFiles">
         <property name="text">
@@ -42,43 +42,49 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QPushButton" name="btnSelectInputFile">
-          <property name="text">
-           <string>Вибрати вхідний файл</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="btnSelectInputFile">
+            <property name="text">
+             <string>Вибрати вхідний файл</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnSelectOutputFile">
+            <property name="text">
+             <string>Вибрати вихідний файл</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>Вибрати вихідний файл</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="labelInputFile">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelOutputFile">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
      </layout>
     </item>
     <item>
-     <widget class="QTableWidget" name="tableResults">
-      <column>
-       <property name="text">
-        <string>Група</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Числа</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Макс значення</string>
-       </property>
-      </column>
-     </widget>
+     <widget class="QTableWidget" name="tableResults"/>
     </item>
     <item>
      <widget class="QLabel" name="labelMessages">
