@@ -80,6 +80,24 @@ class MainWindow(QMainWindow):
         finally:
             file.close()
 
+    def write_output_file(self, results):
+        """Запис даних у вихідний файл"""
+        if not self.output_file_path:
+            self.ui.labelMessages.setText("Вихідний файл не вказано.")
+            return
+
+        file = QFile(self.output_file_path)
+        if not file.open(QFile.OpenModeFlag.WriteOnly | QFile.OpenModeFlag.Text):
+            self.ui.labelMessages.setText("Не вдалося відкрити файл для запису.")
+            return
+        try:
+            stream = QTextStream(file)
+            stream << ' '.join(map(str, results))  # Записуємо всі значення через пробіл
+        except Exception as e:
+            self.ui.labelMessages.setText(f"Помилка при запису у файл: {str(e)}")
+        finally:
+            file.close()
+
     def process_numbers(self):
         """Обробка чисел"""
         try:
