@@ -17,6 +17,9 @@ class MainWindow(QMainWindow):
         self.f1_path = ""
         self.f2_path = ""
 
+        # Налаштування зв'язків кнопок
+        self.setup_connections()
+
     def show_message(self, message, is_error=False):
         """Відображення повідомлення у labelMessages"""
         color = "red" if is_error else "green"
@@ -116,13 +119,24 @@ class MainWindow(QMainWindow):
 
     def clear_results(self):
         """Очищення"""
-        pass
+        self.ui.labelMessages.clear()
+        self.ui.labelFirstFile.clear()
+        self.ui.labelSecondFile.clear()
+        self.f1_path = ""
+        self.f2_path = ""
 
     def process_files(self):
         """Обробка файлів"""
-        pass
+        if not self.f1_path:
+            self.show_message("Помилка: файл f1 не вибрано.", is_error=True)
+            return
+        if not self.f2_path:
+            self.show_message("Помилка: файл f2 не вибрано.", is_error=True)
+            return
 
-# Запускаємо застосунок
+        self.swap_files_content()
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
