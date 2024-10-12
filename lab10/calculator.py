@@ -44,6 +44,9 @@ class Calculator(QMainWindow):
         self.ui.pushButton_multiply.clicked.connect(lambda: self.calculate("*"))
         self.ui.pushButton_divide.clicked.connect(lambda: self.calculate("/"))
 
+        # Підключення кнопки для рівності
+        self.ui.pushButton_equal.clicked.connect(self.calculate_equal)
+
     def button_clicked(self):
         # Отримуємо кнопку, яка надіслала сигнал
         button = self.sender()
@@ -119,6 +122,40 @@ class Calculator(QMainWindow):
 
         self.ui.lineEdit.clear()  # Очищуємо перше поле
         self.ui.lineEdit_2.setText("".join(self.__stack))  # Виводимо значення у друге поле
+
+    # Слот для обробки рівності
+    def calculate_equal(self):
+        # Якщо введено число та в стеку два елементи
+        if len(self.ui.lineEdit.text()) != 0 and len(self.__stack) == 2:
+            self.__stack.append(self.ui.lineEdit.text())
+
+        if len(self.__stack) < 3:
+            return  # Якщо в стеку менш як три елементи, виходимо
+
+        # Витягуємо з стека числа і знак операції
+        val2 = float(self.__stack.pop())  # Другий операнд
+        sign = self.__stack.pop()          # Знак
+        val1 = float(self.__stack.pop())   # Перший операнд
+
+        # Виконуємо обчислення та додаємо результат у стек
+        if sign == "+":
+            self.__stack.append(str(val1 + val2))
+        elif sign == "-":
+            self.__stack.append(str(val1 - val2))
+        elif sign == "*":
+            self.__stack.append(str(val1 * val2))
+        elif sign == "/":
+            if val2 == 0:
+                self.__stack.append(str(val1))  # Додаємо перший операнд, якщо ділимо на 0
+                self.__stack.append(sign)         # Додаємо знак
+                self.ui.lineEdit.clear()
+                return
+            self.__stack.append(str(val1 / val2))
+
+        # Оновлюємо поля вводу
+        self.ui.lineEdit.setText(self.__stack.pop())  # Виводимо результат у перше поле
+        self.ui.lineEdit_2.setText("".join(self.__stack))  # Виводимо значення у друге поле
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

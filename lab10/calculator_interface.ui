@@ -260,7 +260,7 @@
      </widget>
     </item>
     <item row="2" column="4" rowspan="2">
-     <widget class="QPushButton" name="pushButton_18">
+     <widget class="QPushButton" name="pushButton_equal">
       <property name="minimumSize">
        <size>
         <width>75</width>
