@@ -18,16 +18,8 @@ class Calculator(QMainWindow):
 
     def connect_buttons(self):
         # Підключаємо всі кнопки до одного слота, який використовує sender()
-        self.ui.pushButton_0.clicked.connect(self.button_clicked)
-        self.ui.pushButton_1.clicked.connect(self.button_clicked)
-        self.ui.pushButton_2.clicked.connect(self.button_clicked)
-        self.ui.pushButton_3.clicked.connect(self.button_clicked)
-        self.ui.pushButton_4.clicked.connect(self.button_clicked)
-        self.ui.pushButton_5.clicked.connect(self.button_clicked)
-        self.ui.pushButton_6.clicked.connect(self.button_clicked)
-        self.ui.pushButton_7.clicked.connect(self.button_clicked)
-        self.ui.pushButton_8.clicked.connect(self.button_clicked)
-        self.ui.pushButton_9.clicked.connect(self.button_clicked)
+        for i in range(10):
+            getattr(self.ui, f"pushButton_{i}").clicked.connect(self.button_clicked)
 
         # Підключення кнопки для додавання десяткової точки
         self.ui.pushButton_decimal.clicked.connect(self.add_decimal_point)
@@ -156,6 +148,57 @@ class Calculator(QMainWindow):
         self.ui.lineEdit.setText(self.__stack.pop())  # Виводимо результат у перше поле
         self.ui.lineEdit_2.setText("".join(self.__stack))  # Виводимо значення у друге поле
 
+        def calculate(self, sgn):
+            # Логіка для арифметичних операцій
+            pass
+
+        def calculate_equal(self):
+            # Логіка для рівності
+            pass
+
+        def calculate_cos(self):
+            # Логіка для косинуса
+            pass
+
+        def calculate_log10(self):
+            # Логіка для логарифму
+            pass
+
+        def calculate_x_squared(self):
+            # Логіка для x^2
+            pass
+
+        def calculate_sqrt(self):
+            # Логіка для кореня
+            pass
+
+        def calculate_sin(self):
+            # Логіка для синуса
+            pass
+
+        def calculate_ln(self):
+            # Логіка для натурального логарифму
+            pass
+
+        def calculate_inverse(self):
+            # Логіка для 1/x
+            pass
+
+        def calculate_tg(self):
+            # Логіка для тангенса
+            pass
+
+        def calculate_10_power(self):
+            # Логіка для 10^x
+            pass
+
+        def calculate_x_cubed(self):
+            # Логіка для x^3
+            pass
+
+        def calculate_factorial(self):
+            # Логіка для факторіала
+            pass
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
