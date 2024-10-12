@@ -1,6 +1,7 @@
 import sys
 import os
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem, \
+    QHeaderView
 from ui.task1_interface import Ui_MainWindow
 from PySide6.QtCore import QFile, QIODevice, QTextStream
 
@@ -13,6 +14,11 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+
+        self.ui.tableResults.setColumnCount(2)
+        self.ui.tableResults.setHorizontalHeaderLabels(["Група", "Максимальне значення"])
+        self.ui.tableResults.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        self.ui.tableResults.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
         # Ініціалізація атрибутів для збереження шляхів до файлів
         self.input_file_path = ""
         self.output_file_path = ""
@@ -107,12 +113,19 @@ class MainWindow(QMainWindow):
                 group = numbers[i:i + 5]
                 max_in_group = max(group)
                 results.append(max_in_group)
+                self.update_result_table(i // 5, group, max_in_group)
 
             return results  # Повертаємо список максимальних значень
 
         except Exception as e:
             self.ui.labelMessages.setText(f"Помилка обробки чисел: {str(e)}")
             return []
+
+    def update_result_table(self, index, group, max_value):
+        """Оновлення таблиці результатів"""
+        self.ui.tableResults.setRowCount(index + 1)
+        self.ui.tableResults.setItem(index, 0, QTableWidgetItem(str(group)))
+        self.ui.tableResults.setItem(index, 1, QTableWidgetItem(str(max_value)))
 
     def process_file(self):
         """Обробка файлу"""
