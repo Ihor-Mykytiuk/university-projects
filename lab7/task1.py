@@ -14,11 +14,9 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # Ініціалізація таблиці результатів
+        self.init_results_table()
 
-        self.ui.tableResults.setColumnCount(2)
-        self.ui.tableResults.setHorizontalHeaderLabels(["Група", "Максимальне значення"])
-        self.ui.tableResults.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
-        self.ui.tableResults.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
         # Ініціалізація атрибутів для збереження шляхів до файлів
         self.input_file_path = ""
         self.output_file_path = ""
@@ -33,6 +31,12 @@ class MainWindow(QMainWindow):
         self.ui.btnSelectStandardFiles.clicked.connect(self.select_standard_files)
         self.ui.btnRunProcessing.clicked.connect(self.process_file)
         self.ui.btnClearResults.clicked.connect(self.clear_results)
+
+    def init_results_table(self):
+        self.ui.tableResults.setColumnCount(2)
+        self.ui.tableResults.setHorizontalHeaderLabels(["Група", "Максимальне значення"])
+        self.ui.tableResults.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        self.ui.tableResults.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
 
     def select_input_file(self):
         """Вибір вхідного файлу через QFileDialog"""
