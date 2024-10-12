@@ -18,7 +18,6 @@ class Calculator(QMainWindow):
 
     def connect_buttons(self):
         # Підключаємо всі кнопки до одного слота, який використовує sender()
-        self.ui.pushButton_0.clicked.connect(self.button_clicked)
         self.ui.pushButton_1.clicked.connect(self.button_clicked)
         self.ui.pushButton_2.clicked.connect(self.button_clicked)
         self.ui.pushButton_3.clicked.connect(self.button_clicked)
@@ -31,6 +30,9 @@ class Calculator(QMainWindow):
 
         # Підключення кнопки для додавання десяткової точки
         self.ui.pushButton_decimal.clicked.connect(self.add_decimal_point)
+
+        # Підключення кнопки для зміни знака
+        self.ui.pushButton_change_sign.clicked.connect(self.change_sign)
 
         # Підключення кнопки скидання до методу reset_values
         self.ui.pushButton_clear.clicked.connect(self.reset_values)
@@ -64,6 +66,16 @@ class Calculator(QMainWindow):
 
         # Якщо умови виконані, додаємо десяткову точку
         self.ui.lineEdit.setText(current_text + '.')
+
+    # Слот для зміни знака числа
+    def change_sign(self):
+        current_text = self.ui.lineEdit.text()
+
+        # Перевірка умов для зміни знака
+        if len(current_text) == 0 or current_text[0] != '-':
+            self.ui.lineEdit.setText('-' + current_text)
+        else:
+            self.ui.lineEdit.setText(current_text[1:])  # Видаляємо знак '-'
 
     # Оголошення методу для обробки арифметичних дій
     def calculate(self, sgn):

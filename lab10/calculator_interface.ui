@@ -247,7 +247,7 @@
      </widget>
     </item>
     <item row="2" column="3">
-     <widget class="QPushButton" name="pushButton_17">
+     <widget class="QPushButton" name="pushButton_change_sign">
       <property name="minimumSize">
        <size>
         <width>75</width>
