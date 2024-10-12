@@ -18,6 +18,7 @@ class Calculator(QMainWindow):
 
     def connect_buttons(self):
         # Підключаємо всі кнопки до одного слота, який використовує sender()
+        self.ui.pushButton_0.clicked.connect(self.button_clicked)
         self.ui.pushButton_1.clicked.connect(self.button_clicked)
         self.ui.pushButton_2.clicked.connect(self.button_clicked)
         self.ui.pushButton_3.clicked.connect(self.button_clicked)
@@ -36,6 +37,12 @@ class Calculator(QMainWindow):
 
         # Підключення кнопки скидання до методу reset_values
         self.ui.pushButton_clear.clicked.connect(self.reset_values)
+
+        # Підключення кнопок для арифметичних дій
+        self.ui.pushButton_plus.clicked.connect(lambda: self.calculate("+"))
+        self.ui.pushButton_minus.clicked.connect(lambda: self.calculate("-"))
+        self.ui.pushButton_multiply.clicked.connect(lambda: self.calculate("*"))
+        self.ui.pushButton_divide.clicked.connect(lambda: self.calculate("/"))
 
     def button_clicked(self):
         # Отримуємо кнопку, яка надіслала сигнал
@@ -79,7 +86,39 @@ class Calculator(QMainWindow):
 
     # Оголошення методу для обробки арифметичних дій
     def calculate(self, sgn):
-        pass  # Пізніше цей метод буде реалізований
+        current_text = self.ui.lineEdit.text()
+
+        # Перевірка, чи щось введено
+        if len(current_text) == 0:
+            return  # Виходимо, якщо нічого не введено
+
+        # Якщо в стеку не менше двох елементів
+        if len(self.__stack) >= 2:
+            val2 = float(current_text)  # Перетворюємо текст у число
+            sign = self.__stack.pop()  # Витягуємо знак
+            val1 = float(self.__stack.pop())  # Витягуємо перший операнд
+
+            # Виконуємо обчислення
+            if sign == "+":
+                self.__stack.append(str(val1 + val2))
+            elif sign == "-":
+                self.__stack.append(str(val1 - val2))
+            elif sign == "*":
+                self.__stack.append(str(val1 * val2))
+            elif sign == "/":
+                if val2 == 0:
+                    self.__stack.append(str(val1))  # Додаємо перший операнд, якщо ділимо на 0
+                else:
+                    self.__stack.append(str(val1 / val2))
+
+            self.__stack.append(sgn)  # Додаємо натиснутий знак
+
+        else:
+            self.__stack.append(current_text)  # Якщо стек порожній, додаємо значення
+            self.__stack.append(sgn)  # Додаємо знак
+
+        self.ui.lineEdit.clear()  # Очищуємо перше поле
+        self.ui.lineEdit_2.setText("".join(self.__stack))  # Виводимо значення у друге поле
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
