@@ -57,23 +57,18 @@ class MainWindow(QMainWindow):
     def select_standard_files(self):
         """Автоматичний вибір стандартних файлів з директорії проєкту"""
         base_path = os.path.dirname(os.path.abspath(__file__)) # Шлях до поточної директорії
-        self.input_file_path = os.path.join(base_path, 'f.txt')
-        self.output_file_path = os.path.join(base_path, 'g.txt')
+        self.input_file_path = os.path.join(base_path, "files", 'f.txt')
+        self.output_file_path = os.path.join(base_path, "files", 'g.txt')
 
         self.ui.labelInputFile.setText(f"Вхідний файл: f.txt")
         self.ui.labelOutputFile.setText(f"Вихідний файл: g.txt")
 
     def read_input_file(self):
         """Зчитування даних з вхідного файлу за допомогою QFile."""
-        if not self.input_file_path:
-            self.ui.labelMessages.setText("Спочатку виберіть вхідний файл.")
-            return []
-
         file = QFile(self.input_file_path)
         if not file.open(QFile.OpenModeFlag.ReadOnly | QFile.OpenModeFlag.Text):  # Спробуємо відкрити файл
             self.ui.labelMessages.setText(f"Не вдалося відкрити файл: {file.errorString()}")
             return []
-
         try:
             stream = QTextStream(file)
             data = stream.readAll()
@@ -88,10 +83,6 @@ class MainWindow(QMainWindow):
 
     def write_output_file(self, results):
         """Запис даних у вихідний файл"""
-        if not self.output_file_path:
-            self.ui.labelMessages.setText("Вихідний файл не вказано.")
-            return
-
         file = QFile(self.output_file_path)
         if not file.open(QFile.OpenModeFlag.WriteOnly | QFile.OpenModeFlag.Text):
             self.ui.labelMessages.setText("Не вдалося відкрити файл для запису.")
@@ -137,8 +128,17 @@ class MainWindow(QMainWindow):
         self.ui.labelOutputFile.clear()
 
     def process_file(self):
-        """Обробка файлу"""
-        pass
+        """Обробка файлів"""
+        if not self.input_file_path:
+            self.ui.labelMessages.setText("Виберіть вхідний файл.")
+            return
+        if not self.output_file_path:
+            self.ui.labelMessages.setText("Виберіть вихідний файл.")
+            return
+        results = self.process_numbers()
+        if results:
+            self.write_output_file(results)
+            self.ui.labelMessages.setText("Файл успішно оброблено.")
 
 
 if __name__ == "__main__":
