@@ -127,12 +127,17 @@ class MainWindow(QMainWindow):
         self.ui.tableResults.setItem(index, 0, QTableWidgetItem(str(group)))
         self.ui.tableResults.setItem(index, 1, QTableWidgetItem(str(max_value)))
 
-    def process_file(self):
-        """Обробка файлу"""
-        pass
-
     def clear_results(self):
         """Очищення результатів"""
+        self.ui.tableResults.setRowCount(0)
+        self.ui.labelMessages.clear()
+        self.input_file_path = ""
+        self.output_file_path = ""
+        self.ui.labelInputFile.clear()
+        self.ui.labelOutputFile.clear()
+
+    def process_file(self):
+        """Обробка файлу"""
         pass
 
 
