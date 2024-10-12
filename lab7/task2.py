@@ -34,7 +34,19 @@ class MainWindow(QMainWindow):
 
     def select_file(self, file_type):
         """Вибір файлу через QFileDialog"""
-        pass
+        file_name, _ = QFileDialog.getOpenFileName(self, f"Вибрати файл {file_type}", "",
+                                                   "Text Files (*.txt);;All Files (*)")
+        if file_name:  # Якщо користувач вибрав файл
+            if file_type == "f1":
+                self.f1_path = file_name
+                label = self.ui.labelFirstFile
+            elif file_type == "f2":
+                self.f2_path = file_name
+                label = self.ui.labelSecondFile
+            label.setText(f"Файл {file_type}: {os.path.basename(file_name)}")
+            self.show_message(f"Файл {file_type} вибрано успішно.")
+        else:
+            self.show_message(f"Помилка: файл {file_type} не вибрано.", is_error=True)
 
     def select_standard_files(self):
         """Вибір стандартних файлів"""
