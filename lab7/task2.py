@@ -70,7 +70,7 @@ class MainWindow(QMainWindow):
             help_file = QFile(help_file_path)
             if help_file.open(QIODevice.OpenModeFlag.WriteOnly):  # Відкриваємо файл для запису
                 help_file.write(b"")  # Записуємо пустий вміст
-                self.show_message("Допоміжний файл створено успішно.")
+                return help_file_path
         except Exception as e:
             self.show_message(f"Помилка створення файлу: {str(e)}", is_error=True)
 
@@ -80,11 +80,39 @@ class MainWindow(QMainWindow):
         file = QFile(help_file_path)
         if file.exists():
             file.remove()
-            self.show_message("Допоміжний файл видалено успішно.")
 
     def swap_files_content(self):
         """Обмін вмісту файлів"""
-        pass
+        help_file_path = self.create_help_file()
+
+        try:
+            file1 = QFile(self.f1_path)
+            file2 = QFile(self.f2_path)
+            help_file = QFile(help_file_path)
+
+            file1.open(QIODevice.OpenModeFlag.ReadOnly)
+            help_file.open(QIODevice.OpenModeFlag.WriteOnly)
+            help_file.write(file1.readAll())  # Записуємо вміст першого файлу у допоміжний
+            file1.close()
+            help_file.close()
+
+            file1.open(QIODevice.OpenModeFlag.WriteOnly)
+            file2.open(QIODevice.OpenModeFlag.ReadOnly)
+            file1.write(file2.readAll())  # Записуємо вміст другого файлу у перший
+            file1.close()
+            file2.close()
+
+            help_file.open(QIODevice.OpenModeFlag.ReadOnly)
+            file2.open(QIODevice.OpenModeFlag.WriteOnly)
+            file2.write(help_file.readAll())  # Записуємо вміст допоміжного файлу у другий
+            help_file.close()
+            file2.close()
+
+            self.delete_help_file()
+
+            self.show_message("Вміст файлів обмінено успішно.")
+        except Exception as e:
+            self.show_message(f"Помилка обміну вмісту файлів: {str(e)}", is_error=True)
 
     def clear_results(self):
         """Очищення"""
