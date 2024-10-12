@@ -151,11 +151,11 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.pushButton_0, 3, 0, 1, 2)
 
-        self.pushButton_11 = QPushButton(self.widget1)
-        self.pushButton_11.setObjectName(u"pushButton_11")
-        self.pushButton_11.setMinimumSize(QSize(75, 75))
+        self.pushButton_decimal = QPushButton(self.widget1)
+        self.pushButton_decimal.setObjectName(u"pushButton_decimal")
+        self.pushButton_decimal.setMinimumSize(QSize(75, 75))
 
-        self.gridLayout.addWidget(self.pushButton_11, 3, 2, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_decimal, 3, 2, 1, 1)
 
         self.pushButton_clear = QPushButton(self.widget1)
         self.pushButton_clear.setObjectName(u"pushButton_clear")
@@ -187,7 +187,7 @@ class Ui_Form(object):
         self.pushButton_17.setText(QCoreApplication.translate("Form", u"+/-", None))
         self.pushButton_18.setText(QCoreApplication.translate("Form", u"=", None))
         self.pushButton_0.setText(QCoreApplication.translate("Form", u"0", None))
-        self.pushButton_11.setText(QCoreApplication.translate("Form", u".", None))
+        self.pushButton_decimal.setText(QCoreApplication.translate("Form", u".", None))
         self.pushButton_clear.setText(QCoreApplication.translate("Form", u"C", None))
     # retranslateUi
 

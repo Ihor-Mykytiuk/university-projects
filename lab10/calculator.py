@@ -18,6 +18,7 @@ class Calculator(QMainWindow):
 
     def connect_buttons(self):
         # Підключаємо всі кнопки до одного слота, який використовує sender()
+        self.ui.pushButton_0.clicked.connect(self.button_clicked)
         self.ui.pushButton_1.clicked.connect(self.button_clicked)
         self.ui.pushButton_2.clicked.connect(self.button_clicked)
         self.ui.pushButton_3.clicked.connect(self.button_clicked)
@@ -27,6 +28,9 @@ class Calculator(QMainWindow):
         self.ui.pushButton_7.clicked.connect(self.button_clicked)
         self.ui.pushButton_8.clicked.connect(self.button_clicked)
         self.ui.pushButton_9.clicked.connect(self.button_clicked)
+
+        # Підключення кнопки для додавання десяткової точки
+        self.ui.pushButton_decimal.clicked.connect(self.add_decimal_point)
 
         # Підключення кнопки скидання до методу reset_values
         self.ui.pushButton_clear.clicked.connect(self.reset_values)
@@ -38,10 +42,6 @@ class Calculator(QMainWindow):
             # Вставляємо текст кнопки (цифру) в поле введення
             self.ui.lineEdit.insert(button.text())
 
-    # Оголошення методу для обробки арифметичних дій
-    def calculate(self, sgn):
-        pass  # Пізніше цей метод буде реалізований
-
     # Слот для скидання значень
     def reset_values(self):
         # Очищуємо обидва поля введення
@@ -50,6 +50,24 @@ class Calculator(QMainWindow):
 
         # Очищуємо стек
         self.__stack.clear()
+
+    # Слот для додавання десяткової точки
+    def add_decimal_point(self):
+        # Отримуємо поточний текст з поля вводу
+        current_text = self.ui.lineEdit.text()
+
+        # Перевірка умов:
+        if (len(current_text) == 0 or
+            current_text[-1] == '-' or
+            '.' in current_text):
+            return
+
+        # Якщо умови виконані, додаємо десяткову точку
+        self.ui.lineEdit.setText(current_text + '.')
+
+    # Оголошення методу для обробки арифметичних дій
+    def calculate(self, sgn):
+        pass  # Пізніше цей метод буде реалізований
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
