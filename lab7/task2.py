@@ -63,12 +63,24 @@ class MainWindow(QMainWindow):
         self.show_message("Стандартні файли вибрано успішно.")
 
     def create_help_file(self):
-        """Створення доопоміжного файлу"""
-        pass
+        """Створення пустого допоміжного файлу"""
+        help_file_path = os.path.join(os.path.dirname(self.f1_path), "h.txt")  # Шлях до допоміжного файлу
+
+        try:
+            help_file = QFile(help_file_path)
+            if help_file.open(QIODevice.OpenModeFlag.WriteOnly):  # Відкриваємо файл для запису
+                help_file.write(b"")  # Записуємо пустий вміст
+                self.show_message("Допоміжний файл створено успішно.")
+        except Exception as e:
+            self.show_message(f"Помилка створення файлу: {str(e)}", is_error=True)
 
     def delete_help_file(self):
         """Видалення допоміжного файлу"""
-        pass
+        help_file_path = os.path.join(os.path.dirname(self.f1_path), "h.txt")  # Шлях до допоміжного файлу
+        file = QFile(help_file_path)
+        if file.exists():
+            file.remove()
+            self.show_message("Допоміжний файл видалено успішно.")
 
     def swap_files_content(self):
         """Обмін вмісту файлів"""
