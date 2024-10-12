@@ -25,9 +25,14 @@ class MainWindow(QMainWindow):
 
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""
-        pass
+        self.ui.btnSelectFirstFile.clicked.connect(lambda: self.select_file("f1"))
+        self.ui.btnSelectSecondFile.clicked.connect(lambda: self.select_file("f2"))
+        self.ui.btnSelectStandardFiles.clicked.connect(self.select_standard_files)
 
-    def select_file(self, label):
+        self.ui.btnRunProcessing.clicked.connect(self.process_files)
+        self.ui.btnClearResults.clicked.connect(self.clear_results)
+
+    def select_file(self, file_type):
         """Вибір файлу через QFileDialog"""
         pass
 
@@ -45,6 +50,10 @@ class MainWindow(QMainWindow):
 
     def swap_files_content(self):
         """Обмін вмісту файлів"""
+        pass
+
+    def clear_results(self):
+        """Очищення"""
         pass
 
     def process_files(self):
