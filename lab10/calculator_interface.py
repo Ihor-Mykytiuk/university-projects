@@ -22,13 +22,22 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(432, 491)
+        Form.resize(776, 540)
+        self.pushButton_additional = QPushButton(Form)
+        self.pushButton_additional.setObjectName(u"pushButton_additional")
+        self.pushButton_additional.setGeometry(QRect(9, 148, 79, 24))
+        self.gridLayoutWidget = QWidget(Form)
+        self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
+        self.gridLayoutWidget.setGeometry(QRect(420, 180, 261, 331))
+        self.gridLayout_2 = QGridLayout(self.gridLayoutWidget)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.widget = QWidget(Form)
         self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(10, 10, 411, 133))
-        self.verticalLayout = QVBoxLayout(self.widget)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.widget.setGeometry(QRect(9, 9, 411, 133))
+        self.inputslLayout = QVBoxLayout(self.widget)
+        self.inputslLayout.setObjectName(u"inputslLayout")
+        self.inputslLayout.setContentsMargins(0, 0, 0, 0)
         self.lineEdit_2 = QLineEdit(self.widget)
         self.lineEdit_2.setObjectName(u"lineEdit_2")
         self.lineEdit_2.setEnabled(False)
@@ -38,7 +47,7 @@ class Ui_Form(object):
         self.lineEdit_2.setFont(font)
         self.lineEdit_2.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
-        self.verticalLayout.addWidget(self.lineEdit_2)
+        self.inputslLayout.addWidget(self.lineEdit_2)
 
         self.lineEdit = QLineEdit(self.widget)
         self.lineEdit.setObjectName(u"lineEdit")
@@ -47,107 +56,113 @@ class Ui_Form(object):
         self.lineEdit.setFont(font)
         self.lineEdit.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
-        self.verticalLayout.addWidget(self.lineEdit)
+        self.inputslLayout.addWidget(self.lineEdit)
 
         self.widget1 = QWidget(Form)
         self.widget1.setObjectName(u"widget1")
-        self.widget1.setGeometry(QRect(11, 148, 415, 334))
+        self.widget1.setGeometry(QRect(9, 178, 411, 334))
         self.gridLayout = QGridLayout(self.widget1)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_1 = QPushButton(self.widget1)
-        self.pushButton_1.setObjectName(u"pushButton_1")
-        self.pushButton_1.setMinimumSize(QSize(75, 75))
+        self.pushButton_9 = QPushButton(self.widget1)
+        self.pushButton_9.setObjectName(u"pushButton_9")
+        self.pushButton_9.setMinimumSize(QSize(75, 75))
+        self.pushButton_9.setMaximumSize(QSize(75, 75))
 
-        self.gridLayout.addWidget(self.pushButton_1, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_9, 2, 2, 1, 1)
+
+        self.pushButton_7 = QPushButton(self.widget1)
+        self.pushButton_7.setObjectName(u"pushButton_7")
+        self.pushButton_7.setMinimumSize(QSize(75, 75))
+        self.pushButton_7.setMaximumSize(QSize(75, 75))
+
+        self.gridLayout.addWidget(self.pushButton_7, 2, 0, 1, 1)
 
         self.pushButton_2 = QPushButton(self.widget1)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setMinimumSize(QSize(75, 75))
+        self.pushButton_2.setMaximumSize(QSize(75, 75))
 
         self.gridLayout.addWidget(self.pushButton_2, 0, 1, 1, 1)
+
+        self.pushButton_5 = QPushButton(self.widget1)
+        self.pushButton_5.setObjectName(u"pushButton_5")
+        self.pushButton_5.setMinimumSize(QSize(75, 75))
+        self.pushButton_5.setMaximumSize(QSize(75, 75))
+
+        self.gridLayout.addWidget(self.pushButton_5, 1, 1, 1, 1)
 
         self.pushButton_3 = QPushButton(self.widget1)
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setMinimumSize(QSize(75, 75))
+        self.pushButton_3.setMaximumSize(QSize(75, 75))
 
         self.gridLayout.addWidget(self.pushButton_3, 0, 2, 1, 1)
 
         self.pushButton_plus = QPushButton(self.widget1)
         self.pushButton_plus.setObjectName(u"pushButton_plus")
         self.pushButton_plus.setMinimumSize(QSize(75, 75))
+        self.pushButton_plus.setMaximumSize(QSize(75, 75))
 
         self.gridLayout.addWidget(self.pushButton_plus, 0, 3, 1, 1)
 
-        self.pushButton_minus = QPushButton(self.widget1)
-        self.pushButton_minus.setObjectName(u"pushButton_minus")
-        self.pushButton_minus.setMinimumSize(QSize(75, 75))
+        self.pushButton_1 = QPushButton(self.widget1)
+        self.pushButton_1.setObjectName(u"pushButton_1")
+        self.pushButton_1.setMinimumSize(QSize(75, 75))
+        self.pushButton_1.setMaximumSize(QSize(75, 75))
 
-        self.gridLayout.addWidget(self.pushButton_minus, 0, 4, 1, 1)
-
-        self.pushButton_4 = QPushButton(self.widget1)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setMinimumSize(QSize(75, 75))
-
-        self.gridLayout.addWidget(self.pushButton_4, 1, 0, 1, 1)
-
-        self.pushButton_5 = QPushButton(self.widget1)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-        self.pushButton_5.setMinimumSize(QSize(75, 75))
-
-        self.gridLayout.addWidget(self.pushButton_5, 1, 1, 1, 1)
-
-        self.pushButton_6 = QPushButton(self.widget1)
-        self.pushButton_6.setObjectName(u"pushButton_6")
-        self.pushButton_6.setMinimumSize(QSize(75, 75))
-
-        self.gridLayout.addWidget(self.pushButton_6, 1, 2, 1, 1)
-
-        self.pushButton_multiply = QPushButton(self.widget1)
-        self.pushButton_multiply.setObjectName(u"pushButton_multiply")
-        self.pushButton_multiply.setMinimumSize(QSize(75, 75))
-
-        self.gridLayout.addWidget(self.pushButton_multiply, 1, 3, 1, 1)
-
-        self.pushButton_divide = QPushButton(self.widget1)
-        self.pushButton_divide.setObjectName(u"pushButton_divide")
-        self.pushButton_divide.setMinimumSize(QSize(75, 75))
-
-        self.gridLayout.addWidget(self.pushButton_divide, 1, 4, 1, 1)
-
-        self.pushButton_7 = QPushButton(self.widget1)
-        self.pushButton_7.setObjectName(u"pushButton_7")
-        self.pushButton_7.setMinimumSize(QSize(75, 75))
-
-        self.gridLayout.addWidget(self.pushButton_7, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_1, 0, 0, 1, 1)
 
         self.pushButton_8 = QPushButton(self.widget1)
         self.pushButton_8.setObjectName(u"pushButton_8")
         self.pushButton_8.setMinimumSize(QSize(75, 75))
+        self.pushButton_8.setMaximumSize(QSize(75, 75))
 
         self.gridLayout.addWidget(self.pushButton_8, 2, 1, 1, 1)
 
-        self.pushButton_9 = QPushButton(self.widget1)
-        self.pushButton_9.setObjectName(u"pushButton_9")
-        self.pushButton_9.setMinimumSize(QSize(75, 75))
+        self.pushButton_multiply = QPushButton(self.widget1)
+        self.pushButton_multiply.setObjectName(u"pushButton_multiply")
+        self.pushButton_multiply.setMinimumSize(QSize(75, 75))
+        self.pushButton_multiply.setMaximumSize(QSize(75, 75))
 
-        self.gridLayout.addWidget(self.pushButton_9, 2, 2, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_multiply, 1, 3, 1, 1)
+
+        self.pushButton_equal = QPushButton(self.widget1)
+        self.pushButton_equal.setObjectName(u"pushButton_equal")
+        self.pushButton_equal.setMinimumSize(QSize(75, 165))
+
+        self.gridLayout.addWidget(self.pushButton_equal, 2, 4, 2, 1)
+
+        self.pushButton_clear = QPushButton(self.widget1)
+        self.pushButton_clear.setObjectName(u"pushButton_clear")
+        self.pushButton_clear.setMinimumSize(QSize(75, 75))
+
+        self.gridLayout.addWidget(self.pushButton_clear, 3, 3, 1, 1)
+
+        self.pushButton_divide = QPushButton(self.widget1)
+        self.pushButton_divide.setObjectName(u"pushButton_divide")
+        self.pushButton_divide.setMinimumSize(QSize(75, 75))
+        self.pushButton_divide.setMaximumSize(QSize(75, 75))
+
+        self.gridLayout.addWidget(self.pushButton_divide, 1, 4, 1, 1)
+
+        self.pushButton_4 = QPushButton(self.widget1)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.pushButton_4.setMinimumSize(QSize(75, 75))
+        self.pushButton_4.setMaximumSize(QSize(75, 75))
+
+        self.gridLayout.addWidget(self.pushButton_4, 1, 0, 1, 1)
 
         self.pushButton_change_sign = QPushButton(self.widget1)
         self.pushButton_change_sign.setObjectName(u"pushButton_change_sign")
         self.pushButton_change_sign.setMinimumSize(QSize(75, 75))
+        self.pushButton_change_sign.setMaximumSize(QSize(75, 75))
 
         self.gridLayout.addWidget(self.pushButton_change_sign, 2, 3, 1, 1)
 
-        self.pushButton_equal = QPushButton(self.widget1)
-        self.pushButton_equal.setObjectName(u"pushButton_equal")
-        self.pushButton_equal.setMinimumSize(QSize(75, 170))
-
-        self.gridLayout.addWidget(self.pushButton_equal, 2, 4, 2, 1)
-
         self.pushButton_0 = QPushButton(self.widget1)
         self.pushButton_0.setObjectName(u"pushButton_0")
-        self.pushButton_0.setMinimumSize(QSize(170, 75))
+        self.pushButton_0.setMinimumSize(QSize(165, 75))
 
         self.gridLayout.addWidget(self.pushButton_0, 3, 0, 1, 2)
 
@@ -157,11 +172,19 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.pushButton_decimal, 3, 2, 1, 1)
 
-        self.pushButton_clear = QPushButton(self.widget1)
-        self.pushButton_clear.setObjectName(u"pushButton_clear")
-        self.pushButton_clear.setMinimumSize(QSize(75, 75))
+        self.pushButton_minus = QPushButton(self.widget1)
+        self.pushButton_minus.setObjectName(u"pushButton_minus")
+        self.pushButton_minus.setMinimumSize(QSize(75, 75))
+        self.pushButton_minus.setMaximumSize(QSize(75, 75))
 
-        self.gridLayout.addWidget(self.pushButton_clear, 3, 3, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_minus, 0, 4, 1, 1)
+
+        self.pushButton_6 = QPushButton(self.widget1)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_6.setMinimumSize(QSize(75, 75))
+        self.pushButton_6.setMaximumSize(QSize(75, 75))
+
+        self.gridLayout.addWidget(self.pushButton_6, 1, 2, 1, 1)
 
 
         self.retranslateUi(Form)
@@ -171,23 +194,24 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.pushButton_1.setText(QCoreApplication.translate("Form", u"1", None))
+        self.pushButton_additional.setText(QCoreApplication.translate("Form", u"\u0420\u043e\u0437\u0448\u0438\u0440\u0435\u043d\u0438\u0439", None))
+        self.pushButton_9.setText(QCoreApplication.translate("Form", u"9", None))
+        self.pushButton_7.setText(QCoreApplication.translate("Form", u"7", None))
         self.pushButton_2.setText(QCoreApplication.translate("Form", u"2", None))
+        self.pushButton_5.setText(QCoreApplication.translate("Form", u"5", None))
         self.pushButton_3.setText(QCoreApplication.translate("Form", u"3", None))
         self.pushButton_plus.setText(QCoreApplication.translate("Form", u"+", None))
-        self.pushButton_minus.setText(QCoreApplication.translate("Form", u"-", None))
-        self.pushButton_4.setText(QCoreApplication.translate("Form", u"4", None))
-        self.pushButton_5.setText(QCoreApplication.translate("Form", u"5", None))
-        self.pushButton_6.setText(QCoreApplication.translate("Form", u"6", None))
-        self.pushButton_multiply.setText(QCoreApplication.translate("Form", u"*", None))
-        self.pushButton_divide.setText(QCoreApplication.translate("Form", u"/", None))
-        self.pushButton_7.setText(QCoreApplication.translate("Form", u"7", None))
+        self.pushButton_1.setText(QCoreApplication.translate("Form", u"1", None))
         self.pushButton_8.setText(QCoreApplication.translate("Form", u"8", None))
-        self.pushButton_9.setText(QCoreApplication.translate("Form", u"9", None))
-        self.pushButton_change_sign.setText(QCoreApplication.translate("Form", u"+/-", None))
+        self.pushButton_multiply.setText(QCoreApplication.translate("Form", u"*", None))
         self.pushButton_equal.setText(QCoreApplication.translate("Form", u"=", None))
+        self.pushButton_clear.setText(QCoreApplication.translate("Form", u"C", None))
+        self.pushButton_divide.setText(QCoreApplication.translate("Form", u"/", None))
+        self.pushButton_4.setText(QCoreApplication.translate("Form", u"4", None))
+        self.pushButton_change_sign.setText(QCoreApplication.translate("Form", u"+/-", None))
         self.pushButton_0.setText(QCoreApplication.translate("Form", u"0", None))
         self.pushButton_decimal.setText(QCoreApplication.translate("Form", u".", None))
-        self.pushButton_clear.setText(QCoreApplication.translate("Form", u"C", None))
+        self.pushButton_minus.setText(QCoreApplication.translate("Form", u"-", None))
+        self.pushButton_6.setText(QCoreApplication.translate("Form", u"6", None))
     # retranslateUi
 

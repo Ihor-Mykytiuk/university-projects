@@ -6,23 +6,47 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>432</width>
-    <height>491</height>
+    <width>776</width>
+    <height>540</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QPushButton" name="pushButton_additional">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>148</y>
+     <width>79</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Розширений</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>180</y>
+     <width>261</width>
+     <height>331</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2"/>
+  </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
+     <x>9</x>
+     <y>9</y>
      <width>411</width>
      <height>133</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="inputslLayout">
     <item>
      <widget class="QLineEdit" name="lineEdit_2">
       <property name="enabled">
@@ -70,23 +94,48 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>11</x>
-     <y>148</y>
-     <width>415</width>
+     <x>9</x>
+     <y>178</y>
+     <width>411</width>
      <height>334</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton_1">
+    <item row="2" column="2">
+     <widget class="QPushButton" name="pushButton_9">
       <property name="minimumSize">
        <size>
         <width>75</width>
         <height>75</height>
        </size>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
       <property name="text">
-       <string>1</string>
+       <string>9</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>7</string>
       </property>
      </widget>
     </item>
@@ -98,14 +147,45 @@
         <height>75</height>
        </size>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
       <property name="text">
        <string>2</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>5</string>
       </property>
      </widget>
     </item>
     <item row="0" column="2">
      <widget class="QPushButton" name="pushButton_3">
       <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="maximumSize">
        <size>
         <width>75</width>
         <height>75</height>
@@ -124,99 +204,33 @@
         <height>75</height>
        </size>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
       <property name="text">
        <string>+</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="4">
-     <widget class="QPushButton" name="pushButton_minus">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="pushButton_1">
       <property name="minimumSize">
        <size>
         <width>75</width>
         <height>75</height>
        </size>
       </property>
-      <property name="text">
-       <string>-</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="minimumSize">
+      <property name="maximumSize">
        <size>
         <width>75</width>
         <height>75</height>
        </size>
       </property>
       <property name="text">
-       <string>4</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="minimumSize">
-       <size>
-        <width>75</width>
-        <height>75</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>5</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="minimumSize">
-       <size>
-        <width>75</width>
-        <height>75</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>6</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QPushButton" name="pushButton_multiply">
-      <property name="minimumSize">
-       <size>
-        <width>75</width>
-        <height>75</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>*</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="4">
-     <widget class="QPushButton" name="pushButton_divide">
-      <property name="minimumSize">
-       <size>
-        <width>75</width>
-        <height>75</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>/</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="minimumSize">
-       <size>
-        <width>75</width>
-        <height>75</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>7</string>
+       <string>1</string>
       </property>
      </widget>
     </item>
@@ -228,13 +242,51 @@
         <height>75</height>
        </size>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
       <property name="text">
        <string>8</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="pushButton_9">
+    <item row="1" column="3">
+     <widget class="QPushButton" name="pushButton_multiply">
+      <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>*</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4" rowspan="2">
+     <widget class="QPushButton" name="pushButton_equal">
+      <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>165</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>=</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QPushButton" name="pushButton_clear">
       <property name="minimumSize">
        <size>
         <width>75</width>
@@ -242,7 +294,45 @@
        </size>
       </property>
       <property name="text">
-       <string>9</string>
+       <string>C</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4">
+     <widget class="QPushButton" name="pushButton_divide">
+      <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>/</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>4</string>
       </property>
      </widget>
     </item>
@@ -254,21 +344,14 @@
         <height>75</height>
        </size>
       </property>
-      <property name="text">
-       <string>+/-</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="4" rowspan="2">
-     <widget class="QPushButton" name="pushButton_equal">
-      <property name="minimumSize">
+      <property name="maximumSize">
        <size>
         <width>75</width>
-        <height>170</height>
+        <height>75</height>
        </size>
       </property>
       <property name="text">
-       <string>=</string>
+       <string>+/-</string>
       </property>
      </widget>
     </item>
@@ -276,7 +359,7 @@
      <widget class="QPushButton" name="pushButton_0">
       <property name="minimumSize">
        <size>
-        <width>170</width>
+        <width>165</width>
         <height>75</height>
        </size>
       </property>
@@ -298,16 +381,41 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="3">
-     <widget class="QPushButton" name="pushButton_clear">
+    <item row="0" column="4">
+     <widget class="QPushButton" name="pushButton_minus">
       <property name="minimumSize">
        <size>
         <width>75</width>
         <height>75</height>
        </size>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
       <property name="text">
-       <string>C</string>
+       <string>-</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>75</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>6</string>
       </property>
      </widget>
     </item>

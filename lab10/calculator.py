@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
 from calculator_interface import Ui_Form  # Імпорт згенерованого файлу
 
 class Calculator(QMainWindow):
@@ -9,12 +9,15 @@ class Calculator(QMainWindow):
         # Ініціалізація інтерфейсу з файлу calculator_interface.py
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-
+        self.setFixedSize(430, 520)  # Фіксуємо розмір вікна
         # Оголошення стека (аналог QStack)
         self.__stack = []  # Приватна змінна для стека значень
 
         # Підключення кнопок до одного методу через sender()
         self.connect_buttons()
+
+        # Змінна для контролю видимості додаткових кнопок
+        self.additional_buttons_visible = False
 
     def connect_buttons(self):
         # Підключаємо всі кнопки до одного слота, який використовує sender()
@@ -38,6 +41,9 @@ class Calculator(QMainWindow):
 
         # Підключення кнопки для рівності
         self.ui.pushButton_equal.clicked.connect(self.calculate_equal)
+
+        # Підключення кнопки для додаткових функцій
+        self.ui.pushButton_additional.clicked.connect(self.toggle_additional_buttons)
 
     def button_clicked(self):
         # Отримуємо кнопку, яка надіслала сигнал
@@ -148,57 +154,103 @@ class Calculator(QMainWindow):
         self.ui.lineEdit.setText(self.__stack.pop())  # Виводимо результат у перше поле
         self.ui.lineEdit_2.setText("".join(self.__stack))  # Виводимо значення у друге поле
 
-        def calculate(self, sgn):
-            # Логіка для арифметичних операцій
-            pass
+    def calculate_cos(self):
+        # Логіка для косинуса
+        pass
 
-        def calculate_equal(self):
-            # Логіка для рівності
-            pass
+    def calculate_log10(self):
+        # Логіка для логарифму
+        pass
 
-        def calculate_cos(self):
-            # Логіка для косинуса
-            pass
+    def calculate_x_squared(self):
+        # Логіка для x^2
+        pass
 
-        def calculate_log10(self):
-            # Логіка для логарифму
-            pass
+    def calculate_sqrt(self):
+        # Логіка для кореня
+        pass
 
-        def calculate_x_squared(self):
-            # Логіка для x^2
-            pass
+    def calculate_sin(self):
+        # Логіка для синуса
+        pass
 
-        def calculate_sqrt(self):
-            # Логіка для кореня
-            pass
+    def calculate_ln(self):
+        # Логіка для натурального логарифму
+        pass
 
-        def calculate_sin(self):
-            # Логіка для синуса
-            pass
+    def calculate_inverse(self):
+        # Логіка для 1/x
+        pass
 
-        def calculate_ln(self):
-            # Логіка для натурального логарифму
-            pass
+    def calculate_tg(self):
+        # Логіка для тангенса
+        pass
 
-        def calculate_inverse(self):
-            # Логіка для 1/x
-            pass
+    def calculate_10_power(self):
+        # Логіка для 10^x
+        pass
 
-        def calculate_tg(self):
-            # Логіка для тангенса
-            pass
+    def calculate_x_cubed(self):
+        # Логіка для x^3
+        pass
 
-        def calculate_10_power(self):
-            # Логіка для 10^x
-            pass
+    def calculate_x_y(self):
+        # Логіка для x^y
+        pass
 
-        def calculate_x_cubed(self):
-            # Логіка для x^3
-            pass
+    def calculate_factorial(self):
+        # Логіка для факторіалу
+        pass
 
-        def calculate_factorial(self):
-            # Логіка для факторіала
-            pass
+    def toggle_additional_buttons(self):
+        # Додаємо або прибираємо додаткові кнопки
+        if self.additional_buttons_visible:
+            self.setFixedSize(430, 520)
+            self.remove_additional_buttons()
+        else:
+            self.setFixedSize(700, 520)
+            self.add_additional_buttons()
+
+    def add_additional_buttons(self):
+        # Створюємо нові кнопки для додаткових функцій
+        self.additional_buttons = []
+
+        # Список назв функцій та їх відповідних методів
+        functions = [
+            ("sin", self.calculate_sin),
+            ("cos", self.calculate_cos),
+            ("tg", self.calculate_tg),
+            ("lg", self.calculate_log10),
+            ("ln", self.calculate_ln),
+            ("sqrt", self.calculate_sqrt),
+            ("x^2", self.calculate_x_squared),
+            ("x^3", self.calculate_x_cubed),
+            ("x^y", self.calculate_x_y),
+            ("1/x", self.calculate_inverse),
+            ("10^x", self.calculate_10_power),
+            ("x!", self.calculate_factorial)
+        ]
+
+        # Додаємо кнопки до грід-сітки
+        for i, (name, method) in enumerate(functions):
+            button = QPushButton(name)
+            button.setMinimumSize(75, 75)
+            button.setMaximumSize(75, 75)
+            button.clicked.connect(method)
+            # Додаємо кнопку в грід-сітку
+            self.ui.gridLayout_2.addWidget(button, i // 3, i % 3)  # i // 3 — рядок, i % 3 — стовпець
+            self.additional_buttons.append(button)
+
+        self.additional_buttons_visible = True
+
+    def remove_additional_buttons(self):
+        # Прибираємо додаткові кнопки
+        for button in self.additional_buttons:
+            button.deleteLater()  # Видаляємо кнопку з пам'яті
+        self.additional_buttons.clear()
+
+        self.additional_buttons_visible = False
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
