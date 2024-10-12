@@ -38,7 +38,17 @@ class MainWindow(QMainWindow):
 
     def select_standard_files(self):
         """Вибір стандартних файлів"""
-        pass
+        base_path = os.path.dirname(os.path.abspath(__file__))  # Отримуємо шлях до поточної директорії
+        first_file_name = "f1.txt"
+        second_file_name = "f2.txt"
+        self.f1_path = os.path.join(base_path, "files", first_file_name)
+        self.f2_path = os.path.join(base_path, "files", second_file_name)
+
+        # Оновлення тексту на мітках
+        self.ui.labelFirstFile.setText(f"Файл f1: {first_file_name}")
+        self.ui.labelSecondFile.setText(f"Файл f2: {second_file_name}")
+
+        self.show_message("Стандартні файли вибрано успішно.")
 
     def create_help_file(self):
         """Створення доопоміжного файлу"""

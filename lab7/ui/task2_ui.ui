@@ -67,14 +67,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QLabel" name="labelInputFile">
+           <widget class="QLabel" name="labelFirstFile">
             <property name="text">
              <string>TextLabel</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="labelOutputFile">
+           <widget class="QLabel" name="labelSecondFile">
             <property name="text">
              <string>TextLabel</string>
             </property>
