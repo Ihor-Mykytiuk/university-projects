@@ -38,6 +38,12 @@ class MainWindow(QMainWindow):
         self.ui.tableResults.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
         self.ui.tableResults.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
 
+    def show_message(self, message, is_error=False):
+        """Відображення повідомлення"""
+        color = "red" if is_error else "green"
+        self.ui.labelMessages.setStyleSheet(f"color: {color};")
+        self.ui.labelMessages.setText(message)
+
     def select_input_file(self):
         """Вибір вхідного файлу через QFileDialog"""
         file_name, _ = QFileDialog.getOpenFileName(self, "Вибрати вхідний файл", "",
@@ -46,7 +52,7 @@ class MainWindow(QMainWindow):
             self.input_file_path = file_name  # Зберігаємо шлях до вибраного файлу
             self.ui.labelInputFile.setText(f"Вхідний файл: {os.path.basename(file_name)}")
         else:
-            self.ui.labelMessages.setText("Вхідний файл не вибрано.")
+            self.show_message("Помилка: вхідний файл не вибрано.", is_error=True)
 
     def select_output_file(self):
         """Вибір вихідного файлу через QFileDialog"""
@@ -56,7 +62,7 @@ class MainWindow(QMainWindow):
             self.output_file_path = file_name  # Зберігаємо шлях до вибраного файлу
             self.ui.labelOutputFile.setText(f"Вихідний файл: {os.path.basename(file_name)}")
         else:
-            self.ui.labelMessages.setText("Вихідний файл не вибрано.")
+            self.show_message("Помилка: вихідний файл не вибрано.", is_error=True)
 
     def select_standard_files(self):
         """Автоматичний вибір стандартних файлів з директорії проєкту"""
@@ -66,12 +72,13 @@ class MainWindow(QMainWindow):
 
         self.ui.labelInputFile.setText(f"Вхідний файл: f.txt")
         self.ui.labelOutputFile.setText(f"Вихідний файл: g.txt")
+        self.show_message("Стандартні файли вибрано успішно.")
 
     def read_input_file(self):
         """Зчитування даних з вхідного файлу за допомогою QFile."""
         file = QFile(self.input_file_path)
         if not file.open(QFile.OpenModeFlag.ReadOnly | QFile.OpenModeFlag.Text):  # Спробуємо відкрити файл
-            self.ui.labelMessages.setText(f"Не вдалося відкрити файл: {file.errorString()}")
+            self.show_message(f"Не вдалося відкрити вхідний файл: {file.errorString()}", is_error=True)
             return []
         try:
             stream = QTextStream(file)
@@ -80,7 +87,7 @@ class MainWindow(QMainWindow):
             return numbers
 
         except Exception as e:  # Обробка помилок
-            self.ui.labelMessages.setText(f"Виникла помилка під час зчитування файлу: {str(e)}")
+            self.show_message(f"Помилка при зчитуванні даних: {str(e)}", is_error=True)
             return []
         finally:
             file.close()
@@ -89,13 +96,13 @@ class MainWindow(QMainWindow):
         """Запис даних у вихідний файл"""
         file = QFile(self.output_file_path)
         if not file.open(QFile.OpenModeFlag.WriteOnly | QFile.OpenModeFlag.Text):
-            self.ui.labelMessages.setText("Не вдалося відкрити файл для запису.")
+            self.show_message(f"Не вдалося відкрити вихідний файл: {file.errorString()}", is_error=True)
             return
         try:
             stream = QTextStream(file)
             stream << ' '.join(map(str, results))  # Записуємо всі значення через пробіл
         except Exception as e:
-            self.ui.labelMessages.setText(f"Помилка при запису у файл: {str(e)}")
+            self.show_message(f"Помилка при записі даних: {str(e)}", is_error=True)
         finally:
             file.close()
 
@@ -113,7 +120,7 @@ class MainWindow(QMainWindow):
             return results  # Повертаємо список максимальних значень
 
         except Exception as e:
-            self.ui.labelMessages.setText(f"Помилка обробки чисел: {str(e)}")
+            self.show_message(f"Помилка при обробці даних: {str(e)}", is_error=True)
             return []
 
     def update_result_table(self, index, group, max_value):
@@ -134,15 +141,15 @@ class MainWindow(QMainWindow):
     def process_file(self):
         """Обробка файлів"""
         if not self.input_file_path:
-            self.ui.labelMessages.setText("Виберіть вхідний файл.")
+            self.show_message("Помилка: виберіть вхідний файл.", is_error=True)
             return
         if not self.output_file_path:
-            self.ui.labelMessages.setText("Виберіть вихідний файл.")
+            self.show_message("Помилка: виберіть вихідний файл.", is_error=True)
             return
         results = self.process_numbers()
         if results:
             self.write_output_file(results)
-            self.ui.labelMessages.setText("Файл успішно оброблено.")
+            self.show_message("Дані успішно оброблено та записано.")
 
 
 if __name__ == "__main__":
