@@ -6,16 +6,18 @@ class Calculator(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # Ініціалізація інтерфейсу з файлу ui_calculator.py
+        # Ініціалізація інтерфейсу з файлу calculator_interface.py
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+
+        # Оголошення стека (аналог QStack)
+        self.__stack = []  # Приватна змінна для стека значень
 
         # Підключення кнопок до одного методу через sender()
         self.connect_buttons()
 
     def connect_buttons(self):
         # Підключаємо всі кнопки до одного слота, який використовує sender()
-        self.ui.pushButton_0.clicked.connect(self.button_clicked)
         self.ui.pushButton_1.clicked.connect(self.button_clicked)
         self.ui.pushButton_2.clicked.connect(self.button_clicked)
         self.ui.pushButton_3.clicked.connect(self.button_clicked)
@@ -26,12 +28,28 @@ class Calculator(QMainWindow):
         self.ui.pushButton_8.clicked.connect(self.button_clicked)
         self.ui.pushButton_9.clicked.connect(self.button_clicked)
 
+        # Підключення кнопки скидання до методу reset_values
+        self.ui.pushButton_clear.clicked.connect(self.reset_values)
+
     def button_clicked(self):
         # Отримуємо кнопку, яка надіслала сигнал
         button = self.sender()
         if button:
             # Вставляємо текст кнопки (цифру) в поле введення
             self.ui.lineEdit.insert(button.text())
+
+    # Оголошення методу для обробки арифметичних дій
+    def calculate(self, sgn):
+        pass  # Пізніше цей метод буде реалізований
+
+    # Слот для скидання значень
+    def reset_values(self):
+        # Очищуємо обидва поля введення
+        self.ui.lineEdit.clear()
+        self.ui.lineEdit_2.clear()
+
+        # Очищуємо стек
+        self.__stack.clear()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

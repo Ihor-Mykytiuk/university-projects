@@ -157,11 +157,11 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.pushButton_11, 3, 2, 1, 1)
 
-        self.pushButton_12 = QPushButton(self.widget1)
-        self.pushButton_12.setObjectName(u"pushButton_12")
-        self.pushButton_12.setMinimumSize(QSize(75, 75))
+        self.pushButton_clear = QPushButton(self.widget1)
+        self.pushButton_clear.setObjectName(u"pushButton_clear")
+        self.pushButton_clear.setMinimumSize(QSize(75, 75))
 
-        self.gridLayout.addWidget(self.pushButton_12, 3, 3, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_clear, 3, 3, 1, 1)
 
 
         self.retranslateUi(Form)
@@ -188,6 +188,6 @@ class Ui_Form(object):
         self.pushButton_18.setText(QCoreApplication.translate("Form", u"=", None))
         self.pushButton_0.setText(QCoreApplication.translate("Form", u"0", None))
         self.pushButton_11.setText(QCoreApplication.translate("Form", u".", None))
-        self.pushButton_12.setText(QCoreApplication.translate("Form", u"C", None))
+        self.pushButton_clear.setText(QCoreApplication.translate("Form", u"C", None))
     # retranslateUi
 
