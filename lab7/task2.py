@@ -18,8 +18,10 @@ class MainWindow(QMainWindow):
         self.f2_path = ""
 
     def show_message(self, message, is_error=False):
-        """Відображення повідомлення"""
-        pass
+        """Відображення повідомлення у labelMessages"""
+        color = "red" if is_error else "green"
+        self.ui.labelMessages.setStyleSheet(f"color: {color};")  # Задаємо колір тексту
+        self.ui.labelMessages.setText(message)  # Встановлюємо текст повідомлення
 
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""
