@@ -2,6 +2,7 @@ import sys
 import random
 from PySide6.QtWidgets import QApplication, QWidget, QMessageBox
 from task1_interface import Ui_Form  # Імпортуй тут свій інтерфейс
+from llist import sllist, sllistnode, sllistiterator, sllistnodeiterator, dllist, dllistnode, dllistiterator, dllistnodeiterator
 
 class ListManipulator(QWidget):
     def __init__(self):
@@ -11,11 +12,12 @@ class ListManipulator(QWidget):
         self.apply_styles()
 
         # Список для роботи
-        self.array = []
+        self.list = sllist()
 
-        # Підключення сигналів до функцій
+        # Налаштування зв'язків кнопок
         self.ui.create_array_button.clicked.connect(self.generate_list)
         self.ui.delete_button.clicked.connect(self.delete_elements)
+
 
     def apply_styles(self):
         """Застосування стилів з файлу CSS"""
@@ -24,49 +26,58 @@ class ListManipulator(QWidget):
             self.setStyleSheet(style)
 
     def generate_list(self):
-        """Генеруємо випадковий список на основі введеної кількості елементів"""
+        """Генерація списку"""
+        self.list.clear()
+        size = self.ui.size_input.text()
+        for i in range(int(size)):
+            self.list.append(sllistnode(random.randint(1, 100)))
+        self.show_list()
+
+    def show_list(self):
+        """Відображення списку"""
+        self.ui.array_result.clear()
+        iterator = sllistiterator(self.list)
         try:
-            size = int(self.ui.size_input.text())
-            if size <= 0:
-                raise ValueError
-            self.array = [random.randint(1, 100) for _ in range(size)]
-            self.display_array(self.array)
-            self.display_message("Масив згенеровано!")
-        except ValueError:
-            self.display_message("Будь ласка, введіть дійсну кількість елементів!", error=True)
+            while True:
+                item = next(iterator)
+                label_text = self.ui.array_result.text() + str(item) + " -> "
+                self.ui.array_result.setText(label_text)
+        except StopIteration:
+            pass
+
 
     def delete_elements(self):
         """Видалення елементів з позицій N по K"""
-        try:
-            n = int(self.ui.n_input.text())
-            k = int(self.ui.k_input.text())
+        n = int(self.ui.n_input.text())
+        k = int(self.ui.k_input.text())
 
-            if n < 0 or k >= len(self.array) or n > k:
-                raise ValueError
+        if n < 0 or k > self.list.size or n >= k:
+            QMessageBox.critical(self, "Помилка", "Неправильно вказані індекси!")
+            return
 
-            # Видаляємо елементи з N по K
-            del self.array[n:k+1]
 
-            # Оновлюємо відображення масиву
-            self.display_array(self.array)
-            self.display_message(f"Елементи з позицій {n} по {k} видалено!")
-        except ValueError:
-            self.display_message("Будь ласка, введіть коректні значення для N і K!", error=True)
 
-    def display_array(self, array):
-        """Відображає масив у QLabel"""
-        self.ui.array_result.setText(", ".join(map(str, array)))
+        self.show_list()
 
-    def display_message(self, message, error=False):
-        """Виводить повідомлення у QLabel для статусу. Якщо помилка - виділяємо червоним"""
-        if error:
-            self.ui.status_label.setStyleSheet("color: red;")
-        else:
-            self.ui.status_label.setStyleSheet("color: green;")
-        self.ui.status_label.setText(message)
+
+
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = ListManipulator()
     window.show()
+    my_list = sllist([1, 2, 3, 4, 5])
+    my_list2 = [1, 2, 3, 4, 5]
+    iterator = sllistiterator(my_list)
+    iterator2 = iter(my_list2)
+    while True:
+        try:
+            node = next(iterator)  # Отримуємо наступний вузол
+            print(node)  # Виведе значення вузла
+        except StopIteration:
+            print("End of list")
+            break  # Виходимо з циклу, коли досягнуто кінця списку
+
     sys.exit(app.exec())
