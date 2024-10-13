@@ -63,6 +63,9 @@
         <pointsize>16</pointsize>
        </font>
       </property>
+      <property name="maxLength">
+       <number>10</number>
+      </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
       </property>
@@ -83,6 +86,9 @@
        <font>
         <pointsize>16</pointsize>
        </font>
+      </property>
+      <property name="maxLength">
+       <number>10</number>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>

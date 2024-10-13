@@ -1,15 +1,16 @@
+import math
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
-from calculator_interface import Ui_Form  # Імпорт згенерованого файлу
+from calculator_interface import Ui_MainWindow  # Імпорт згенерованого файлу
 
 class Calculator(QMainWindow):
     def __init__(self):
         super().__init__()
 
         # Ініціалізація інтерфейсу з файлу calculator_interface.py
-        self.ui = Ui_Form()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setFixedSize(430, 520)  # Фіксуємо розмір вікна
+        self.setFixedSize(420, 510)  # Фіксуємо розмір вікна
         # Оголошення стека (аналог QStack)
         self.__stack = []  # Приватна змінна для стека значень
 
@@ -50,6 +51,8 @@ class Calculator(QMainWindow):
         button = self.sender()
         if button:
             # Вставляємо текст кнопки (цифру) в поле введення
+            if self.ui.lineEdit.text() == "Error":
+                self.ui.lineEdit.clear()
             self.ui.lineEdit.insert(button.text())
 
     # Слот для скидання значень
@@ -111,6 +114,8 @@ class Calculator(QMainWindow):
                     self.__stack.append(str(val1))  # Додаємо перший операнд, якщо ділимо на 0
                 else:
                     self.__stack.append(str(val1 / val2))
+            elif sign == "^":
+                self.__stack.append(str(val1 ** val2))
 
             self.__stack.append(sgn)  # Додаємо натиснутий знак
 
@@ -149,58 +154,12 @@ class Calculator(QMainWindow):
                 self.ui.lineEdit.clear()
                 return
             self.__stack.append(str(val1 / val2))
+        elif sign == "^":
+            self.__stack.append(str(val1 ** val2))
 
         # Оновлюємо поля вводу
         self.ui.lineEdit.setText(self.__stack.pop())  # Виводимо результат у перше поле
         self.ui.lineEdit_2.setText("".join(self.__stack))  # Виводимо значення у друге поле
-
-    def calculate_cos(self):
-        # Логіка для косинуса
-        pass
-
-    def calculate_log10(self):
-        # Логіка для логарифму
-        pass
-
-    def calculate_x_squared(self):
-        # Логіка для x^2
-        pass
-
-    def calculate_sqrt(self):
-        # Логіка для кореня
-        pass
-
-    def calculate_sin(self):
-        # Логіка для синуса
-        pass
-
-    def calculate_ln(self):
-        # Логіка для натурального логарифму
-        pass
-
-    def calculate_inverse(self):
-        # Логіка для 1/x
-        pass
-
-    def calculate_tg(self):
-        # Логіка для тангенса
-        pass
-
-    def calculate_10_power(self):
-        # Логіка для 10^x
-        pass
-
-    def calculate_x_cubed(self):
-        # Логіка для x^3
-        pass
-
-    def calculate_x_y(self):
-        # Логіка для x^y
-        pass
-
-    def calculate_factorial(self):
-        # Логіка для факторіалу
-        pass
 
     def toggle_additional_buttons(self):
         # Додаємо або прибираємо додаткові кнопки
@@ -208,7 +167,7 @@ class Calculator(QMainWindow):
             self.setFixedSize(430, 520)
             self.remove_additional_buttons()
         else:
-            self.setFixedSize(700, 520)
+            self.setFixedSize(650, 520)
             self.add_additional_buttons()
 
     def add_additional_buttons(self):
@@ -217,18 +176,18 @@ class Calculator(QMainWindow):
 
         # Список назв функцій та їх відповідних методів
         functions = [
-            ("sin", self.calculate_sin),
-            ("cos", self.calculate_cos),
-            ("tg", self.calculate_tg),
-            ("lg", self.calculate_log10),
-            ("ln", self.calculate_ln),
-            ("sqrt", self.calculate_sqrt),
-            ("x^2", self.calculate_x_squared),
-            ("x^3", self.calculate_x_cubed),
-            ("x^y", self.calculate_x_y),
-            ("1/x", self.calculate_inverse),
-            ("10^x", self.calculate_10_power),
-            ("x!", self.calculate_factorial)
+            ("sin", lambda : self.additional_operation(math.sin)),
+            ("cos", lambda : self.additional_operation(math.cos)),
+            ("tg", lambda : self.additional_operation(math.tan)),
+            ("lg", lambda : self.additional_operation(math.log10)),
+            ("ln", lambda : self.additional_operation(math.log)),
+            ("sqrt", lambda : self.additional_operation(math.sqrt)),
+            ("x^2", lambda : self.additional_operation(lambda x: x ** 2)),
+            ("x^3", lambda : self.additional_operation(lambda x: x ** 3)),
+            ("x^y", lambda : self.calculate("^")),
+            ("1/x", lambda : self.additional_operation(lambda x: 1 / x)),
+            ("10^x", lambda : self.additional_operation(lambda x: 10 ** x)),
+            ("x!", lambda : self.additional_operation(math.factorial)),
         ]
 
         # Додаємо кнопки до грід-сітки
@@ -242,6 +201,21 @@ class Calculator(QMainWindow):
             self.additional_buttons.append(button)
 
         self.additional_buttons_visible = True
+    def additional_operation(self, operation):
+        # Отримуємо поточний текст з поля вводу
+        current_text = self.ui.lineEdit.text()
+
+        # Перевірка, чи щось введено
+        if not len(current_text):
+            return
+
+        try:
+            number = int(current_text) if operation == math.factorial else float(current_text)
+            result = operation(number)
+            self.ui.lineEdit.setText(str(result))
+        except Exception as e:
+            self.ui.lineEdit.setText("Error")
+            print(f"Error: {str(e)}")
 
     def remove_additional_buttons(self):
         # Прибираємо додаткові кнопки
