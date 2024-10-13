@@ -43,19 +43,22 @@ class MyApp(QMainWindow):
         self.update_stack_label()
         self.ui.label_status.setText("Values processed.")
 
-
     def update_stack_label(self):
         self.ui.label_stack.clear()
         if self.stack.is_empty():
             self.ui.label_stack.setText("Stack is empty")
         else:
             temp_stack = Stack()
+            output_str = ""
             while not self.stack.is_empty():
                 value = self.stack.pop()
-                self.ui.label_stack.setText(self.ui.label_stack.text() + str(value) + " -> ")
+                output_str += str(value) + " -> "
                 temp_stack.push(value)
+            self.ui.label_stack.setText(output_str)
             while not temp_stack.is_empty():
                 self.stack.push(temp_stack.pop())
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = MyApp()
