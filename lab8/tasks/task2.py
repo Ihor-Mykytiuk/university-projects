@@ -32,7 +32,7 @@ class MyApp(QMainWindow):
             self.ui.label_status.setText("Queue is empty. Cannot process.")
             return
 
-        temp_queue = Queue()  # Тимчасова черга для зберігання оброблених значень
+        temp_queue = Queue()  # Тимчасова черга для зберігання значень
         max_value = None  # Змінна для зберігання максимального значення
 
         # Знаходимо максимальний елемент
@@ -43,7 +43,7 @@ class MyApp(QMainWindow):
             temp_queue.enqueue(value)  # Поміщаємо значення в тимчасову чергу
 
         # Збільшуємо значення на максимальний елемент і зберігаємо в нову чергу
-        for _ in range(temp_queue.size()):  # Використовуємо метод size в реалізації черги
+        while not temp_queue.is_empty():
             value = temp_queue.dequeue()
             new_value = value + max_value
             self.queue.enqueue(new_value)  # Поміщаємо нове значення назад у чергу

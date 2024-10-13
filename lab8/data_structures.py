@@ -64,6 +64,3 @@ class Queue:
             return self.__queue[0]
         else:
             raise IndexError("Attempt to get the head element of an empty queue")
-
-    def size(self):
-        return len(self.__queue)
