@@ -160,7 +160,7 @@ class Ui_MainWindow(object):
 
         self.pushButton_equal = QPushButton(self.centralwidget)
         self.pushButton_equal.setObjectName(u"pushButton_equal")
-        self.pushButton_equal.setMinimumSize(QSize(0, 156))
+        self.pushButton_equal.setMinimumSize(QSize(0, 154))
 
         self.gridLayout_3.addWidget(self.pushButton_equal, 2, 4, 2, 1)
 

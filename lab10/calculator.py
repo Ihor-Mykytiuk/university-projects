@@ -10,15 +10,40 @@ class Calculator(QMainWindow):
         # Ініціалізація інтерфейсу з файлу calculator_interface.py
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setFixedSize(420, 510)  # Фіксуємо розмір вікна
+        self.setFixedSize(420, 520)  # Фіксуємо розмір вікна
         # Оголошення стека (аналог QStack)
         self.__stack = []  # Приватна змінна для стека значень
+
+        self.memory_value = None
 
         # Підключення кнопок до одного методу через sender()
         self.connect_buttons()
 
         # Змінна для контролю видимості додаткових кнопок
         self.additional_buttons_visible = False
+
+        self.add_memory_buttons()
+
+    def add_memory_buttons(self):
+        # Створюємо кнопки для роботи з пам'яттю
+        self.button_MS = QPushButton("MS")
+        self.button_MR = QPushButton("MR")
+        self.button_MC = QPushButton("MC")
+        self.button_M_plus = QPushButton("M+")
+        self.button_M_minus = QPushButton("M-")
+
+        # Додаємо кнопки до gridLayout
+        self.ui.gridLayout_3.addWidget(self.button_MS, 4, 0)
+        self.ui.gridLayout_3.addWidget(self.button_MR, 4, 1)
+        self.ui.gridLayout_3.addWidget(self.button_MC, 4, 2)
+        self.ui.gridLayout_3.addWidget(self.button_M_plus, 4, 3)
+        self.ui.gridLayout_3.addWidget(self.button_M_minus, 4, 4)
+
+        self.button_MS.clicked.connect(self.memory_store)
+        self.button_MR.clicked.connect(self.memory_recall)
+        self.button_MC.clicked.connect(self.memory_clear)
+        self.button_M_plus.clicked.connect(self.memory_plus)
+        self.button_M_minus.clicked.connect(self.memory_minus)
 
     def connect_buttons(self):
         # Підключаємо всі кнопки до одного слота, який використовує sender()
@@ -224,6 +249,32 @@ class Calculator(QMainWindow):
         self.additional_buttons.clear()
 
         self.additional_buttons_visible = False
+
+    def memory_store(self):
+        current_text = self.ui.lineEdit.text()
+        if current_text:
+            self.memory_value = float(current_text)
+
+    def memory_recall(self):
+        if self.memory_value is not None:
+            self.ui.lineEdit.setText(str(self.memory_value))
+
+    def memory_clear(self):
+        self.memory_value = None
+
+    def memory_plus(self):
+        current_text = self.ui.lineEdit.text()
+        if current_text:
+            if self.memory_value is None:
+                self.memory_value = 0
+            self.memory_value += float(current_text)
+
+    def memory_minus(self):
+        current_text = self.ui.lineEdit.text()
+        if current_text:
+            if self.memory_value is None:
+                self.memory_value = 0
+            self.memory_value -= float(current_text)
 
 
 if __name__ == "__main__":
