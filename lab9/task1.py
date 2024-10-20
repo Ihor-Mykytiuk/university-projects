@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
                                QRadioButton, QPushButton, QButtonGroup, QMessageBox)
+from PySide6.QtCore import Qt
 import sys
 
 class MapStudentApp(QWidget):
@@ -35,14 +36,8 @@ class MapStudentApp(QWidget):
         self.search_label = QLabel("Введіть ім'я студента або групу:")
         self.layout.addWidget(self.search_label)
         self.search_field = QLineEdit(self)
+        self.search_field.textChanged.connect(self.dynamic_search)
         self.layout.addWidget(self.search_field)
-
-        # Поле для результату
-        self.result_label = QLabel("Результат пошуку:")
-        self.layout.addWidget(self.result_label)
-        self.result_field = QLineEdit(self)
-        self.result_field.setReadOnly(True)
-        self.layout.addWidget(self.result_field)
 
         # Вибір типу пошуку
         self.search_by_name_button = QRadioButton("Пошук по імені", self)
@@ -59,11 +54,6 @@ class MapStudentApp(QWidget):
         radio_layout.addWidget(self.search_by_name_button)
         radio_layout.addWidget(self.search_by_group_button)
         self.layout.addLayout(radio_layout)
-
-        # Кнопка для пошуку
-        self.search_button = QPushButton("Пошук")
-        self.search_button.clicked.connect(self.perform_search)
-        self.layout.addWidget(self.search_button)
 
         # Поля для додавання/видалення студентів
         self.add_label = QLabel("Додати або видалити студента:")
@@ -96,23 +86,32 @@ class MapStudentApp(QWidget):
         student_info = "\n".join([f"{name}: {group}" for name, group in self.students.items()])
         self.students_list.setText(student_info)
 
-    def perform_search(self):
-        """Виконує пошук за вибраними критеріями"""
-        search_text = self.search_field.text().strip()
-        result = ""
+    def dynamic_search(self):
+        """Виконує динамічний пошук за введеними критеріями"""
+        search_text = self.search_field.text().strip().lower()
 
+        if not search_text:
+            # Якщо поле пошуку порожнє, показуємо весь список
+            self.update_students_list()
+            return
+
+        # Вибір пошуку за іменем або групою
         if self.search_by_name_button.isChecked():
-            # Пошук по імені студента
-            result = self.students.get(search_text, "Студента не знайдено")
-        elif self.search_by_group_button.isChecked():
-            # Пошук по групі
-            students_in_group = [name for name, group in self.students.items() if group == search_text]
-            if students_in_group:
-                result = ", ".join(students_in_group)
-            else:
-                result = "Групу не знайдено"
+            # Пошук за іменем
+            filtered_students = {name: group for name, group in self.students.items()
+                                 if search_text in name.lower()}
+        else:
+            # Пошук за групою
+            filtered_students = {name: group for name, group in self.students.items()
+                                 if search_text in group.lower()}
 
-        self.result_field.setText(result)
+        # Виводимо результати пошуку
+        if filtered_students:
+            student_info = "\n".join([f"{name}: {group}" for name, group in filtered_students.items()])
+            self.students_list.setText(student_info)
+        else:
+            self.students_list.setText("Результати не знайдено")
+
 
     def add_student(self):
         """Додає студента до довідника"""
