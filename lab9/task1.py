@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
-                               QRadioButton, QPushButton, QButtonGroup)
+                               QRadioButton, QPushButton, QButtonGroup, QMessageBox)
 import sys
 
 class MapStudentApp(QWidget):
@@ -10,16 +10,16 @@ class MapStudentApp(QWidget):
 
         # Студенти та групи
         self.students = {
-            "Ivan Petrenko": "ІПЗ-31",
-            "Olga Ivanova": "ІПЗ-31",
-            "Serhii Shevchenko": "ІПЗ-32",
-            "Oksana Dovhal": "ІПЗ-32",
-            "Andrii Bondarenko": "ІПЗ-33",
-            "Yulia Kalyna": "ІПЗ-31",
-            "Mykola Savchuk": "ІПЗ-33",
-            "Svitlana Moroz": "ІПЗ-32",
-            "Oleksandr Vasilenko": "ІПЗ-31",
-            "Nadiia Honchar": "ІПЗ-33",
+            "Іван Петренко": "ІПЗ-31",
+            "Ольга Іванова": "ІПЗ-31",
+            "Сергій Шевченко": "ІПЗ-32",
+            "Оксана Довгаль": "ІПЗ-32",
+            "Андрій Бондаренко": "ІПЗ-33",
+            "Юлія Калина": "ІПЗ-31",
+            "Микола Савчук": "ІПЗ-33",
+            "Світлана Мороз": "ІПЗ-32",
+            "Олександр Василенко": "ІПЗ-31",
+            "Надія Гончар": "ІПЗ-33",
         }
 
         # Основний лейаут
@@ -65,6 +65,29 @@ class MapStudentApp(QWidget):
         self.search_button.clicked.connect(self.perform_search)
         self.layout.addWidget(self.search_button)
 
+        # Поля для додавання/видалення студентів
+        self.add_label = QLabel("Додати або видалити студента:")
+        self.layout.addWidget(self.add_label)
+
+        # Поле для введення імені
+        self.add_name_field = QLineEdit(self)
+        self.add_name_field.setPlaceholderText("Введіть ім'я студента")
+        self.layout.addWidget(self.add_name_field)
+
+        # Поле для введення групи
+        self.add_group_field = QLineEdit(self)
+        self.add_group_field.setPlaceholderText("Введіть групу")
+        self.layout.addWidget(self.add_group_field)
+
+        # Кнопки додавання і видалення
+        self.add_button = QPushButton("Додати студента")
+        self.add_button.clicked.connect(self.add_student)
+        self.layout.addWidget(self.add_button)
+
+        self.delete_button = QPushButton("Видалити студента")
+        self.delete_button.clicked.connect(self.delete_student)
+        self.layout.addWidget(self.delete_button)
+
         # Встановлюємо основний лейаут
         self.setLayout(self.layout)
 
@@ -90,6 +113,40 @@ class MapStudentApp(QWidget):
                 result = "Групу не знайдено"
 
         self.result_field.setText(result)
+
+    def add_student(self):
+        """Додає студента до довідника"""
+        name = self.add_name_field.text().strip()
+        group = self.add_group_field.text().strip()
+
+        if not name or not group:
+            QMessageBox.warning(self, "Помилка", "Будь ласка, введіть ім'я студента та групу.")
+            return
+
+        if name in self.students:
+            QMessageBox.information(self, "Помилка", f"Студент {name} вже існує в списку.")
+        else:
+            self.students[name] = group
+            self.update_students_list()
+            QMessageBox.information(self, "Успіх", f"Студент {name} доданий до групи {group}.")
+            self.add_name_field.clear()
+            self.add_group_field.clear()
+
+    def delete_student(self):
+        """Видаляє студента з довідника"""
+        name = self.add_name_field.text().strip()
+
+        if not name:
+            QMessageBox.warning(self, "Помилка", "Будь ласка, введіть ім'я студента для видалення.")
+            return
+
+        if name in self.students:
+            del self.students[name]
+            self.update_students_list()
+            QMessageBox.information(self, "Успіх", f"Студент {name} був видалений.")
+            self.add_name_field.clear()
+        else:
+            QMessageBox.warning(self, "Помилка", f"Студент {name} не знайдений у списку.")
 
 
 if __name__ == "__main__":
