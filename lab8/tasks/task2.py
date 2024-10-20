@@ -4,7 +4,6 @@ from PySide6 import QtWidgets
 from PySide6.QtWidgets import QMainWindow
 from lab8.data_structures import Queue  # Переконайся, що в тебе є реалізація черги
 from lab8.ui.task2_interface import Ui_MainWindow
-
 class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
