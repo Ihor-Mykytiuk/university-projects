@@ -1,6 +1,5 @@
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
                                QRadioButton, QPushButton, QButtonGroup, QMessageBox)
-from PySide6.QtCore import Qt
 import sys
 
 class MapStudentApp(QWidget):
@@ -23,7 +22,6 @@ class MapStudentApp(QWidget):
             "Надія Гончар": "ІПЗ-33",
         }
 
-        # Основний лейаут
         self.layout = QVBoxLayout()
 
         # Віджет для відображення студентів
@@ -44,12 +42,11 @@ class MapStudentApp(QWidget):
         self.search_by_group_button = QRadioButton("Пошук по групі", self)
         self.search_by_name_button.setChecked(True)
 
-        # Додаємо кнопки в групу, щоб вони перемикалися
         self.radio_group = QButtonGroup(self)
         self.radio_group.addButton(self.search_by_name_button)
         self.radio_group.addButton(self.search_by_group_button)
 
-        # Лейаут для кнопок радіо
+        # Лейаут для радіокнопок
         radio_layout = QHBoxLayout()
         radio_layout.addWidget(self.search_by_name_button)
         radio_layout.addWidget(self.search_by_group_button)
@@ -78,7 +75,7 @@ class MapStudentApp(QWidget):
         self.delete_button.clicked.connect(self.delete_student)
         self.layout.addWidget(self.delete_button)
 
-        # Встановлюємо основний лейаут
+        # Основний лейаут
         self.setLayout(self.layout)
 
     def update_students_list(self):
@@ -91,21 +88,18 @@ class MapStudentApp(QWidget):
         search_text = self.search_field.text().strip().lower()
 
         if not search_text:
-            # Якщо поле пошуку порожнє, показуємо весь список
+            # Якщо поле пошуку порожнє, показується весь список
             self.update_students_list()
             return
 
         # Вибір пошуку за іменем або групою
         if self.search_by_name_button.isChecked():
-            # Пошук за іменем
             filtered_students = {name: group for name, group in self.students.items()
                                  if search_text in name.lower()}
         else:
-            # Пошук за групою
             filtered_students = {name: group for name, group in self.students.items()
                                  if search_text in group.lower()}
 
-        # Виводимо результати пошуку
         if filtered_students:
             student_info = "\n".join([f"{name}: {group}" for name, group in filtered_students.items()])
             self.students_list.setText(student_info)
