@@ -2,7 +2,7 @@ import sys
 import os
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem, \
     QHeaderView
-from ui.task1_interface import Ui_MainWindow
+from lab7.ui.task1_interface import Ui_MainWindow
 from PySide6.QtCore import QFile, QIODevice, QTextStream
 
 

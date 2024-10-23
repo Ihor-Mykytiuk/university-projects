@@ -2,8 +2,8 @@
 import sys
 from PySide6.QtWidgets import QApplication
 from lab5.ui.task1_interface import Ui_Form
-from base_widget import BaseWidget
-from array_handler import TransformArray
+from lab5.utils.base_widget import BaseWidget
+from lab5.utils.array_handler import TransformArray
 
 
 class ArrayTransform(BaseWidget):

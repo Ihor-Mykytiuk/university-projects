@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QMainWindow
 
 from lab8.utils.data_structures import Stack
 from lab8.ui.task1_interface import Ui_MainWindow
+
 class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
