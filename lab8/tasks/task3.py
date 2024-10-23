@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QLabel, QListWidget, QPushButton,
                                QComboBox, QLineEdit, QGridLayout, QScrollArea, QGroupBox, QSizePolicy)
-from lab8.data_structures import Queue
+from lab8.utils.data_structures import Queue
 
 class HospitalQueueSystem(QWidget):
     def __init__(self):

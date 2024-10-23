@@ -1,7 +1,7 @@
 import math
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
-from calculator_interface import Ui_MainWindow  # Імпорт згенерованого файлу
+from lab10.ui.calculator_interface import Ui_MainWindow  # Імпорт згенерованого файлу
 
 class Calculator(QMainWindow):
     def __init__(self):

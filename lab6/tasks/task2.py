@@ -2,7 +2,7 @@ import sys
 import random
 from collections import deque
 from PySide6.QtWidgets import QApplication, QWidget, QMessageBox
-from task2_interface import Ui_Form  # Імпортуй тут свій інтерфейс
+from lab6.ui.task2_interface import Ui_Form  # Імпортуй тут свій інтерфейс
 
 class LinkedListSort(QWidget):
     def __init__(self):
@@ -20,7 +20,7 @@ class LinkedListSort(QWidget):
 
     def apply_styles(self):
         """Застосування стилів з файлу CSS"""
-        with open("../static/styles/styles.qss", "r") as style_file:
+        with open("../../static/styles/styles.qss", "r") as style_file:
             style = style_file.read()
             self.setStyleSheet(style)
 
