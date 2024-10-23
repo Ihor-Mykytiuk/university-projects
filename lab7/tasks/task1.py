@@ -6,7 +6,7 @@ from lab7.ui.task1_interface import Ui_MainWindow
 from PySide6.QtCore import QFile, QIODevice, QTextStream
 
 
-class MainWindow(QMainWindow):
+class FileProcessor(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -154,6 +154,6 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWindow()
+    window = FileProcessor()
     window.show()
     sys.exit(app.exec())

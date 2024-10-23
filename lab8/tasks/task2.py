@@ -5,7 +5,7 @@ from PySide6.QtWidgets import QMainWindow
 from lab8.utils.data_structures import Queue  # Переконайся, що в тебе є реалізація черги
 from lab8.ui.task2_interface import Ui_MainWindow
 
-class MyApp(QMainWindow):
+class QueueProcessor(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -73,6 +73,6 @@ class MyApp(QMainWindow):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    window = MyApp()
+    window = QueueProcessor()
     window.show()
     sys.exit(app.exec())

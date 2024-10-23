@@ -20,7 +20,7 @@ class LinkedListSort(QWidget):
 
     def apply_styles(self):
         """Застосування стилів з файлу CSS"""
-        with open("../../static/styles/styles.qss", "r") as style_file:
+        with open("static/styles/styles.qss", "r") as style_file:
             style = style_file.read()
             self.setStyleSheet(style)
 

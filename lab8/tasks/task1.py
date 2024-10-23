@@ -6,7 +6,7 @@ from PySide6.QtWidgets import QMainWindow
 from lab8.utils.data_structures import Stack
 from lab8.ui.task1_interface import Ui_MainWindow
 
-class MyApp(QMainWindow):
+class StackProcessor(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -62,6 +62,6 @@ class MyApp(QMainWindow):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    window = MyApp()
+    window = StackProcessor()
     window.show()
     sys.exit(app.exec())

@@ -22,7 +22,7 @@ class ListManipulator(QWidget):
 
     def apply_styles(self):
         """Застосування стилів з файлу CSS"""
-        with open("../../static/styles/styles.qss", "r") as style_file:
+        with open("static/styles/styles.qss", "r") as style_file:
             style = style_file.read()
             self.setStyleSheet(style)
 
@@ -56,13 +56,7 @@ class ListManipulator(QWidget):
             QMessageBox.critical(self, "Помилка", "Неправильно вказані індекси!")
             return
 
-
-
         self.show_list()
-
-
-
-
 
 
 if __name__ == "__main__":

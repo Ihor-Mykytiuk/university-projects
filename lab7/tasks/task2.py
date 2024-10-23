@@ -6,7 +6,7 @@ from PySide6.QtCore import QFile, QIODevice, QTextStream
 from lab7.ui.task2_interface import Ui_MainWindow
 
 
-class MainWindow(QMainWindow):
+class FileSwapper(QMainWindow):
     def __init__(self):
         super().__init__()
         # Ініціалізація інтерфейсу
@@ -139,6 +139,6 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWindow()
+    window = FileSwapper()
     window.show()
     sys.exit(app.exec())

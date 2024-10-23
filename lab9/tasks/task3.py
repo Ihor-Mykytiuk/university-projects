@@ -2,7 +2,7 @@ from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, 
                                QRadioButton, QPushButton, QButtonGroup, QMessageBox)
 import sys
 
-class ProductChecker(QWidget):
+class PhoneBook(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -12,6 +12,6 @@ class ProductChecker(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = ProductChecker()
+    window = PhoneBook()
     window.show()
     sys.exit(app.exec())

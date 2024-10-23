@@ -7,7 +7,7 @@ class BaseWidget(QWidget):
         super().__init__()
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.apply_styles("../../static/styles/styles.qss")
+        self.apply_styles("static/styles/styles.qss")
 
     def apply_styles(self, style_file_path):
         """Застосування стилів з файлу CSS"""
