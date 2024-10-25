@@ -98,7 +98,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="generate_matrix_button">
+      <widget class="QPushButton" name="pushButton_create_matrix">
        <property name="text">
         <string>Згенерувати матрицю</string>
        </property>
@@ -107,7 +107,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="array_result">
+    <widget class="QLabel" name="matrix_result">
      <property name="text">
       <string/>
      </property>
@@ -136,7 +136,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="calculate_sum_button">
+      <widget class="QPushButton" name="pushButton_calculate_sum">
        <property name="text">
         <string>Обчислити суму</string>
        </property>
@@ -145,7 +145,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="status_label">
+    <widget class="QLabel" name="label_status">
      <property name="text">
       <string/>
      </property>

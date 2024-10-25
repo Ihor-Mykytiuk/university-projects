@@ -12,8 +12,8 @@ class ArraySort(BaseWidget):
         self.array_handler = SortArray()
 
         # Підключення сигналів до функцій
-        self.ui.create_array_button.clicked.connect(self.create_array)
-        self.ui.transform_array_button.clicked.connect(self.perform_transformation)
+        self.ui.pushButton_create_array.clicked.connect(self.create_array)
+        self.ui.pushButton_sort_array.clicked.connect(self.perform_transformation)
 
         # Обробка змін в полях введення
         self.ui.size_input.textChanged.connect(self.input_changed)

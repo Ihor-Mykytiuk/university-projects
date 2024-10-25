@@ -21,13 +21,13 @@ class BaseWidget(QWidget):
 
     def display_matrix(self, matrix):
         """Відображає матрицю у QLabel"""
-        self.ui.array_result.setText("\n".join(" ".join(map(str, row)) for row in matrix))
+        self.ui.matrix_result.setText("\n".join(" ".join(map(str, row)) for row in matrix))
 
     def display_message(self, message, error=False):
         """Виводить повідомлення у QLabel для статусу."""
         color = "red" if error else "green"
-        self.ui.status_label.setStyleSheet(f"color: {color};")
-        self.ui.status_label.setText(message)
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
 
     def input_changed(self):
         """Блокує одне поле, якщо введено дані в інше."""

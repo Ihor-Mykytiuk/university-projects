@@ -9,7 +9,6 @@ class LinkedListSort(QWidget):
         super().__init__()
         self.ui = Ui_Form()  # Ініціалізуємо інтерфейс
         self.ui.setupUi(self)
-        self.apply_styles()
 
         # Використовуємо deque для симуляції зв'язного списку
         self.linked_list = deque()
@@ -17,6 +16,9 @@ class LinkedListSort(QWidget):
         # Підключення сигналів до функцій
         self.ui.create_list_button.clicked.connect(self.generate_linked_list)
         self.ui.sort_button.clicked.connect(self.sort_list)
+
+        # Застосування стилів
+        self.apply_styles()
 
     def apply_styles(self):
         """Застосування стилів з файлу CSS"""

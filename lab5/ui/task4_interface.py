@@ -73,29 +73,29 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addLayout(self.verticalLayout)
 
-        self.generate_matrix_button = QPushButton(Form)
-        self.generate_matrix_button.setObjectName(u"generate_matrix_button")
+        self.pushButton_create_matrix = QPushButton(Form)
+        self.pushButton_create_matrix.setObjectName(u"pushButton_create_matrix")
 
-        self.verticalLayout_2.addWidget(self.generate_matrix_button)
+        self.verticalLayout_2.addWidget(self.pushButton_create_matrix)
 
 
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
 
-        self.array_result = QLabel(Form)
-        self.array_result.setObjectName(u"array_result")
-        self.array_result.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.matrix_result = QLabel(Form)
+        self.matrix_result.setObjectName(u"matrix_result")
+        self.matrix_result.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_3.addWidget(self.array_result)
+        self.verticalLayout_3.addWidget(self.matrix_result)
 
-        self.transform_matrix_button = QPushButton(Form)
-        self.transform_matrix_button.setObjectName(u"transform_matrix_button")
+        self.pushButton_transform_matrix = QPushButton(Form)
+        self.pushButton_transform_matrix.setObjectName(u"pushButton_transform_matrix")
 
-        self.verticalLayout_3.addWidget(self.transform_matrix_button)
+        self.verticalLayout_3.addWidget(self.pushButton_transform_matrix)
 
-        self.status_label = QLabel(Form)
-        self.status_label.setObjectName(u"status_label")
+        self.label_status = QLabel(Form)
+        self.label_status.setObjectName(u"label_status")
 
-        self.verticalLayout_3.addWidget(self.status_label)
+        self.verticalLayout_3.addWidget(self.label_status)
 
 
         self.retranslateUi(Form)
@@ -110,9 +110,9 @@ class Ui_Form(object):
         self.m_input.setPlaceholderText(QCoreApplication.translate("Form", u"m", None))
         self.label.setText(QCoreApplication.translate("Form", u"x", None))
         self.n_input.setPlaceholderText(QCoreApplication.translate("Form", u"n", None))
-        self.generate_matrix_button.setText(QCoreApplication.translate("Form", u"\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043c\u0430\u0442\u0440\u0438\u0446\u044e", None))
-        self.array_result.setText("")
-        self.transform_matrix_button.setText(QCoreApplication.translate("Form", u"\u041f\u0435\u0440\u0435\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043c\u0430\u0442\u0440\u0438\u0446\u044e", None))
-        self.status_label.setText("")
+        self.pushButton_create_matrix.setText(QCoreApplication.translate("Form", u"\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043c\u0430\u0442\u0440\u0438\u0446\u044e", None))
+        self.matrix_result.setText("")
+        self.pushButton_transform_matrix.setText(QCoreApplication.translate("Form", u"\u041f\u0435\u0440\u0435\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043c\u0430\u0442\u0440\u0438\u0446\u044e", None))
+        self.label_status.setText("")
     # retranslateUi
 

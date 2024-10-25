@@ -7,18 +7,24 @@
     <x>0</x>
     <y>0</y>
     <width>436</width>
-    <height>629</height>
+    <height>673</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="4,5,2,5">
+    <property name="bottomMargin">
+     <number>80</number>
+    </property>
     <item>
-     <widget class="QLabel" name="titleLabel">
+     <widget class="QLabel" name="title">
       <property name="text">
        <string>Обмін компонентів файлів</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
     </item>
@@ -28,7 +34,7 @@
        <number>6</number>
       </property>
       <item>
-       <widget class="QPushButton" name="btnSelectStandardFiles">
+       <widget class="QPushButton" name="pushButton_select_standard_files">
         <property name="text">
          <string>Вибрати стандартні файли</string>
         </property>
@@ -49,14 +55,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QPushButton" name="btnSelectFirstFile">
+           <widget class="QPushButton" name="pushButton_select_first_file">
             <property name="text">
              <string>Вибрати перший файл</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnSelectSecondFile">
+           <widget class="QPushButton" name="pushButton_select_second_file">
             <property name="text">
              <string>Вибрати другий файл</string>
             </property>
@@ -67,16 +73,16 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QLabel" name="labelFirstFile">
+           <widget class="QLabel" name="label_first_file">
             <property name="text">
-             <string>TextLabel</string>
+             <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="labelSecondFile">
+           <widget class="QLabel" name="label_second_file">
             <property name="text">
-             <string>TextLabel</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -87,23 +93,23 @@
      </layout>
     </item>
     <item>
-     <widget class="QLabel" name="labelMessages">
+     <widget class="QLabel" name="label_status">
       <property name="text">
-       <string>повідомлення</string>
+       <string/>
       </property>
      </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QPushButton" name="btnRunProcessing">
+       <widget class="QPushButton" name="pushButton_run_processing">
         <property name="text">
          <string>Запустити обробку</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btnClearResults">
+       <widget class="QPushButton" name="pushButton_clear_results">
         <property name="text">
          <string>Очистити резултьтат</string>
         </property>

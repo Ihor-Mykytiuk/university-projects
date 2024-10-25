@@ -54,12 +54,12 @@ QLabel#error {
     color: red;
 }
 
-QLabel#array_result, QLabel#list_result {
-    color: #87CEFA; /* Світло-блакитний для виділення */
+QLabel#array_result, Qlabel#matrix_result, QLabel#list_result, QLabel#label_stack_result, QLabel#label_queue_result {
+    color: #87CEFA;
     font-weight: bold;
 }
 
-QLabel#status_label {
+QLabel#label_status {
     font-style: italic;
 }
 

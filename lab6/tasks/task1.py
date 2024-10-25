@@ -10,7 +10,6 @@ class ListManipulator(QWidget):
         super().__init__()
         self.ui = Ui_Form()  # Ініціалізуємо інтерфейс
         self.ui.setupUi(self)
-        self.apply_styles()
 
         # Список для роботи
         self.list = sllist()
@@ -18,6 +17,9 @@ class ListManipulator(QWidget):
         # Налаштування зв'язків кнопок
         self.ui.create_array_button.clicked.connect(self.generate_list)
         self.ui.delete_button.clicked.connect(self.delete_elements)
+
+        # Застосування стилів
+        self.apply_styles()
 
 
     def apply_styles(self):

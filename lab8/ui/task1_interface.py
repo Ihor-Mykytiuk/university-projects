@@ -27,20 +27,21 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.label_title = QLabel(self.centralwidget)
-        self.label_title.setObjectName(u"label_title")
+        self.title = QLabel(self.centralwidget)
+        self.title.setObjectName(u"title")
+        self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout.addWidget(self.label_title)
+        self.verticalLayout.addWidget(self.title)
 
         self.pushButton_create_stack = QPushButton(self.centralwidget)
         self.pushButton_create_stack.setObjectName(u"pushButton_create_stack")
 
         self.verticalLayout.addWidget(self.pushButton_create_stack)
 
-        self.label_stack = QLabel(self.centralwidget)
-        self.label_stack.setObjectName(u"label_stack")
+        self.label_stack_result = QLabel(self.centralwidget)
+        self.label_stack_result.setObjectName(u"label_stack_result")
 
-        self.verticalLayout.addWidget(self.label_stack)
+        self.verticalLayout.addWidget(self.label_stack_result)
 
         self.pushButton_process_stack = QPushButton(self.centralwidget)
         self.pushButton_process_stack.setObjectName(u"pushButton_process_stack")
@@ -61,10 +62,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_title.setText(QCoreApplication.translate("MainWindow", u"\u0420\u043e\u0431\u043e\u0442\u0430 \u0437\u0456 \u0441\u0442\u0435\u043a\u043e\u043c", None))
-        self.pushButton_create_stack.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.label_stack.setText("")
-        self.pushButton_process_stack.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.title.setText(QCoreApplication.translate("MainWindow", u"\u0420\u043e\u0431\u043e\u0442\u0430 \u0437\u0456 \u0441\u0442\u0435\u043a\u043e\u043c", None))
+        self.pushButton_create_stack.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0441\u0442\u0435\u043a \u0437 10 \u0447\u0438\u0441\u0435\u043b", None))
+        self.label_stack_result.setText("")
+        self.pushButton_process_stack.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0443\u0432\u0430\u0442\u0438 \u0441\u0442\u0435\u043a", None))
         self.label_status.setText("")
     # retranslateUi
 

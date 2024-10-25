@@ -12,8 +12,8 @@ class MatrixSum(BaseWidget):
         self.matrix_handler = MatrixHandler()
 
         # Підключення сигналів
-        self.ui.generate_matrix_button.clicked.connect(self.create_matrix)
-        self.ui.calculate_sum_button.clicked.connect(self.calculate_sum)
+        self.ui.pushButton_create_matrix.clicked.connect(self.create_matrix)
+        self.ui.pushButton_calculate_sum.clicked.connect(self.calculate_sum)
 
     def create_matrix(self):
         """Генерує випадкову матрицю та відображає її"""

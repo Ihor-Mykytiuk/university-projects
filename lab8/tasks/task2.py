@@ -16,6 +16,15 @@ class QueueProcessor(QMainWindow):
         self.ui.pushButton_create_queue.clicked.connect(self.create_queue)
         self.ui.pushButton_process_queue.clicked.connect(self.process_queue)
 
+        # Застосування стилів
+        self.apply_styles("static/styles/styles.qss")
+
+    def apply_styles(self, style_file_path):
+        """Застосування стилів з файлу CSS"""
+        with open(style_file_path, "r") as style_file:
+            style = style_file.read()
+            self.setStyleSheet(style)
+
     def create_queue(self):
         # Створюємо чергу з 10 випадкових чисел
         self.queue = Queue()
@@ -52,9 +61,9 @@ class QueueProcessor(QMainWindow):
         self.ui.label_status.setText("Values processed.")
 
     def update_queue_label(self):
-        self.ui.label_queue.clear()
+        self.ui.label_queue_result.clear()
         if self.queue.is_empty():
-            self.ui.label_queue.setText("Queue is empty")
+            self.ui.label_queue_result.setText("Queue is empty")
         else:
             temp_queue = Queue()
             output_str = ""
@@ -65,7 +74,7 @@ class QueueProcessor(QMainWindow):
                 output_str += str(value) + " -> "
                 temp_queue.enqueue(value)  # Зберігаємо значення в тимчасовій черзі
 
-            self.ui.label_queue.setText(output_str)  # Відображаємо значення
+            self.ui.label_queue_result.setText(output_str)  # Відображаємо значення
 
             # Повертаємо значення назад у основну чергу
             while not temp_queue.is_empty():

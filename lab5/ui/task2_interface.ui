@@ -100,7 +100,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="create_array_button">
+      <widget class="QPushButton" name="pushButton_create_array">
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
@@ -131,14 +131,14 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="transform_array_button">
+    <widget class="QPushButton" name="pushButton_sort_array">
      <property name="text">
       <string>Сортувати</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="status_label">
+    <widget class="QLabel" name="label_status">
      <property name="text">
       <string/>
      </property>

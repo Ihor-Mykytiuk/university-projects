@@ -22,23 +22,25 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(436, 629)
+        MainWindow.resize(436, 673)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.titleLabel = QLabel(self.centralwidget)
-        self.titleLabel.setObjectName(u"titleLabel")
+        self.verticalLayout_3.setContentsMargins(-1, -1, -1, 80)
+        self.title = QLabel(self.centralwidget)
+        self.title.setObjectName(u"title")
+        self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_3.addWidget(self.titleLabel)
+        self.verticalLayout_3.addWidget(self.title)
 
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setSpacing(6)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.btnSelectStandardFiles = QPushButton(self.centralwidget)
-        self.btnSelectStandardFiles.setObjectName(u"btnSelectStandardFiles")
+        self.pushButton_select_standard_files = QPushButton(self.centralwidget)
+        self.pushButton_select_standard_files.setObjectName(u"pushButton_select_standard_files")
 
-        self.verticalLayout_2.addWidget(self.btnSelectStandardFiles)
+        self.verticalLayout_2.addWidget(self.pushButton_select_standard_files)
 
         self.label_2 = QLabel(self.centralwidget)
         self.label_2.setObjectName(u"label_2")
@@ -50,30 +52,30 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.btnSelectFirstFile = QPushButton(self.centralwidget)
-        self.btnSelectFirstFile.setObjectName(u"btnSelectFirstFile")
+        self.pushButton_select_first_file = QPushButton(self.centralwidget)
+        self.pushButton_select_first_file.setObjectName(u"pushButton_select_first_file")
 
-        self.horizontalLayout.addWidget(self.btnSelectFirstFile)
+        self.horizontalLayout.addWidget(self.pushButton_select_first_file)
 
-        self.btnSelectSecondFile = QPushButton(self.centralwidget)
-        self.btnSelectSecondFile.setObjectName(u"btnSelectSecondFile")
+        self.pushButton_select_second_file = QPushButton(self.centralwidget)
+        self.pushButton_select_second_file.setObjectName(u"pushButton_select_second_file")
 
-        self.horizontalLayout.addWidget(self.btnSelectSecondFile)
+        self.horizontalLayout.addWidget(self.pushButton_select_second_file)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.labelFirstFile = QLabel(self.centralwidget)
-        self.labelFirstFile.setObjectName(u"labelFirstFile")
+        self.label_first_file = QLabel(self.centralwidget)
+        self.label_first_file.setObjectName(u"label_first_file")
 
-        self.horizontalLayout_3.addWidget(self.labelFirstFile)
+        self.horizontalLayout_3.addWidget(self.label_first_file)
 
-        self.labelSecondFile = QLabel(self.centralwidget)
-        self.labelSecondFile.setObjectName(u"labelSecondFile")
+        self.label_second_file = QLabel(self.centralwidget)
+        self.label_second_file.setObjectName(u"label_second_file")
 
-        self.horizontalLayout_3.addWidget(self.labelSecondFile)
+        self.horizontalLayout_3.addWidget(self.label_second_file)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
@@ -84,26 +86,30 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
 
-        self.labelMessages = QLabel(self.centralwidget)
-        self.labelMessages.setObjectName(u"labelMessages")
+        self.label_status = QLabel(self.centralwidget)
+        self.label_status.setObjectName(u"label_status")
 
-        self.verticalLayout_3.addWidget(self.labelMessages)
+        self.verticalLayout_3.addWidget(self.label_status)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.btnRunProcessing = QPushButton(self.centralwidget)
-        self.btnRunProcessing.setObjectName(u"btnRunProcessing")
+        self.pushButton_run_processing = QPushButton(self.centralwidget)
+        self.pushButton_run_processing.setObjectName(u"pushButton_run_processing")
 
-        self.horizontalLayout_2.addWidget(self.btnRunProcessing)
+        self.horizontalLayout_2.addWidget(self.pushButton_run_processing)
 
-        self.btnClearResults = QPushButton(self.centralwidget)
-        self.btnClearResults.setObjectName(u"btnClearResults")
+        self.pushButton_clear_results = QPushButton(self.centralwidget)
+        self.pushButton_clear_results.setObjectName(u"pushButton_clear_results")
 
-        self.horizontalLayout_2.addWidget(self.btnClearResults)
+        self.horizontalLayout_2.addWidget(self.pushButton_clear_results)
 
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
 
+        self.verticalLayout_3.setStretch(0, 4)
+        self.verticalLayout_3.setStretch(1, 5)
+        self.verticalLayout_3.setStretch(2, 2)
+        self.verticalLayout_3.setStretch(3, 5)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -113,15 +119,15 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.titleLabel.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043c\u0456\u043d \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432 \u0444\u0430\u0439\u043b\u0456\u0432", None))
-        self.btnSelectStandardFiles.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u0456 \u0444\u0430\u0439\u043b\u0438", None))
+        self.title.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043c\u0456\u043d \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432 \u0444\u0430\u0439\u043b\u0456\u0432", None))
+        self.pushButton_select_standard_files.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u0456 \u0444\u0430\u0439\u043b\u0438", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0430\u0431\u043e", None))
-        self.btnSelectFirstFile.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u043f\u0435\u0440\u0448\u0438\u0439 \u0444\u0430\u0439\u043b", None))
-        self.btnSelectSecondFile.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0434\u0440\u0443\u0433\u0438\u0439 \u0444\u0430\u0439\u043b", None))
-        self.labelFirstFile.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.labelSecondFile.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.labelMessages.setText(QCoreApplication.translate("MainWindow", u"\u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f", None))
-        self.btnRunProcessing.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043a\u0443", None))
-        self.btnClearResults.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0440\u0435\u0437\u0443\u043b\u0442\u044c\u0442\u0430\u0442", None))
+        self.pushButton_select_first_file.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u043f\u0435\u0440\u0448\u0438\u0439 \u0444\u0430\u0439\u043b", None))
+        self.pushButton_select_second_file.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0434\u0440\u0443\u0433\u0438\u0439 \u0444\u0430\u0439\u043b", None))
+        self.label_first_file.setText("")
+        self.label_second_file.setText("")
+        self.label_status.setText("")
+        self.pushButton_run_processing.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043a\u0443", None))
+        self.pushButton_clear_results.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0440\u0435\u0437\u0443\u043b\u0442\u044c\u0442\u0430\u0442", None))
     # retranslateUi
 

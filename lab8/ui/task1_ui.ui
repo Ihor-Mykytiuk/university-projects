@@ -16,21 +16,24 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label_title">
+     <widget class="QLabel" name="title">
       <property name="text">
        <string>Робота зі стеком</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_create_stack">
       <property name="text">
-       <string>PushButton</string>
+       <string>Створити стек з 10 чисел</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_stack">
+     <widget class="QLabel" name="label_stack_result">
       <property name="text">
        <string/>
       </property>
@@ -39,7 +42,7 @@
     <item>
      <widget class="QPushButton" name="pushButton_process_stack">
       <property name="text">
-       <string>PushButton</string>
+       <string>Трансформувати стек</string>
       </property>
      </widget>
     </item>

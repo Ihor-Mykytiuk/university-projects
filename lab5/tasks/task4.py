@@ -12,8 +12,8 @@ class MatrixTransform(BaseWidget):
         self.matrix_handler = MatrixHandler()
 
         # Підключення сигналів
-        self.ui.generate_matrix_button.clicked.connect(self.create_matrix)
-        self.ui.transform_matrix_button.clicked.connect(self.transform_matrix)
+        self.ui.pushButton_create_matrix.clicked.connect(self.create_matrix)
+        self.ui.pushButton_transform_matrix.clicked.connect(self.transform_matrix)
 
     def create_matrix(self):
         """Генерує випадкову матрицю та відображає її"""

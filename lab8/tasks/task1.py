@@ -17,6 +17,15 @@ class StackProcessor(QMainWindow):
         self.ui.pushButton_create_stack.clicked.connect(self.create_stack)
         self.ui.pushButton_process_stack.clicked.connect(self.process_stack)
 
+        # Застосування стилів
+        self.apply_styles("static/styles/styles.qss")
+
+    def apply_styles(self, style_file_path):
+        """Застосування стилів з файлу CSS"""
+        with open(style_file_path, "r") as style_file:
+            style = style_file.read()
+            self.setStyleSheet(style)
+
     def create_stack(self):
         # Створюємо стек з 10 випадкових чисел
         self.stack = Stack()
@@ -31,7 +40,7 @@ class StackProcessor(QMainWindow):
         # Заміщуємо позитивні та негативні значення в стеку
         temp_stack = Stack()  # Використовуємо стек замість списку
         while not self.stack.is_empty():
-            value = self.stack.pop()  # Витягуємо значення з стека
+            value = self.stack.pop()  # Витягуємо значення зі стека
             if value > 0:
                 temp_stack.push(1)  # Заміщуємо на 1, якщо значення позитивне
             else:
@@ -45,9 +54,9 @@ class StackProcessor(QMainWindow):
         self.ui.label_status.setText("Values processed.")
 
     def update_stack_label(self):
-        self.ui.label_stack.clear()
+        self.ui.label_stack_result.clear()
         if self.stack.is_empty():
-            self.ui.label_stack.setText("Stack is empty")
+            self.ui.label_stack_result.setText("Stack is empty")
         else:
             temp_stack = Stack()
             output_str = ""
@@ -55,7 +64,7 @@ class StackProcessor(QMainWindow):
                 value = self.stack.pop()
                 output_str += str(value) + " -> "
                 temp_stack.push(value)
-            self.ui.label_stack.setText(output_str)
+            self.ui.label_stack_result.setText(output_str)
             while not temp_stack.is_empty():
                 self.stack.push(temp_stack.pop())
 

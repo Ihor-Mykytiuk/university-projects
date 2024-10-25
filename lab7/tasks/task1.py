@@ -1,9 +1,11 @@
-import sys
 import os
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem, \
+import sys
+
+from PySide6.QtCore import QFile, QTextStream
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QTableWidgetItem, \
     QHeaderView
+
 from lab7.ui.task1_interface import Ui_MainWindow
-from PySide6.QtCore import QFile, QIODevice, QTextStream
 
 
 class FileProcessor(QMainWindow):
@@ -24,25 +26,34 @@ class FileProcessor(QMainWindow):
         # Налаштування зв'язків кнопок
         self.setup_connections()
 
+        # Застосування стилів
+        self.apply_styles("static/styles/styles.qss")
+
+    def apply_styles(self, style_file_path):
+        """Застосування стилів з файлу CSS"""
+        with open(style_file_path, "r") as style_file:
+            style = style_file.read()
+            self.setStyleSheet(style)
+
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""
-        self.ui.btnSelectInputFile.clicked.connect(self.select_input_file)
-        self.ui.btnSelectOutputFile.clicked.connect(self.select_output_file)
-        self.ui.btnSelectStandardFiles.clicked.connect(self.select_standard_files)
-        self.ui.btnRunProcessing.clicked.connect(self.process_file)
-        self.ui.btnClearResults.clicked.connect(self.clear_results)
+        self.ui.pushButton_select_input_file.clicked.connect(self.select_input_file)
+        self.ui.pushButton_select_output_file.clicked.connect(self.select_output_file)
+        self.ui.pushButton_select_standard_files.clicked.connect(self.select_standard_files)
+        self.ui.pushButton_run_processing.clicked.connect(self.process_file)
+        self.ui.pushButton_clear_results.clicked.connect(self.clear_results)
 
     def init_results_table(self):
-        self.ui.tableResults.setColumnCount(2)
-        self.ui.tableResults.setHorizontalHeaderLabels(["Група", "Максимальне значення"])
-        self.ui.tableResults.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
-        self.ui.tableResults.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        self.ui.table_results.setColumnCount(2)
+        self.ui.table_results.setHorizontalHeaderLabels(["Група", "Максимальне значення"])
+        self.ui.table_results.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        self.ui.table_results.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
 
     def show_message(self, message, is_error=False):
         """Відображення повідомлення"""
         color = "red" if is_error else "green"
-        self.ui.labelMessages.setStyleSheet(f"color: {color};")
-        self.ui.labelMessages.setText(message)
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
 
     def select_input_file(self):
         """Вибір вхідного файлу через QFileDialog"""
@@ -50,7 +61,7 @@ class FileProcessor(QMainWindow):
                                                    "Text Files (*.txt);;All Files (*)")
         if file_name:  # Якщо користувач вибрав файл
             self.input_file_path = file_name  # Зберігаємо шлях до вибраного файлу
-            self.ui.labelInputFile.setText(f"Вхідний файл: {os.path.basename(file_name)}")
+            self.ui.label_input_file.setText(f"Вхідний файл: {os.path.basename(file_name)}")
         else:
             self.show_message("Помилка: вхідний файл не вибрано.", is_error=True)
 
@@ -60,18 +71,18 @@ class FileProcessor(QMainWindow):
                                                    "Text Files (*.txt);;All Files (*)")
         if file_name:
             self.output_file_path = file_name  # Зберігаємо шлях до вибраного файлу
-            self.ui.labelOutputFile.setText(f"Вихідний файл: {os.path.basename(file_name)}")
+            self.ui.label_output_file.setText(f"Вихідний файл: {os.path.basename(file_name)}")
         else:
             self.show_message("Помилка: вихідний файл не вибрано.", is_error=True)
 
     def select_standard_files(self):
         """Автоматичний вибір стандартних файлів з директорії проєкту"""
         base_path = os.path.dirname(os.path.abspath(__file__)) # Шлях до поточної директорії
-        self.input_file_path = os.path.join(base_path, "files", 'f.txt')
-        self.output_file_path = os.path.join(base_path, "files", 'g.txt')
+        self.input_file_path = os.path.join(base_path, "../",  "files", 'f.txt')
+        self.output_file_path = os.path.join(base_path, "../", "files", 'g.txt')
 
-        self.ui.labelInputFile.setText(f"Вхідний файл: f.txt")
-        self.ui.labelOutputFile.setText(f"Вихідний файл: g.txt")
+        self.ui.label_input_file.setText(f"Вхідний файл: f.txt")
+        self.ui.label_output_file.setText(f"Вихідний файл: g.txt")
         self.show_message("Стандартні файли вибрано успішно.")
 
     def read_input_file(self):
@@ -125,18 +136,18 @@ class FileProcessor(QMainWindow):
 
     def update_result_table(self, index, group, max_value):
         """Оновлення таблиці результатів"""
-        self.ui.tableResults.setRowCount(index + 1)
-        self.ui.tableResults.setItem(index, 0, QTableWidgetItem(str(group)))
-        self.ui.tableResults.setItem(index, 1, QTableWidgetItem(str(max_value)))
+        self.ui.table_results.setRowCount(index + 1)
+        self.ui.table_results.setItem(index, 0, QTableWidgetItem(str(group)))
+        self.ui.table_results.setItem(index, 1, QTableWidgetItem(str(max_value)))
 
     def clear_results(self):
         """Очищення результатів"""
-        self.ui.tableResults.setRowCount(0)
-        self.ui.labelMessages.clear()
+        self.ui.table_results.setRowCount(0)
+        self.ui.label_status.clear()
         self.input_file_path = ""
         self.output_file_path = ""
-        self.ui.labelInputFile.clear()
-        self.ui.labelOutputFile.clear()
+        self.ui.table_results.clear()
+        self.ui.table_results.clear()
 
     def process_file(self):
         """Обробка файлів"""

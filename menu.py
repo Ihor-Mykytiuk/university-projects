@@ -58,9 +58,10 @@ class MainMenu(QMainWindow):
 
         self.main_widget.setLayout(self.layout)
         self.setCentralWidget(self.main_widget)
+        self.apply_styles("static/styles/styles.qss")
 
     def create_lab_buttons(self):
-        """ Створюємо кнопки для лабораторних робіт динамічно. """
+        """Створюємо кнопки для лабораторних робіт динамічно"""
         self.clear_layout()
 
         for lab_name in self.labs_data.keys():
@@ -68,8 +69,14 @@ class MainMenu(QMainWindow):
             button.clicked.connect(lambda checked, lab=lab_name: self.show_tasks(lab))
             self.layout.addWidget(button)
 
+    def apply_styles(self, style_file_path):
+        """Застосування стилів з файлу CSS"""
+        with open(style_file_path, "r") as style_file:
+            style = style_file.read()
+            self.setStyleSheet(style)
+
     def show_tasks(self, lab_name):
-        """ Відображаємо кнопки завдань для обраної лабораторної. """
+        """Відображаємо кнопки завдань для обраної лабораторної"""
         self.clear_layout()
 
         tasks = self.labs_data[lab_name]
@@ -85,14 +92,14 @@ class MainMenu(QMainWindow):
         self.layout.addWidget(back_button)
 
     def clear_layout(self):
-        """ Видаляє всі віджети з поточного макета. """
+        """Видаляє всі віджети з поточного макета"""
         for i in reversed(range(self.layout.count())):
             widget = self.layout.itemAt(i).widget()
             if widget is not None:
                 widget.deleteLater()
 
     def run_task(self, task_class):
-        """ Запускає відповідне завдання. """
+        """Запускає відповідне завдання"""
         self.task_window = task_class()
         self.task_window.show()
 

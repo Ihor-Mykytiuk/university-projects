@@ -1,8 +1,9 @@
-import sys
 import os
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem, \
-    QHeaderView
-from PySide6.QtCore import QFile, QIODevice, QTextStream
+import sys
+
+from PySide6.QtCore import QFile, QIODevice
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
+
 from lab7.ui.task2_interface import Ui_MainWindow
 
 
@@ -20,20 +21,28 @@ class FileSwapper(QMainWindow):
         # Налаштування зв'язків кнопок
         self.setup_connections()
 
+        self.apply_styles("static/styles/styles.qss")
+
+    def apply_styles(self, style_file_path):
+        """Застосування стилів з файлу CSS"""
+        with open(style_file_path, "r") as style_file:
+            style = style_file.read()
+            self.setStyleSheet(style)
+
     def show_message(self, message, is_error=False):
         """Відображення повідомлення у labelMessages"""
         color = "red" if is_error else "green"
-        self.ui.labelMessages.setStyleSheet(f"color: {color};")  # Задаємо колір тексту
-        self.ui.labelMessages.setText(message)  # Встановлюємо текст повідомлення
+        self.ui.label_status.setStyleSheet(f"color: {color};")  # Задаємо колір тексту
+        self.ui.label_status.setText(message)  # Встановлюємо текст повідомлення
 
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""
-        self.ui.btnSelectFirstFile.clicked.connect(lambda: self.select_file("f1"))
-        self.ui.btnSelectSecondFile.clicked.connect(lambda: self.select_file("f2"))
-        self.ui.btnSelectStandardFiles.clicked.connect(self.select_standard_files)
+        self.ui.pushButton_select_first_file.clicked.connect(lambda: self.select_file("f1"))
+        self.ui.pushButton_select_second_file.clicked.connect(lambda: self.select_file("f2"))
+        self.ui.pushButton_select_standard_files.clicked.connect(self.select_standard_files)
 
-        self.ui.btnRunProcessing.clicked.connect(self.process_files)
-        self.ui.btnClearResults.clicked.connect(self.clear_results)
+        self.ui.pushButton_run_processing.clicked.connect(self.process_files)
+        self.ui.pushButton_clear_results.clicked.connect(self.clear_results)
 
     def select_file(self, file_type):
         """Вибір файлу через QFileDialog"""
@@ -42,10 +51,10 @@ class FileSwapper(QMainWindow):
         if file_name:  # Якщо користувач вибрав файл
             if file_type == "f1":
                 self.f1_path = file_name
-                label = self.ui.labelFirstFile
+                label = self.ui.label_first_file
             elif file_type == "f2":
                 self.f2_path = file_name
-                label = self.ui.labelSecondFile
+                label = self.ui.label_second_file
             label.setText(f"Файл {file_type}: {os.path.basename(file_name)}")
             self.show_message(f"Файл {file_type} вибрано успішно.")
         else:
@@ -56,23 +65,23 @@ class FileSwapper(QMainWindow):
         base_path = os.path.dirname(os.path.abspath(__file__))  # Отримуємо шлях до поточної директорії
         first_file_name = "f1.txt"
         second_file_name = "f2.txt"
-        self.f1_path = os.path.join(base_path, "files", first_file_name)
-        self.f2_path = os.path.join(base_path, "files", second_file_name)
+        self.f1_path = os.path.join(base_path, "../", "files", first_file_name)
+        self.f2_path = os.path.join(base_path, "../", "files", second_file_name)
 
         # Оновлення тексту на мітках
-        self.ui.labelFirstFile.setText(f"Файл f1: {first_file_name}")
-        self.ui.labelSecondFile.setText(f"Файл f2: {second_file_name}")
+        self.ui.label_first_file.setText(f"Файл f1: {first_file_name}")
+        self.ui.label_second_file.setText(f"Файл f2: {second_file_name}")
 
         self.show_message("Стандартні файли вибрано успішно.")
 
     def create_help_file(self):
-        """Створення пустого допоміжного файлу"""
+        """Створення порожнього допоміжного файлу"""
         help_file_path = os.path.join(os.path.dirname(self.f1_path), "h.txt")  # Шлях до допоміжного файлу
 
         try:
             help_file = QFile(help_file_path)
             if help_file.open(QIODevice.OpenModeFlag.WriteOnly):  # Відкриваємо файл для запису
-                help_file.write(b"")  # Записуємо пустий вміст
+                help_file.write(b"")  # Записуємо порожній вміст
                 return help_file_path
         except Exception as e:
             self.show_message(f"Помилка створення файлу: {str(e)}", is_error=True)
@@ -113,15 +122,15 @@ class FileSwapper(QMainWindow):
 
             self.delete_help_file()
 
-            self.show_message("Вміст файлів обмінено успішно.")
+            self.show_message("Вміст файлів обміняно успішно.")
         except Exception as e:
             self.show_message(f"Помилка обміну вмісту файлів: {str(e)}", is_error=True)
 
     def clear_results(self):
         """Очищення"""
-        self.ui.labelMessages.clear()
-        self.ui.labelFirstFile.clear()
-        self.ui.labelSecondFile.clear()
+        self.ui.label_status.clear()
+        self.ui.label_first_file.clear()
+        self.ui.label_second_file.clear()
         self.f1_path = ""
         self.f2_path = ""
 

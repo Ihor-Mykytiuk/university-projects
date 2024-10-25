@@ -73,19 +73,19 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addLayout(self.verticalLayout)
 
-        self.generate_matrix_button = QPushButton(Form)
-        self.generate_matrix_button.setObjectName(u"generate_matrix_button")
+        self.pushButton_create_matrix = QPushButton(Form)
+        self.pushButton_create_matrix.setObjectName(u"pushButton_create_matrix")
 
-        self.verticalLayout_2.addWidget(self.generate_matrix_button)
+        self.verticalLayout_2.addWidget(self.pushButton_create_matrix)
 
 
         self.verticalLayout_4.addLayout(self.verticalLayout_2)
 
-        self.array_result = QLabel(Form)
-        self.array_result.setObjectName(u"array_result")
-        self.array_result.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.matrix_result = QLabel(Form)
+        self.matrix_result.setObjectName(u"matrix_result")
+        self.matrix_result.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_4.addWidget(self.array_result)
+        self.verticalLayout_4.addWidget(self.matrix_result)
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setSpacing(20)
@@ -97,19 +97,19 @@ class Ui_Form(object):
 
         self.verticalLayout_3.addWidget(self.comboBox)
 
-        self.calculate_sum_button = QPushButton(Form)
-        self.calculate_sum_button.setObjectName(u"calculate_sum_button")
+        self.pushButton_calculate_sum = QPushButton(Form)
+        self.pushButton_calculate_sum.setObjectName(u"pushButton_calculate_sum")
 
-        self.verticalLayout_3.addWidget(self.calculate_sum_button)
+        self.verticalLayout_3.addWidget(self.pushButton_calculate_sum)
 
 
         self.verticalLayout_4.addLayout(self.verticalLayout_3)
 
-        self.status_label = QLabel(Form)
-        self.status_label.setObjectName(u"status_label")
-        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_status = QLabel(Form)
+        self.label_status.setObjectName(u"label_status")
+        self.label_status.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_4.addWidget(self.status_label)
+        self.verticalLayout_4.addWidget(self.label_status)
 
 
         self.retranslateUi(Form)
@@ -124,12 +124,12 @@ class Ui_Form(object):
         self.m_input.setPlaceholderText(QCoreApplication.translate("Form", u"m", None))
         self.label.setText(QCoreApplication.translate("Form", u"x", None))
         self.n_input.setPlaceholderText(QCoreApplication.translate("Form", u"n", None))
-        self.generate_matrix_button.setText(QCoreApplication.translate("Form", u"\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043c\u0430\u0442\u0440\u0438\u0446\u044e", None))
-        self.array_result.setText("")
+        self.pushButton_create_matrix.setText(QCoreApplication.translate("Form", u"\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043c\u0430\u0442\u0440\u0438\u0446\u044e", None))
+        self.matrix_result.setText("")
         self.comboBox.setItemText(0, QCoreApplication.translate("Form", u"\u041f\u0430\u0440\u043d\u0456 \u0441\u0442\u043e\u0432\u043f\u0446\u0456", None))
         self.comboBox.setItemText(1, QCoreApplication.translate("Form", u"\u041d\u0435\u043f\u0430\u0440\u043d\u0456 \u0441\u0442\u043e\u0432\u043f\u0446\u0456", None))
 
-        self.calculate_sum_button.setText(QCoreApplication.translate("Form", u"\u041e\u0431\u0447\u0438\u0441\u043b\u0438\u0442\u0438 \u0441\u0443\u043c\u0443", None))
-        self.status_label.setText("")
+        self.pushButton_calculate_sum.setText(QCoreApplication.translate("Form", u"\u041e\u0431\u0447\u0438\u0441\u043b\u0438\u0442\u0438 \u0441\u0443\u043c\u0443", None))
+        self.label_status.setText("")
     # retranslateUi
 
