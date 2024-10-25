@@ -1,6 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
 # Імпорти всіх завдання
+from lab4.tasks import NumberDescriptionApp, VariableCheckApp, StudentLoginApp
 from lab5.tasks import ArrayTransform, ArraySort, MatrixSum, MatrixTransform
 from lab6.tasks import ListManipulator, LinkedListSort, LinkedList
 from lab7.tasks import FileProcessor, FileSwapper
@@ -19,6 +20,11 @@ class MainMenu(QMainWindow):
         self.layout = QVBoxLayout()
 
         self.labs_data = {
+            'Лабораторна робота №4': {
+                'Завдання 1': NumberDescriptionApp,
+                'Завдання 2': VariableCheckApp,
+                'Завдання 3': StudentLoginApp,
+            },
             'Лабораторна робота №5': {
                 'Завдання 1': ArrayTransform,
                 'Завдання 2': ArraySort,
