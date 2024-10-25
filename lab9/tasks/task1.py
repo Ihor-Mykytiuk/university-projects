@@ -1,12 +1,17 @@
-from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
-                               QRadioButton, QPushButton, QButtonGroup, QMessageBox)
 import sys
 
-class MapStudentApp(QWidget):
+from PySide6.QtWidgets import QApplication, QMainWindow
+
+from lab9.ui.task1_interface import Ui_MainWindow
+
+
+class MapStudentApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("mapStudent")
+        # Ініціалізація інтерфейсу
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
 
         # Студенти та групи
         self.students = {
@@ -22,70 +27,41 @@ class MapStudentApp(QWidget):
             "Надія Гончар": "ІПЗ-33",
         }
 
-        self.layout = QVBoxLayout()
-
-        # Віджет для відображення студентів
-        self.students_list = QTextEdit(self)
-        self.students_list.setReadOnly(True)
+        # Оновлення списку студентів
         self.update_students_list()
-        self.layout.addWidget(self.students_list)
 
-        # Поле для пошуку
-        self.search_label = QLabel("Введіть ім'я студента або групу:")
-        self.layout.addWidget(self.search_label)
-        self.search_field = QLineEdit(self)
-        self.search_field.textChanged.connect(self.dynamic_search)
-        self.layout.addWidget(self.search_field)
+        # Налаштування зв'язків кнопок
+        self.setup_connections()
 
-        # Вибір типу пошуку
-        self.search_by_name_button = QRadioButton("Пошук по імені", self)
-        self.search_by_group_button = QRadioButton("Пошук по групі", self)
-        self.search_by_name_button.setChecked(True)
+        # Застосування стилів
+        self.apply_styles("static/styles/styles.qss")
 
-        self.radio_group = QButtonGroup(self)
-        self.radio_group.addButton(self.search_by_name_button)
-        self.radio_group.addButton(self.search_by_group_button)
+    def apply_styles(self, style_file_path):
+        """Застосування стилів з файлу CSS"""
+        with open(style_file_path, "r") as style_file:
+            style = style_file.read()
+            self.setStyleSheet(style)
 
-        # Лейаут для радіокнопок
-        radio_layout = QHBoxLayout()
-        radio_layout.addWidget(self.search_by_name_button)
-        radio_layout.addWidget(self.search_by_group_button)
-        self.layout.addLayout(radio_layout)
+    def show_message(self, message, is_error=False):
+        """Відображення повідомлення"""
+        color = "red" if is_error else "green"
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
 
-        # Поля для додавання/видалення студентів
-        self.add_label = QLabel("Додати або видалити студента:")
-        self.layout.addWidget(self.add_label)
-
-        # Поле для введення імені
-        self.add_name_field = QLineEdit(self)
-        self.add_name_field.setPlaceholderText("Введіть ім'я студента")
-        self.layout.addWidget(self.add_name_field)
-
-        # Поле для введення групи
-        self.add_group_field = QLineEdit(self)
-        self.add_group_field.setPlaceholderText("Введіть групу")
-        self.layout.addWidget(self.add_group_field)
-
-        # Кнопки додавання і видалення
-        self.add_button = QPushButton("Додати студента")
-        self.add_button.clicked.connect(self.add_student)
-        self.layout.addWidget(self.add_button)
-
-        self.delete_button = QPushButton("Видалити студента")
-        self.delete_button.clicked.connect(self.delete_student)
-        self.layout.addWidget(self.delete_button)
-
-        # Основний лейаут
-        self.setLayout(self.layout)
+    def setup_connections(self):
+        """Налаштування зв'язків кнопок"""
+        self.ui.pushButton_add_student.clicked.connect(self.add_student)
+        self.ui.pushButton_delete_student.clicked.connect(self.delete_student)
+        self.ui.input_search.textChanged.connect(self.dynamic_search)
 
     def update_students_list(self):
         """Оновлює текстовий віджет зі списком студентів"""
         student_info = "\n".join([f"{name}: {group}" for name, group in self.students.items()])
-        self.students_list.setText(student_info)
+        self.ui.list_students.setText(student_info)
 
     def dynamic_search(self):
         """Виконує динамічний пошук за введеними критеріями"""
-        search_text = self.search_field.text().strip().lower()
+        search_text = self.ui.input_search.text().strip().lower()
 
         if not search_text:
             # Якщо поле пошуку порожнє, показується весь список
@@ -93,7 +69,7 @@ class MapStudentApp(QWidget):
             return
 
         # Вибір пошуку за іменем або групою
-        if self.search_by_name_button.isChecked():
+        if self.ui.radioButton_search_by_name.isChecked():
             filtered_students = {name: group for name, group in self.students.items()
                                  if search_text in name.lower()}
         else:
@@ -102,44 +78,44 @@ class MapStudentApp(QWidget):
 
         if filtered_students:
             student_info = "\n".join([f"{name}: {group}" for name, group in filtered_students.items()])
-            self.students_list.setText(student_info)
+            self.ui.list_students.setText(student_info)
         else:
-            self.students_list.setText("Результати не знайдено")
+            self.ui.list_students.setText("Результати не знайдено")
 
 
     def add_student(self):
         """Додає студента до довідника"""
-        name = self.add_name_field.text().strip()
-        group = self.add_group_field.text().strip()
+        name = self.ui.input_name.text().strip()
+        group = self.ui.input_group.text().strip()
 
         if not name or not group:
-            QMessageBox.warning(self, "Помилка", "Будь ласка, введіть ім'я студента та групу.")
+            self.show_message("Помилка: Будь ласка, введіть ім'я та групу студента.", is_error=True)
             return
 
         if name in self.students:
-            QMessageBox.information(self, "Помилка", f"Студент {name} вже існує в списку.")
+            self.show_message(f"Помилка: Студент {name} вже є у списку.", is_error=True)
         else:
             self.students[name] = group
             self.update_students_list()
-            QMessageBox.information(self, "Успіх", f"Студент {name} доданий до групи {group}.")
-            self.add_name_field.clear()
-            self.add_group_field.clear()
+            self.show_message(f"Студент {name} був успішно доданий до групи {group}.")
+            self.ui.input_name.clear()
+            self.ui.input_group.clear()
 
     def delete_student(self):
         """Видаляє студента з довідника"""
-        name = self.add_name_field.text().strip()
+        name = self.ui.input_name.text().strip()
 
         if not name:
-            QMessageBox.warning(self, "Помилка", "Будь ласка, введіть ім'я студента для видалення.")
+            self.show_message("Помилка: Будь ласка, введіть ім'я студента.", is_error=True)
             return
 
         if name in self.students:
             del self.students[name]
             self.update_students_list()
-            QMessageBox.information(self, "Успіх", f"Студент {name} був видалений.")
-            self.add_name_field.clear()
+            self.show_message(f"Студент {name} був успішно видалений зі списку.")
+            self.ui.input_name.clear()
         else:
-            QMessageBox.warning(self, "Помилка", f"Студент {name} не знайдений у списку.")
+            self.show_message(f"Помилка: Студента {name} не знайдено.", is_error=True)
 
 
 if __name__ == "__main__":
