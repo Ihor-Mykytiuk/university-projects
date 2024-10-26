@@ -15,12 +15,10 @@ class ListManipulator(QWidget):
         self.list = sllist()
 
         # Налаштування зв'язків кнопок
-        self.ui.create_array_button.clicked.connect(self.generate_list)
-        self.ui.delete_button.clicked.connect(self.delete_elements)
+        self.setup_connections()
 
         # Застосування стилів
         self.apply_styles()
-
 
     def apply_styles(self):
         """Застосування стилів з файлу CSS"""
@@ -28,23 +26,34 @@ class ListManipulator(QWidget):
             style = style_file.read()
             self.setStyleSheet(style)
 
+    def show_message(self, message, is_error=False):
+        """Відображення повідомлення"""
+        color = "red" if is_error else "green"
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
+
+    def setup_connections(self):
+        """Налаштування зв'язків кнопок"""
+        self.ui.pushButton_create_list.clicked.connect(self.generate_list)
+        self.ui.pushButton_delete_elements.clicked.connect(self.delete_elements)
+
     def generate_list(self):
         """Генерація списку"""
         self.list.clear()
-        size = self.ui.size_input.text()
+        size = self.ui.input_size.text()
         for i in range(int(size)):
             self.list.append(sllistnode(random.randint(1, 100)))
         self.show_list()
 
     def show_list(self):
         """Відображення списку"""
-        self.ui.array_result.clear()
+        self.ui.label_result_list.clear()
         iterator = sllistiterator(self.list)
         try:
             while True:
                 item = next(iterator)
-                label_text = self.ui.array_result.text() + str(item) + " -> "
-                self.ui.array_result.setText(label_text)
+                label_text = self.ui.label_result_list.text() + str(item) + " -> "
+                self.ui.label_result_list.setText(label_text)
         except StopIteration:
             pass
 

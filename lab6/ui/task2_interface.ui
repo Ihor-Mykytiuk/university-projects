@@ -49,7 +49,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="create_list_button">
+      <widget class="QPushButton" name="pushButton_create_list">
        <property name="text">
         <string>Згенерувати список</string>
        </property>
@@ -58,7 +58,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="list_result">
+    <widget class="QLabel" name="label_result_list">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -71,14 +71,14 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="sort_button">
+    <widget class="QPushButton" name="pushButton_sort">
      <property name="text">
       <string>Сортувати</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="status_label">
+    <widget class="QLabel" name="label_status">
      <property name="text">
       <string/>
      </property>

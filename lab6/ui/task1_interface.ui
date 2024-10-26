@@ -27,7 +27,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLineEdit" name="size_input">
+      <widget class="QLineEdit" name="input_size">
        <property name="styleSheet">
         <string notr="true"/>
        </property>
@@ -43,16 +43,16 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="create_array_button">
+      <widget class="QPushButton" name="pushButton_create_list">
        <property name="text">
-        <string>Згенерувати масив</string>
+        <string>Згенерувати список</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="array_result">
+    <widget class="QLabel" name="label_result_list">
      <property name="text">
       <string/>
      </property>
@@ -78,7 +78,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QLineEdit" name="n_input">
+          <widget class="QLineEdit" name="input_n">
            <property name="text">
             <string/>
            </property>
@@ -95,7 +95,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="k_input">
+          <widget class="QLineEdit" name="input_k">
            <property name="placeholderText">
             <string>K</string>
            </property>
@@ -106,7 +106,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="delete_button">
+      <widget class="QPushButton" name="pushButton_delete_elements">
        <property name="text">
         <string>Видалити елементи</string>
        </property>
@@ -115,7 +115,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="status_label">
+    <widget class="QLabel" name="label_status">
      <property name="text">
       <string/>
      </property>

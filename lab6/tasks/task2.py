@@ -1,8 +1,9 @@
-import sys
 import random
+import sys
 from collections import deque
-from PySide6.QtWidgets import QApplication, QWidget, QMessageBox
+from PySide6.QtWidgets import QApplication, QWidget
 from lab6.ui.task2_interface import Ui_Form  # Імпортуй тут свій інтерфейс
+
 
 class LinkedListSort(QWidget):
     def __init__(self):
@@ -13,9 +14,8 @@ class LinkedListSort(QWidget):
         # Використовуємо deque для симуляції зв'язного списку
         self.linked_list = deque()
 
-        # Підключення сигналів до функцій
-        self.ui.create_list_button.clicked.connect(self.generate_linked_list)
-        self.ui.sort_button.clicked.connect(self.sort_list)
+        # Налаштування зв'язків кнопок
+        self.setup_connections()
 
         # Застосування стилів
         self.apply_styles()
@@ -26,6 +26,17 @@ class LinkedListSort(QWidget):
             style = style_file.read()
             self.setStyleSheet(style)
 
+    def show_message(self, message, is_error=False):
+        """Відображення повідомлення"""
+        color = "red" if is_error else "green"
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
+
+    def setup_connections(self):
+        """Налаштування зв'язків кнопок"""
+        self.ui.pushButton_create_list.clicked.connect(self.generate_linked_list)
+        self.ui.pushButton_sort.clicked.connect(self.sort_list)
+
     def generate_linked_list(self):
         """Генеруємо випадковий зв'язний список на основі введеної кількості елементів"""
         try:
@@ -35,35 +46,25 @@ class LinkedListSort(QWidget):
             # Генеруємо випадковий зв'язний список
             self.linked_list = deque(random.randint(1, 100) for _ in range(size))
             self.display_list(self.linked_list)
-            self.display_message("Список згенеровано!")
+            self.show_message("Список згенеровано успішно")
         except ValueError:
-            self.display_message("Будь ласка, введіть дійсну кількість елементів!", error=True)
+            self.show_message("Помилка: Введіть коректне значення для розміру списку", is_error=True)
 
     def sort_list(self):
         """Сортування зв'язного списку за спаданням"""
         if not self.linked_list:
-            QMessageBox.warning(self, "Помилка", "Спочатку згенеруйте список.")
+            self.show_message("Помилка: Список порожній", is_error=True)
             return
 
-        # Перетворюємо deque у звичайний список, сортуємо його і знову перетворюємо в deque
         sorted_list = deque(sorted(self.linked_list, reverse=True))
 
-        # Оновлюємо наш deque і відображаємо відсортований список
         self.linked_list = sorted_list
         self.display_list(self.linked_list)
-        self.display_message("Список відсортовано за спаданням!")
+        self.show_message("Список відсортовано успішно")
 
     def display_list(self, linked_list):
         """Відображає список у QLabel"""
-        self.ui.list_result.setText(", ".join(map(str, linked_list)))
-
-    def display_message(self, message, error=False):
-        """Виводить повідомлення у QLabel для статусу. Якщо помилка - виділяємо червоним"""
-        if error:
-            self.ui.status_label.setStyleSheet("color: red;")
-        else:
-            self.ui.status_label.setStyleSheet("color: green;")
-        self.ui.status_label.setText(message)
+        self.ui.label_result_list.setText(", ".join(map(str, linked_list)))
 
 
 if __name__ == "__main__":

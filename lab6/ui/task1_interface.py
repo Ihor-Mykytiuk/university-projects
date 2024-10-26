@@ -33,26 +33,26 @@ class Ui_Form(object):
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.size_input = QLineEdit(Form)
-        self.size_input.setObjectName(u"size_input")
-        self.size_input.setStyleSheet(u"")
-        self.size_input.setClearButtonEnabled(True)
+        self.input_size = QLineEdit(Form)
+        self.input_size.setObjectName(u"input_size")
+        self.input_size.setStyleSheet(u"")
+        self.input_size.setClearButtonEnabled(True)
 
-        self.verticalLayout_3.addWidget(self.size_input)
+        self.verticalLayout_3.addWidget(self.input_size)
 
-        self.create_array_button = QPushButton(Form)
-        self.create_array_button.setObjectName(u"create_array_button")
+        self.pushButton_create_list = QPushButton(Form)
+        self.pushButton_create_list.setObjectName(u"pushButton_create_list")
 
-        self.verticalLayout_3.addWidget(self.create_array_button)
+        self.verticalLayout_3.addWidget(self.pushButton_create_list)
 
 
         self.verticalLayout_4.addLayout(self.verticalLayout_3)
 
-        self.array_result = QLabel(Form)
-        self.array_result.setObjectName(u"array_result")
-        self.array_result.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_result_list = QLabel(Form)
+        self.label_result_list.setObjectName(u"label_result_list")
+        self.label_result_list.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_4.addWidget(self.array_result)
+        self.verticalLayout_4.addWidget(self.label_result_list)
 
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -66,20 +66,20 @@ class Ui_Form(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.n_input = QLineEdit(Form)
-        self.n_input.setObjectName(u"n_input")
+        self.input_n = QLineEdit(Form)
+        self.input_n.setObjectName(u"input_n")
 
-        self.horizontalLayout.addWidget(self.n_input)
+        self.horizontalLayout.addWidget(self.input_n)
 
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
 
         self.horizontalLayout.addWidget(self.label)
 
-        self.k_input = QLineEdit(Form)
-        self.k_input.setObjectName(u"k_input")
+        self.input_k = QLineEdit(Form)
+        self.input_k.setObjectName(u"input_k")
 
-        self.horizontalLayout.addWidget(self.k_input)
+        self.horizontalLayout.addWidget(self.input_k)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -87,19 +87,19 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addLayout(self.verticalLayout)
 
-        self.delete_button = QPushButton(Form)
-        self.delete_button.setObjectName(u"delete_button")
+        self.pushButton_delete_elements = QPushButton(Form)
+        self.pushButton_delete_elements.setObjectName(u"pushButton_delete_elements")
 
-        self.verticalLayout_2.addWidget(self.delete_button)
+        self.verticalLayout_2.addWidget(self.pushButton_delete_elements)
 
 
         self.verticalLayout_4.addLayout(self.verticalLayout_2)
 
-        self.status_label = QLabel(Form)
-        self.status_label.setObjectName(u"status_label")
-        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_status = QLabel(Form)
+        self.label_status.setObjectName(u"label_status")
+        self.label_status.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_4.addWidget(self.status_label)
+        self.verticalLayout_4.addWidget(self.label_status)
 
 
         self.retranslateUi(Form)
@@ -110,16 +110,16 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.title.setText(QCoreApplication.translate("Form", u"\u0412\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0441\u043f\u0438\u0441\u043a\u0443", None))
-        self.size_input.setText("")
-        self.size_input.setPlaceholderText(QCoreApplication.translate("Form", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0440\u043e\u0437\u043c\u0456\u0440 \u043c\u0430\u0441\u0438\u0432\u0443 N", None))
-        self.create_array_button.setText(QCoreApplication.translate("Form", u"\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043c\u0430\u0441\u0438\u0432", None))
-        self.array_result.setText("")
+        self.input_size.setText("")
+        self.input_size.setPlaceholderText(QCoreApplication.translate("Form", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0440\u043e\u0437\u043c\u0456\u0440 \u043c\u0430\u0441\u0438\u0432\u0443 N", None))
+        self.pushButton_create_list.setText(QCoreApplication.translate("Form", u"\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u0441\u043f\u0438\u0441\u043e\u043a", None))
+        self.label_result_list.setText("")
         self.label_2.setText(QCoreApplication.translate("Form", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043f\u043e\u0437\u0438\u0446\u0456\u044e \u0434\u043b\u044f \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f", None))
-        self.n_input.setText("")
-        self.n_input.setPlaceholderText(QCoreApplication.translate("Form", u"N", None))
+        self.input_n.setText("")
+        self.input_n.setPlaceholderText(QCoreApplication.translate("Form", u"N", None))
         self.label.setText(QCoreApplication.translate("Form", u"\u043f\u043e", None))
-        self.k_input.setPlaceholderText(QCoreApplication.translate("Form", u"K", None))
-        self.delete_button.setText(QCoreApplication.translate("Form", u"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438", None))
-        self.status_label.setText("")
+        self.input_k.setPlaceholderText(QCoreApplication.translate("Form", u"K", None))
+        self.pushButton_delete_elements.setText(QCoreApplication.translate("Form", u"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438", None))
+        self.label_status.setText("")
     # retranslateUi
 
