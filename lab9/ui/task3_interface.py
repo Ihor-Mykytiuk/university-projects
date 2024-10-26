@@ -84,6 +84,7 @@ class Ui_MainWindow(object):
         self.buttonGroup.setObjectName(u"buttonGroup")
         self.buttonGroup.addButton(self.radioButton_phone_book1)
         self.radioButton_phone_book1.setObjectName(u"radioButton_phone_book1")
+        self.radioButton_phone_book1.setChecked(True)
 
         self.horizontalLayout_3.addWidget(self.radioButton_phone_book1)
 
