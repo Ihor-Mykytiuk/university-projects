@@ -7,14 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>450</width>
-    <height>600</height>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_5" stretch="2,14,4,1">
+   <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,10,3,1,0">
+    <property name="spacing">
+     <number>16</number>
+    </property>
     <item>
      <widget class="QLabel" name="title">
       <property name="text">
@@ -37,7 +40,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget_phone_book1"/>
+         <widget class="QTextEdit" name="list_phone_book1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -51,7 +58,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget_phone_book2"/>
+         <widget class="QTextEdit" name="list_phone_book2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -95,6 +106,9 @@
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>6</number>
+        </property>
         <item>
          <widget class="QLineEdit" name="input_name">
           <property name="placeholderText">
@@ -132,9 +146,27 @@
      </layout>
     </item>
     <item>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <widget class="QPushButton" name="pushButton_swap_phone_books">
+        <property name="text">
+         <string>Обмін вмісту телефонних книг</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_clear_phone_books">
+        <property name="text">
+         <string>Очистити телефонні книги</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <widget class="QLabel" name="label_status">
       <property name="text">
-       <string>Status'</string>
+       <string/>
       </property>
      </widget>
     </item>

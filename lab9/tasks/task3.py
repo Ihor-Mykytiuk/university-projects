@@ -1,6 +1,7 @@
-from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QListWidget,
-                               QPushButton, QLineEdit, QLabel, QComboBox, QHBoxLayout)
+from PySide6.QtWidgets import (QApplication, QMainWindow)
+
 from lab9.ui.task3_interface import Ui_MainWindow
+
 
 class PhoneBookApp(QMainWindow):
     def __init__(self):
@@ -20,9 +21,14 @@ class PhoneBookApp(QMainWindow):
             "Олена": "123456789",
             "Ірина": "456789123"
         }
-
+        # Оновлення списку контактів
         self.update_lists()
+
+        # Налаштування зв'язків кнопок
         self.setup_connections()
+
+        # Застосування стилів
+        self.apply_styles("static/styles/styles.qss")
 
 
     def apply_styles(self, style_file_path):
@@ -41,19 +47,16 @@ class PhoneBookApp(QMainWindow):
         """Налаштування зв'язків кнопок"""
         self.ui.pushButton_add_contact.clicked.connect(self.add_contact)
         self.ui.pushButton_edit_contact.clicked.connect(self.edit_contact)
+        self.ui.pushButton_swap_phone_books.clicked.connect(self.swap_phone_books)
+        self.ui.pushButton_clear_phone_books.clicked.connect(self.clear_phone_books)
 
     def update_lists(self):
         """Оновлення списку контактів"""
-        self.ui.listWidget_phone_book1.clear()
-        self.ui.listWidget_phone_book2.clear()
+        phone_book1 = "\n".join([f"{name}: {group}" for name, group in self.phone_book1.items()])
+        phone_book2 = "\n".join([f"{name}: {group}" for name, group in self.phone_book2.items()])
 
-        for name, phone in self.phone_book1.items():
-            self.ui.listWidget_phone_book1.addItem(f"{name}: {phone}")
-
-        for name, phone in self.phone_book2.items():
-            self.ui.listWidget_phone_book2.addItem(f"{name}: {phone}")
-
-
+        self.ui.list_phone_book1.setText(phone_book1)
+        self.ui.list_phone_book2.setText(phone_book2)
 
     def add_contact(self):
         """Додавання контакту"""
@@ -96,7 +99,18 @@ class PhoneBookApp(QMainWindow):
 
         self.update_lists()
 
+    def swap_phone_books(self):
+        """Обмін контактів між телефонними книгами"""
+        self.phone_book1, self.phone_book2 = self.phone_book2, self.phone_book1
+        self.update_lists()
+        self.show_message("Контакти обмінено")
 
+    def clear_phone_books(self):
+        """Очищення телефонних книг"""
+        self.phone_book1.clear()
+        self.phone_book2.clear()
+        self.update_lists()
+        self.show_message("Телефонні книги очищено")
 
 if __name__ == "__main__":
     app = QApplication([])

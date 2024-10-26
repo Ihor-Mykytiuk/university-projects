@@ -16,24 +16,24 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QButtonGroup, QHBoxLayout, QLabel,
-    QLineEdit, QListWidget, QListWidgetItem, QMainWindow,
-    QPushButton, QRadioButton, QSizePolicy, QVBoxLayout,
-    QWidget)
+    QLineEdit, QMainWindow, QPushButton, QRadioButton,
+    QSizePolicy, QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(450, 600)
+        MainWindow.resize(450, 700)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout_5 = QVBoxLayout(self.centralwidget)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_6 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_6.setSpacing(16)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.title = QLabel(self.centralwidget)
         self.title.setObjectName(u"title")
         self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_5.addWidget(self.title)
+        self.verticalLayout_6.addWidget(self.title)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -44,10 +44,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.label_phone_book1)
 
-        self.listWidget_phone_book1 = QListWidget(self.centralwidget)
-        self.listWidget_phone_book1.setObjectName(u"listWidget_phone_book1")
+        self.list_phone_book1 = QTextEdit(self.centralwidget)
+        self.list_phone_book1.setObjectName(u"list_phone_book1")
+        self.list_phone_book1.setEnabled(False)
 
-        self.verticalLayout.addWidget(self.listWidget_phone_book1)
+        self.verticalLayout.addWidget(self.list_phone_book1)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout)
@@ -59,16 +60,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.label_phone_book2)
 
-        self.listWidget_phone_book2 = QListWidget(self.centralwidget)
-        self.listWidget_phone_book2.setObjectName(u"listWidget_phone_book2")
+        self.list_phone_book2 = QTextEdit(self.centralwidget)
+        self.list_phone_book2.setObjectName(u"list_phone_book2")
+        self.list_phone_book2.setEnabled(False)
 
-        self.verticalLayout_2.addWidget(self.listWidget_phone_book2)
+        self.verticalLayout_2.addWidget(self.list_phone_book2)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout_2)
 
 
-        self.verticalLayout_5.addLayout(self.horizontalLayout)
+        self.verticalLayout_6.addLayout(self.horizontalLayout)
 
         self.verticalLayout_4 = QVBoxLayout()
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
@@ -98,6 +100,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addLayout(self.horizontalLayout_3)
 
         self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setSpacing(6)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.input_name = QLineEdit(self.centralwidget)
         self.input_name.setObjectName(u"input_name")
@@ -128,17 +131,32 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addLayout(self.horizontalLayout_2)
 
 
-        self.verticalLayout_5.addLayout(self.verticalLayout_4)
+        self.verticalLayout_6.addLayout(self.verticalLayout_4)
+
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.pushButton_swap_phone_books = QPushButton(self.centralwidget)
+        self.pushButton_swap_phone_books.setObjectName(u"pushButton_swap_phone_books")
+
+        self.verticalLayout_5.addWidget(self.pushButton_swap_phone_books)
+
+        self.pushButton_clear_phone_books = QPushButton(self.centralwidget)
+        self.pushButton_clear_phone_books.setObjectName(u"pushButton_clear_phone_books")
+
+        self.verticalLayout_5.addWidget(self.pushButton_clear_phone_books)
+
+
+        self.verticalLayout_6.addLayout(self.verticalLayout_5)
 
         self.label_status = QLabel(self.centralwidget)
         self.label_status.setObjectName(u"label_status")
 
-        self.verticalLayout_5.addWidget(self.label_status)
+        self.verticalLayout_6.addWidget(self.label_status)
 
-        self.verticalLayout_5.setStretch(0, 2)
-        self.verticalLayout_5.setStretch(1, 14)
-        self.verticalLayout_5.setStretch(2, 4)
-        self.verticalLayout_5.setStretch(3, 1)
+        self.verticalLayout_6.setStretch(0, 1)
+        self.verticalLayout_6.setStretch(1, 10)
+        self.verticalLayout_6.setStretch(2, 3)
+        self.verticalLayout_6.setStretch(3, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -158,6 +176,8 @@ class Ui_MainWindow(object):
         self.input_phone_number.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0443", None))
         self.pushButton_add_contact.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0434\u0430\u0442\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442", None))
         self.pushButton_edit_contact.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442", None))
-        self.label_status.setText(QCoreApplication.translate("MainWindow", u"Status'", None))
+        self.pushButton_swap_phone_books.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043c\u0456\u043d \u0432\u043c\u0456\u0441\u0442\u0443 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u043d\u0438\u0445 \u043a\u043d\u0438\u0433", None))
+        self.pushButton_clear_phone_books.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u043d\u0456 \u043a\u043d\u0438\u0433\u0438", None))
+        self.label_status.setText("")
     # retranslateUi
 
