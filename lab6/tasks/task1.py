@@ -2,7 +2,7 @@ import sys
 import random
 from PySide6.QtWidgets import QApplication, QWidget, QMessageBox
 from lab6.ui.task1_interface import Ui_Form
-from llist import sllist, sllistnode, sllistiterator
+from llist import sllist, sllistnode, sllistiterator, sllistnodeiterator
 
 
 class ListManipulator(QWidget):
@@ -50,12 +50,15 @@ class ListManipulator(QWidget):
         self.ui.label_result_list.clear()
         iterator = sllistiterator(self.list)
         try:
+            # Перший елемент
+            item = next(iterator)
+            label_text = str(item)
+
             while True:
                 item = next(iterator)
-                label_text = self.ui.label_result_list.text() + str(item) + " -> "
-                self.ui.label_result_list.setText(label_text)
+                label_text += " -> " + str(item)
         except StopIteration:
-            pass
+            self.ui.label_result_list.setText(label_text)
 
     def delete_elements(self):
         """Видалення елементів з позицій N по K"""
@@ -63,8 +66,27 @@ class ListManipulator(QWidget):
         k = int(self.ui.input_k.text())
 
         if n < 0 or k > self.list.size or n >= k:
-            QMessageBox.critical(self, "Помилка", "Неправильно вказані індекси!")
+            self.show_message("Помилка: некоректні значення N та K", is_error=True)
             return
+        iterator = sllistnodeiterator(self.list)
+
+        for _ in range(n):
+            print(next(iterator))
+
+            # Тепер ми знаходимося на позиції n
+            # Видаляємо елементи з n по k
+
+        # Збираємо всі елементи, які потрібно видалити
+        elements_to_remove = []
+        for _ in range(k - n + 1):
+            try:
+                elements_to_remove.append(next(iterator))
+            except StopIteration:
+                break
+
+        # Видаляємо зібрані елементи
+        for element in elements_to_remove:
+            self.list.remove(element)
 
         self.show_list()
 
