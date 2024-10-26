@@ -1,17 +1,15 @@
 import random
 import sys
-from collections import deque
 from PySide6.QtWidgets import QApplication, QWidget
-from lab6.ui.task2_interface import Ui_Form  # Імпортуй тут свій інтерфейс
+from lab6.ui.task2_interface import Ui_Form
 
 
 class LinkedListSort(QWidget):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Form()  # Ініціалізуємо інтерфейс
+        self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        # Використовуємо deque для симуляції зв'язного списку
         self.linked_list = deque()
 
         # Налаштування зв'язків кнопок

@@ -1,7 +1,7 @@
 import sys
 import random
 from PySide6.QtWidgets import QApplication, QWidget, QMessageBox
-from lab6.ui.task1_interface import Ui_Form  # Імпортуй тут свій інтерфейс
+from lab6.ui.task1_interface import Ui_Form
 from llist import sllist, sllistnode, sllistiterator
 
 
@@ -57,11 +57,10 @@ class ListManipulator(QWidget):
         except StopIteration:
             pass
 
-
     def delete_elements(self):
         """Видалення елементів з позицій N по K"""
-        n = int(self.ui.n_input.text())
-        k = int(self.ui.k_input.text())
+        n = int(self.ui.input_n.text())
+        k = int(self.ui.input_k.text())
 
         if n < 0 or k > self.list.size or n >= k:
             QMessageBox.critical(self, "Помилка", "Неправильно вказані індекси!")
