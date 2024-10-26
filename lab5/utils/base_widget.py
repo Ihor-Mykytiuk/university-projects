@@ -23,9 +23,9 @@ class BaseWidget(QWidget):
         """Відображає матрицю у QLabel"""
         self.ui.matrix_result.setText("\n".join(" ".join(map(str, row)) for row in matrix))
 
-    def display_message(self, message, error=False):
+    def display_message(self, message, is_error=False):
         """Виводить повідомлення у QLabel для статусу."""
-        color = "red" if error else "green"
+        color = "red" if is_error else "green"
         self.ui.label_status.setStyleSheet(f"color: {color};")
         self.ui.label_status.setText(message)
 

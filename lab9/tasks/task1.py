@@ -66,7 +66,7 @@ class MapStudentApp(QMainWindow):
             self.update_students_list()
             return
 
-        # Вибір пошуку за іменем або групою
+        # Вибір типу пошуку
         if self.ui.radioButton_search_by_name.isChecked():
             filtered_students = {name: group for name, group in self.students.items()
                                  if search_text in name.lower()}

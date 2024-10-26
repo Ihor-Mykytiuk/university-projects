@@ -37,7 +37,7 @@ class ArraySort(BaseWidget):
             self.display_array(self.array_handler.array)
             self.display_message("Масив успішно створено.")
         except ValueError as e:
-            self.display_message(str(e), error=True)
+            self.display_message(f"Помилка створення масиву: {str(e)}", is_error=True)
 
     def perform_transformation(self):
         """Виконання перетворення масиву"""
@@ -46,7 +46,7 @@ class ArraySort(BaseWidget):
             self.display_array(transformed_array)
             self.display_message("Масив успішно перетворено.")
         except ValueError as e:
-            self.display_message(str(e), error=True)
+            self.display_message(f"Помилка перетворення масиву: {str(e)}", is_error=True)
 
 
 if __name__ == "__main__":

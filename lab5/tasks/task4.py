@@ -27,7 +27,7 @@ class MatrixTransform(BaseWidget):
             self.display_matrix(self.matrix_handler.matrix)
             self.display_message("Матрицю згенеровано!")
         except ValueError as e:
-            self.display_message(str(e), error=True)
+            self.display_message(f"Помилка генерації матриці: {str(e)}", is_error=True)
 
     def transform_matrix(self):
         """Перетворення матриці: заміна місцями мінімального і максимального елементів"""
@@ -36,7 +36,7 @@ class MatrixTransform(BaseWidget):
             self.display_matrix(transformed_matrix)
             self.display_message("Матриця перетворена!")
         except ValueError as e:
-            self.display_message(str(e), error=True)
+            self.display_message(f"Помилка перетворення матриці: {str(e)}", is_error=True)
 
 
 if __name__ == "__main__":

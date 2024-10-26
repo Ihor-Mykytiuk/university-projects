@@ -29,7 +29,7 @@ class HospitalQueueSystem(QMainWindow):
 
         # Створюємо контейнера для контенту в QScrollArea
         self.scroll_content = QWidget()
-        self.grid_layout = QGridLayout(self.scroll_content)  # Порожній QGridLayout
+        self.grid_layout = QGridLayout(self.scroll_content)
         self.scroll_content.setLayout(self.grid_layout)
 
         self.ui.scrollArea.setWidget(self.scroll_content)

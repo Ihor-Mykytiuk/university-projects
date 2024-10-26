@@ -27,7 +27,7 @@ class MatrixSum(BaseWidget):
             self.display_matrix(self.matrix_handler.matrix)
             self.display_message("Матрицю згенеровано!")
         except ValueError:
-            self.display_message("Помилка: введіть коректні розміри матриці.", error=True)
+            self.display_message("Помилка: Введіть коректні розміри матриці.", is_error=True)
 
     def calculate_sum(self):
         """Обчислення суми елементів парних або непарних стовпців"""
@@ -36,7 +36,7 @@ class MatrixSum(BaseWidget):
             total_sum = self.matrix_handler.sum_columns(even=even)
             self.display_message(f"Сума: {total_sum}")
         except ValueError as e:
-            self.display_message(str(e), error=True)
+            self.display_message(f"Помилка обчислення суми: {str(e)}", is_error=True)
 
 
 if __name__ == "__main__":

@@ -64,7 +64,7 @@ class PhoneBookApp(QMainWindow):
         phone = self.ui.input_phone_number.text().strip()
 
         if not name or not phone:
-            self.show_message("Заповніть всі поля", is_error=True)
+            self.show_message("Помилка: Заповніть всі поля", is_error=True)
             return
 
         if self.ui.radioButton_phone_book1.isChecked():
@@ -81,7 +81,7 @@ class PhoneBookApp(QMainWindow):
         phone = self.ui.input_phone_number.text().strip()
 
         if not name or not phone:
-            self.show_message("Заповніть всі поля", is_error=True)
+            self.show_message("Помилка: Заповніть всі поля", is_error=True)
             return
 
         if self.ui.radioButton_phone_book1.isChecked():
@@ -89,13 +89,13 @@ class PhoneBookApp(QMainWindow):
                 self.phone_book1[name] = phone
                 self.show_message("Контакт успішно відредаговано")
             else:
-                self.show_message("Контакт не знайдено", is_error=True)
+                self.show_message("Помилка: Контакт не знайдено", is_error=True)
         else:
             if name in self.phone_book2:
                 self.phone_book2[name] = phone
                 self.show_message("Контакт успішно відредаговано")
             else:
-                self.show_message("Контакт не знайдено", is_error=True)
+                self.show_message("Помилка: Контакт не знайдено", is_error=True)
 
         self.update_lists()
 

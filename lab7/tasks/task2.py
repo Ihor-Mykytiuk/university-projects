@@ -56,7 +56,7 @@ class FileSwapper(QMainWindow):
             label.setText(f"Файл {file_type}: {os.path.basename(file_name)}")
             self.show_message(f"Файл {file_type} вибрано успішно.")
         else:
-            self.show_message(f"Помилка: файл {file_type} не вибрано.", is_error=True)
+            self.show_message(f"Помилка: Файл {file_type} не вибрано.", is_error=True)
 
     def select_standard_files(self):
         """Вибір стандартних файлів з директорії проєкту"""
@@ -135,10 +135,10 @@ class FileSwapper(QMainWindow):
     def process_files(self):
         """Обробка файлів"""
         if not self.f1_path:
-            self.show_message("Помилка: файл f1 не вибрано.", is_error=True)
+            self.show_message("Помилка: Файл f1 не вибрано.", is_error=True)
             return
         if not self.f2_path:
-            self.show_message("Помилка: файл f2 не вибрано.", is_error=True)
+            self.show_message("Помилка: Файл f2 не вибрано.", is_error=True)
             return
 
         self.swap_files_content()

@@ -63,7 +63,7 @@ class StackProcessor(QMainWindow):
         """Оновлення відображення стека"""
         self.ui.label_stack_result.clear()
         if self.stack.is_empty():
-            self.show_message("Помилка: стек порожній.", is_error=True)
+            self.show_message("Помилка: Cтек порожній.", is_error=True)
             return
 
         temp_stack = Stack()
