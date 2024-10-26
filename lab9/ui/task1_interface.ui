@@ -14,7 +14,7 @@
    <string>Map Student</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="3,4,10,4,2">
+   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="2,4,10,4,1">
     <item>
      <widget class="QLabel" name="title">
       <property name="text">
@@ -67,7 +67,11 @@
      </layout>
     </item>
     <item>
-     <widget class="QTextEdit" name="list_students"/>
+     <widget class="QTextEdit" name="list_students">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -115,7 +119,7 @@
     <item>
      <widget class="QLabel" name="label_status">
       <property name="text">
-       <string>Status'</string>
+       <string/>
       </property>
      </widget>
     </item>

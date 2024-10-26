@@ -6,8 +6,9 @@ from lab5.tasks import ArrayTransform, ArraySort, MatrixSum, MatrixTransform
 from lab6.tasks import ListManipulator, LinkedListSort, LinkedList
 from lab7.tasks import FileProcessor, FileSwapper
 from lab8.tasks import StackProcessor, QueueProcessor, HospitalQueueSystem
-from lab9.tasks import MapStudentApp, PhoneBook, ProductChecker
+from lab9.tasks import MapStudentApp, ProductChecker, PhoneBookApp
 from lab10.calculator import Calculator
+
 
 # Загальне меню для переходу по лабораторних і завданнях
 class MainMenu(QMainWindow):
@@ -48,7 +49,7 @@ class MainMenu(QMainWindow):
             'Лабораторна робота №9': {
                 'Завдання 1': MapStudentApp,
                 'Завдання 2': ProductChecker,
-                'Завдання 3': PhoneBook,
+                'Завдання 3': PhoneBookApp,
             },
             'Лабораторна робота №10': {
                 'Калькулятор': Calculator,
