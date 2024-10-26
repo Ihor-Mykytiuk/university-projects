@@ -4,7 +4,7 @@ from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, 
 import sys
 from lab9.ui.task2_interface import Ui_MainWindow
 
-class ProductChecker(QMainWindow):
+class ProductCheckerApp(QMainWindow):
     def __init__(self):
         super().__init__()
 

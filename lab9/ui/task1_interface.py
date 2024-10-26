@@ -71,6 +71,7 @@ class Ui_MainWindow(object):
 
         self.list_students = QTextEdit(self.centralwidget)
         self.list_students.setObjectName(u"list_students")
+        self.list_students.setEnabled(False)
 
         self.verticalLayout_3.addWidget(self.list_students)
 
@@ -114,11 +115,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.label_status)
 
-        self.verticalLayout_3.setStretch(0, 3)
+        self.verticalLayout_3.setStretch(0, 2)
         self.verticalLayout_3.setStretch(1, 4)
         self.verticalLayout_3.setStretch(2, 10)
         self.verticalLayout_3.setStretch(3, 4)
-        self.verticalLayout_3.setStretch(4, 2)
+        self.verticalLayout_3.setStretch(4, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -137,6 +138,6 @@ class Ui_MainWindow(object):
         self.input_group.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u0430", None))
         self.pushButton_add_student.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0434\u0430\u0442\u0438 \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430", None))
         self.pushButton_delete_student.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430", None))
-        self.label_status.setText(QCoreApplication.translate("MainWindow", u"Status'", None))
+        self.label_status.setText("")
     # retranslateUi
 

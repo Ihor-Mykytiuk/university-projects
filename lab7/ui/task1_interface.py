@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'task1_ui.ui'
+## Form generated from reading UI file 'task1_interface.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.3
 ##
@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 605)
+        MainWindow.resize(450, 700)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
@@ -83,6 +83,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.verticalLayout)
 
+        self.verticalLayout_2.setStretch(0, 2)
+        self.verticalLayout_2.setStretch(1, 1)
+        self.verticalLayout_2.setStretch(2, 2)
 
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
 
@@ -90,11 +93,6 @@ class Ui_MainWindow(object):
         self.table_results.setObjectName(u"table_results")
 
         self.verticalLayout_3.addWidget(self.table_results)
-
-        self.label_status = QLabel(self.centralwidget)
-        self.label_status.setObjectName(u"label_status")
-
-        self.verticalLayout_3.addWidget(self.label_status)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -111,8 +109,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
 
+        self.label_status = QLabel(self.centralwidget)
+        self.label_status.setObjectName(u"label_status")
+
+        self.verticalLayout_3.addWidget(self.label_status)
+
         self.verticalLayout_3.setStretch(0, 1)
         self.verticalLayout_3.setStretch(1, 2)
+        self.verticalLayout_3.setStretch(2, 4)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -129,8 +133,8 @@ class Ui_MainWindow(object):
         self.pushButton_select_output_file.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0432\u0438\u0445\u0456\u0434\u043d\u0438\u0439 \u0444\u0430\u0439\u043b", None))
         self.label_input_file.setText("")
         self.label_output_file.setText("")
-        self.label_status.setText("")
         self.pushButton_run_processing.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043a\u0443", None))
         self.pushButton_clear_results.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0440\u0435\u0437\u0443\u043b\u0442\u044c\u0442\u0430\u0442", None))
+        self.label_status.setText("")
     # retranslateUi
 
