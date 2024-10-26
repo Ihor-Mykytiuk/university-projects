@@ -15,7 +15,7 @@ class ArrayTransform(BaseWidget):
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""
         self.ui.pushButton_create_array.clicked.connect(self.create_array)
-        self.ui.pushButton_sort_array.clicked.connect(self.perform_transformation)
+        self.ui.pushButton_transform_array.clicked.connect(self.perform_transformation)
 
         # Обробка змін в полях введення
         self.ui.size_input.textChanged.connect(self.input_changed)
