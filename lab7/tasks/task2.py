@@ -1,9 +1,6 @@
-import os
-import sys
-
+import os, sys
 from PySide6.QtCore import QFile, QIODevice
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-
 from lab7.ui.task2_interface import Ui_MainWindow
 
 

@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QLabel, QListWidget, QPushButton,
-                               QGroupBox, QSizePolicy, QMainWindow, QGridLayout)
-from lab8.utils.data_structures import Queue
+                               QGroupBox, QMainWindow, QGridLayout)
 from lab8.ui.task3_interface import Ui_MainWindow
+from lab8.utils.data_structures import Queue
 
 
 class HospitalQueueSystem(QMainWindow):

@@ -1,10 +1,9 @@
-import sys
-import random
-from PySide6 import QtWidgets
-from PySide6.QtWidgets import QMainWindow
+import sys, random
+from PySide6.QtWidgets import QMainWindow, QApplication
 
 from lab8.utils.data_structures import Stack
 from lab8.ui.task1_interface import Ui_MainWindow
+
 
 class StackProcessor(QMainWindow):
     def __init__(self):
@@ -70,7 +69,7 @@ class StackProcessor(QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     window = StackProcessor()
     window.show()
     sys.exit(app.exec())

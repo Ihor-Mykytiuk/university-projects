@@ -1,9 +1,8 @@
-import sys
-import random
-from PySide6 import QtWidgets
-from PySide6.QtWidgets import QMainWindow
+import sys, random
+from PySide6.QtWidgets import QMainWindow, QApplication
 from lab8.utils.data_structures import Queue  # Переконайся, що в тебе є реалізація черги
 from lab8.ui.task2_interface import Ui_MainWindow
+
 
 class QueueProcessor(QMainWindow):
     def __init__(self):
@@ -81,7 +80,7 @@ class QueueProcessor(QMainWindow):
                 self.queue.enqueue(temp_queue.dequeue())
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     window = QueueProcessor()
     window.show()
     sys.exit(app.exec())

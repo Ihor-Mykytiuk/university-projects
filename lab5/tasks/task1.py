@@ -1,4 +1,3 @@
-# task1.py
 import sys
 from PySide6.QtWidgets import QApplication
 from lab5.ui.task1_interface import Ui_Form
