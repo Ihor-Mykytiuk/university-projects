@@ -1,8 +1,8 @@
-from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
-                               QRadioButton, QPushButton, QButtonGroup, QMessageBox, QGroupBox, QSizePolicy,
-                               QMainWindow, QGridLayout, QCheckBox)
 import sys
+from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QButtonGroup, QGroupBox, QMainWindow, QGridLayout,
+                               QCheckBox)
 from lab9.ui.task2_interface import Ui_MainWindow
+
 
 class ProductCheckerApp(QMainWindow):
     def __init__(self):
@@ -17,7 +17,6 @@ class ProductCheckerApp(QMainWindow):
             "Хліб", "Кефір", "Молоко", "Цукор", "Сіль", "Картопля", "Морква", "Цибуля", "Капуста", "Помідори", "Яблука",
         }
         self.stores = {}
-
         self.stores_buttons = {}
 
         # Створення контейнера для контенту в QScrollArea
@@ -44,6 +43,11 @@ class ProductCheckerApp(QMainWindow):
         color = "red" if is_error else "green"
         self.ui.label_status.setStyleSheet(f"color: {color};")
         self.ui.label_status.setText(message)
+
+    def setup_connections(self):
+        """Налаштування зв'язків кнопок"""
+        self.ui.pushButton_add_store.clicked.connect(self.add_store)
+        self.ui.pushButton_process_products.clicked.connect(self.process_products)
 
     @staticmethod
     def clear_layout(layout):
@@ -92,11 +96,6 @@ class ProductCheckerApp(QMainWindow):
             self.show_message(f"Магазин {store_name} був успішно доданий.")
             self.ui.input_store_name.clear()
 
-    def setup_connections(self):
-        """Налаштування зв'язків кнопок"""
-        self.ui.pushButton_add_store.clicked.connect(self.add_store)
-        self.ui.pushButton_process_products.clicked.connect(self.process_products)
-
     def process_buttons_group(self):
         for store_name, store_buttons in self.stores_buttons.items():
             store_products = set()
@@ -119,6 +118,6 @@ class ProductCheckerApp(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = ProductChecker()
+    window = ProductCheckerApp()
     window.show()
     sys.exit(app.exec())

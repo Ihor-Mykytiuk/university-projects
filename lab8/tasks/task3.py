@@ -1,8 +1,7 @@
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QLabel, QListWidget, QPushButton,
                                QGroupBox, QSizePolicy, QMainWindow, QGridLayout)
-
-from lab8.ui.task3_interface import Ui_MainWindow
 from lab8.utils.data_structures import Queue
+from lab8.ui.task3_interface import Ui_MainWindow
 
 
 class HospitalQueueSystem(QMainWindow):
@@ -28,14 +27,14 @@ class HospitalQueueSystem(QMainWindow):
 
         self.MAX_QUEUE_SIZE = 10  # Максимум 10 пацієнтів в черзі до одного лікаря
 
-        # Створюємо контейнер для контенту в QScrollArea
+        # Створюємо контейнера для контенту в QScrollArea
         self.scroll_content = QWidget()
         self.grid_layout = QGridLayout(self.scroll_content)  # Порожній QGridLayout
         self.scroll_content.setLayout(self.grid_layout)
 
         self.ui.scrollArea.setWidget(self.scroll_content)
 
-        self.add_combobox_items()
+        self.init_combobox_items()
 
         # Створення сітки лікарів та їх черг
         self.create_doctor_queues()
@@ -62,7 +61,7 @@ class HospitalQueueSystem(QMainWindow):
         """Налаштування зв'язків кнопок"""
         self.ui.pushButton_add_patient.clicked.connect(self.add_patient)
 
-    def add_combobox_items(self):
+    def init_combobox_items(self):
         """Додавання лікарів у випадаючий список"""
         for doctor in self.doctors:
             self.ui.comboBox_doctor_select.addItem(doctor)

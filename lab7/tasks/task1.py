@@ -35,6 +35,12 @@ class FileProcessor(QMainWindow):
             style = style_file.read()
             self.setStyleSheet(style)
 
+    def show_message(self, message, is_error=False):
+        """Відображення повідомлення"""
+        color = "red" if is_error else "green"
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
+
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""
         self.ui.pushButton_select_input_file.clicked.connect(self.select_input_file)
@@ -48,12 +54,6 @@ class FileProcessor(QMainWindow):
         self.ui.table_results.setHorizontalHeaderLabels(["Група", "Максимальне значення"])
         self.ui.table_results.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
         self.ui.table_results.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
-
-    def show_message(self, message, is_error=False):
-        """Відображення повідомлення"""
-        color = "red" if is_error else "green"
-        self.ui.label_status.setStyleSheet(f"color: {color};")
-        self.ui.label_status.setText(message)
 
     def select_input_file(self):
         """Вибір вхідного файлу через QFileDialog"""
