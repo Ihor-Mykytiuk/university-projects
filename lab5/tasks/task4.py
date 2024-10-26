@@ -19,7 +19,7 @@ class MatrixTransform(BaseWidget):
         self.ui.pushButton_transform_matrix.clicked.connect(self.transform_matrix)
 
     def create_matrix(self):
-        """Генерує випадкову матрицю та відображає її"""
+        """Генерування випадкової матриці"""
         try:
             m = int(self.ui.m_input.text())
             n = int(self.ui.n_input.text())
@@ -30,13 +30,14 @@ class MatrixTransform(BaseWidget):
             self.display_message(str(e), error=True)
 
     def transform_matrix(self):
-        """Перетворює матрицю: міняє місцями мінімальний і максимальний елементи"""
+        """Перетворення матриці: заміна місцями мінімального і максимального елементів"""
         try:
             transformed_matrix = self.matrix_handler.swap_min_max_in_rows()
             self.display_matrix(transformed_matrix)
             self.display_message("Матриця перетворена!")
         except ValueError as e:
             self.display_message(str(e), error=True)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

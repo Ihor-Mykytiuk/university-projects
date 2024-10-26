@@ -65,16 +65,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = ListManipulator()
     window.show()
-    my_list = sllist([1, 2, 3, 4, 5])
-    my_list2 = [1, 2, 3, 4, 5]
-    iterator = sllistiterator(my_list)
-    iterator2 = iter(my_list2)
-    while True:
-        try:
-            node = next(iterator)  # Отримуємо наступний вузол
-            print(node)  # Виведе значення вузла
-        except StopIteration:
-            print("End of list")
-            break  # Виходимо з циклу, коли досягнуто кінця списку
-
     sys.exit(app.exec())

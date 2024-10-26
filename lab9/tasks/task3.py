@@ -112,6 +112,7 @@ class PhoneBookApp(QMainWindow):
         self.update_lists()
         self.show_message("Телефонні книги очищено")
 
+
 if __name__ == "__main__":
     app = QApplication([])
     window = PhoneBookApp()

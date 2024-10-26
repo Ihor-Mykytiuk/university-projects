@@ -19,7 +19,7 @@ class MatrixSum(BaseWidget):
         self.ui.pushButton_calculate_sum.clicked.connect(self.calculate_sum)
 
     def create_matrix(self):
-        """Генерує випадкову матрицю та відображає її"""
+        """Генерування випадкової матриці"""
         try:
             m = int(self.ui.m_input.text())
             n = int(self.ui.n_input.text())
@@ -30,13 +30,14 @@ class MatrixSum(BaseWidget):
             self.display_message("Помилка: введіть коректні розміри матриці.", error=True)
 
     def calculate_sum(self):
-        """Обчислює суму елементів парних або непарних стовпців"""
+        """Обчислення суми елементів парних або непарних стовпців"""
         try:
             even = self.ui.comboBox.currentText() == "Парні стовпці"
             total_sum = self.matrix_handler.sum_columns(even=even)
             self.display_message(f"Сума: {total_sum}")
         except ValueError as e:
             self.display_message(str(e), error=True)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

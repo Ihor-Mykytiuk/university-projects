@@ -47,6 +47,7 @@ class FileProcessor(QMainWindow):
         self.ui.pushButton_clear_results.clicked.connect(self.clear_results)
 
     def init_results_table(self):
+        """Ініціалізація таблиці результатів"""
         self.ui.table_results.setColumnCount(2)
         self.ui.table_results.setHorizontalHeaderLabels(["Група", "Максимальне значення"])
         self.ui.table_results.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
@@ -73,7 +74,7 @@ class FileProcessor(QMainWindow):
             self.show_message("Помилка: вихідний файл не вибрано.", is_error=True)
 
     def select_standard_files(self):
-        """Автоматичний вибір стандартних файлів з директорії проєкту"""
+        """Вибір стандартних файлів з директорії проєкту"""
         base_path = os.path.dirname(os.path.abspath(__file__)) # Шлях до поточної директорії
         self.input_file_path = os.path.join(base_path, "../",  "files", 'f.txt')
         self.output_file_path = os.path.join(base_path, "../", "files", 'g.txt')
@@ -83,7 +84,7 @@ class FileProcessor(QMainWindow):
         self.show_message("Стандартні файли вибрано успішно.")
 
     def read_input_file(self):
-        """Зчитування даних з вхідного файлу за допомогою QFile."""
+        """Зчитування даних з вхідного файлу"""
         file = QFile(self.input_file_path)
         if not file.open(QFile.OpenModeFlag.ReadOnly | QFile.OpenModeFlag.Text):
             self.show_message(f"Не вдалося відкрити вхідний файл: {file.errorString()}", is_error=True)
@@ -124,9 +125,7 @@ class FileProcessor(QMainWindow):
                 max_in_group = max(group)
                 results.append(max_in_group)
                 self.update_result_table(i // 5, group, max_in_group)
-
             return results
-
         except Exception as e:
             self.show_message(f"Помилка при обробці даних: {str(e)}", is_error=True)
             return []

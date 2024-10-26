@@ -11,9 +11,8 @@ class QueueProcessor(QMainWindow):
         self.ui.setupUi(self)
         self.queue = Queue()
 
-        # З'єднуємо кнопки з функціями
-        self.ui.pushButton_create_queue.clicked.connect(self.create_queue)
-        self.ui.pushButton_process_queue.clicked.connect(self.process_queue)
+        # Налаштування зв'язків кнопок
+        self.setup_connections()
 
         # Застосування стилів
         self.apply_styles("static/styles/styles.qss")
@@ -24,60 +23,70 @@ class QueueProcessor(QMainWindow):
             style = style_file.read()
             self.setStyleSheet(style)
 
+    def show_message(self, message, is_error=False):
+        """Відображення повідомлення"""
+        color = "red" if is_error else "green"
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
+
+    def setup_connections(self):
+        """Налаштування зв'язків кнопок"""
+        self.ui.pushButton_create_queue.clicked.connect(self.create_queue)
+        self.ui.pushButton_process_queue.clicked.connect(self.process_queue)
+
     def create_queue(self):
-        # Створюємо чергу з 10 випадкових чисел
+        """Створення черги з 10 випадкових чисел"""
         self.queue = Queue()
         for _ in range(10):
             random_integer = random.randint(-10, 10)
             self.queue.enqueue(random_integer)
 
-        self.ui.label_status.setText("Queue created.")
+        self.show_message("Черга створена успішно.")
         self.update_queue_label()
 
     def process_queue(self):
-        # Збільшуємо всі значення в черзі на максимальний елемент
+        """Збільшення кожного значення на максимальне значення у черзі"""
         if self.queue.is_empty():
-            self.ui.label_status.setText("Queue is empty. Cannot process.")
+            self.show_message("Помилка: черга порожня.", is_error=True)
             return
 
-        temp_queue = Queue()  # Тимчасова черга для зберігання значень
-        max_value = None  # Змінна для зберігання максимального значення
+        temp_queue = Queue()
+        max_value = None
 
-        # Знаходимо максимальний елемент
         while not self.queue.is_empty():
             value = self.queue.dequeue()
             if max_value is None or value > max_value:
-                max_value = value  # Оновлюємо максимальне значення
-            temp_queue.enqueue(value)  # Поміщаємо значення в тимчасову чергу
+                max_value = value
+            temp_queue.enqueue(value)
 
-        # Збільшуємо значення на максимальний елемент і зберігаємо в нову чергу
         while not temp_queue.is_empty():
             value = temp_queue.dequeue()
             new_value = value + max_value
-            self.queue.enqueue(new_value)  # Поміщаємо нове значення назад у чергу
+            self.queue.enqueue(new_value)
 
         self.update_queue_label()
-        self.ui.label_status.setText("Values processed.")
+        self.show_message("Чергу оброблено успішно.")
 
     def update_queue_label(self):
+        """Оновлення відображення черги"""
         self.ui.label_queue_result.clear()
         if self.queue.is_empty():
-            self.ui.label_queue_result.setText("Queue is empty")
-        else:
-            temp_queue = Queue()
-            output_str = ""
+            self.show_message("Помилка: черга порожня.", is_error=True)
+            return
 
-            # Витягуємо значення з основної черги
-            while not self.queue.is_empty():
-                value = self.queue.dequeue()
-                output_str += str(value) + " -> "
-                temp_queue.enqueue(value)  # Зберігаємо значення в тимчасовій черзі
+        temp_queue = Queue()
+        output_str = ""
 
-            self.ui.label_queue_result.setText(output_str)  # Відображаємо значення
+        while not self.queue.is_empty():
+            value = self.queue.dequeue()
+            output_str += str(value) + " -> "
+            temp_queue.enqueue(value)
 
-            # Повертаємо значення назад у основну чергу
-            while not temp_queue.is_empty():
-                self.queue.enqueue(temp_queue.dequeue())
+        self.ui.label_queue_result.setText(output_str)
+
+        while not temp_queue.is_empty():
+            self.queue.enqueue(temp_queue.dequeue())
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

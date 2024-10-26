@@ -35,7 +35,7 @@ class StackProcessor(QMainWindow):
         self.ui.pushButton_process_stack.clicked.connect(self.process_stack)
 
     def create_stack(self):
-        """Створення стеку з 10 випадкових чисел"""
+        """Створення стека з 10 випадкових чисел"""
         self.stack = Stack()
         for _ in range(10):
             random_integer = random.randint(-10, 10)
@@ -60,6 +60,7 @@ class StackProcessor(QMainWindow):
         self.update_stack_label()
 
     def update_stack_label(self):
+        """Оновлення відображення стека"""
         self.ui.label_stack_result.clear()
         if self.stack.is_empty():
             self.show_message("Помилка: стек порожній.", is_error=True)

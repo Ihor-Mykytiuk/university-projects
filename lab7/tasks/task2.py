@@ -28,7 +28,7 @@ class FileSwapper(QMainWindow):
             self.setStyleSheet(style)
 
     def show_message(self, message, is_error=False):
-        """Відображення повідомлення у labelMessages"""
+        """Відображення повідомлення"""
         color = "red" if is_error else "green"
         self.ui.label_status.setStyleSheet(f"color: {color};")
         self.ui.label_status.setText(message)
@@ -59,7 +59,7 @@ class FileSwapper(QMainWindow):
             self.show_message(f"Помилка: файл {file_type} не вибрано.", is_error=True)
 
     def select_standard_files(self):
-        """Вибір стандартних файлів"""
+        """Вибір стандартних файлів з директорії проєкту"""
         base_path = os.path.dirname(os.path.abspath(__file__))
         first_file_name = "f1.txt"
         second_file_name = "f2.txt"

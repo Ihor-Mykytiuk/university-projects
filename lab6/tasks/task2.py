@@ -65,6 +65,7 @@ class LinkedListSort(QWidget):
             self.ui.status_label.setStyleSheet("color: green;")
         self.ui.status_label.setText(message)
 
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = LinkedListSort()

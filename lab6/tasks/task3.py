@@ -74,13 +74,8 @@ class UserInterface:
             print("Неправильний вибір, спробуйте ще раз.")
         return True
 
-def main():
-    ui = UserInterface()
-    while True:
-        ui.display_menu()
-        choice = ui.get_choice()
-        if not ui.handle_choice(choice):
-            break
-
 if __name__ == "__main__":
-    main()
+    app = QApplication(sys.argv)
+    window = LinkedListSort()
+    window.show()
+    sys.exit(app.exec())
