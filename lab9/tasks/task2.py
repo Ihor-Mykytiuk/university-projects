@@ -12,23 +12,24 @@ class ProductCheckerApp(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # Створюємо контейнер для контенту в QScrollArea
-        self.scroll_content = QWidget()
-        self.grid_layout = QGridLayout(self.scroll_content)  # Порожній QGridLayout
-        self.scroll_content.setLayout(self.grid_layout)
-
-        # Вставляємо порожній контент у QScrollArea
-        self.ui.scrollArea.setWidget(self.scroll_content)
         # Набір товарів
         self.products = {
             "Хліб", "Кефір", "Молоко", "Цукор", "Сіль", "Картопля", "Морква", "Цибуля", "Капуста", "Помідори", "Яблука",
         }
-        self.stores = {
+        self.stores = {}
 
-        }
         self.stores_buttons = {}
+
+        # Створення контейнера для контенту в QScrollArea
+        self.scroll_content = QWidget()
+        self.grid_layout = QGridLayout(self.scroll_content)  # Порожній QGridLayout
+        self.scroll_content.setLayout(self.grid_layout)
+
+        self.ui.scrollArea.setWidget(self.scroll_content)
+
         # Налаштування зв'язків кнопок
         self.setup_connections()
+
         # Застосування стилів
         self.apply_styles("static/styles/styles.qss")
 

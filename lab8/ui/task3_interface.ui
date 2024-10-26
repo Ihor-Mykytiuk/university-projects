@@ -28,7 +28,7 @@
     <item>
      <widget class="QLabel" name="label_patient_name">
       <property name="text">
-       <string>Введіть ім'я пацієнта</string>
+       <string>Введіть ім'я пацієнта:</string>
       </property>
      </widget>
     </item>

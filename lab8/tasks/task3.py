@@ -13,13 +13,6 @@ class HospitalQueueSystem(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # Створюємо контейнер для контенту в QScrollArea
-        self.scroll_content = QWidget()
-        self.grid_layout = QGridLayout(self.scroll_content)  # Порожній QGridLayout
-        self.scroll_content.setLayout(self.grid_layout)
-        # Вставляємо порожній контент у QScrollArea
-        self.ui.scrollArea.setWidget(self.scroll_content)
-
         # Список лікарів і черги пацієнтів
         self.doctors = {
             "Терапевт": Queue(),
@@ -29,23 +22,29 @@ class HospitalQueueSystem(QMainWindow):
             "Офтальмолог": Queue(),
             "Дерматолог": Queue(),
         }
-        self.add_combobox_items()
-        self.MAX_QUEUE_SIZE = 10  # Максимум 10 пацієнтів в черзі до одного лікаря
 
-        # Основне вікно
-        self.setWindowTitle("Запис до лікаря")
-        self.layout = QVBoxLayout(self)
-
-        # Сітка для черг лікарів
         self.queues = {}  # Словник для зберігання списків черг для кожного лікаря
         self.indicators = {}  # Індикатори черг для відображення кількості пацієнтів
 
+        self.MAX_QUEUE_SIZE = 10  # Максимум 10 пацієнтів в черзі до одного лікаря
+
+        # Створюємо контейнер для контенту в QScrollArea
+        self.scroll_content = QWidget()
+        self.grid_layout = QGridLayout(self.scroll_content)  # Порожній QGridLayout
+        self.scroll_content.setLayout(self.grid_layout)
+
+        self.ui.scrollArea.setWidget(self.scroll_content)
+
+        self.add_combobox_items()
+
+        # Створення сітки лікарів та їх черг
         self.create_doctor_queues()
+
         # Налаштування зв'язків кнопок
         self.setup_connections()
 
         # Застосування стилів
-        #self.apply_styles("static/styles/styles.qss")
+        self.apply_styles("static/styles/styles.qss")
 
     def apply_styles(self, style_file_path):
         """Застосування стилів з файлу CSS"""
@@ -69,6 +68,7 @@ class HospitalQueueSystem(QMainWindow):
             self.ui.comboBox_doctor_select.addItem(doctor)
 
     def create_doctor_queues(self):
+        """Створення сітки лікарів та їх черг"""
         # Рядок і колонка для сітки
         row = 0
         col = 0
@@ -104,7 +104,7 @@ class HospitalQueueSystem(QMainWindow):
                 row += 1
 
     def add_patient(self):
-        # Отримання введеного ім'я та обраного лікаря
+        """Логіка додавання пацієнта в чергу"""
         patient_name = self.ui.input_patient_name.text()
         selected_doctor = self.ui.comboBox_doctor_select.currentText()
 
@@ -125,10 +125,10 @@ class HospitalQueueSystem(QMainWindow):
 
         self.update_queue_indicator(selected_doctor)
 
-        self.show_message(f"Пацієнт {patient_name} успішно доданий до черги до лікаря {selected_doctor}.")
+        self.show_message(f"Пацієнт {patient_name} успішно доданий до черги лікаря {selected_doctor}.")
 
     def serve_patient(self, doctor_name, doctor_queue):
-        # Логіка прийому пацієнта
+        """Прийом пацієнта лікарем"""
         if not self.doctors[doctor_name].is_empty():
             served_patient = self.doctors[doctor_name].dequeue()  # Беремо пацієнта з початку черги
             doctor_queue.takeItem(0)  # Видаляємо його зі списку в інтерфейсі
