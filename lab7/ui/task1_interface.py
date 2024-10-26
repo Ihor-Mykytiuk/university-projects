@@ -126,7 +126,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.title.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0440\u043e\u0431\u043a\u0430 \u0444\u0430\u0439\u043b\u0456\u0432", None))
+        self.title.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0440\u043e\u0431\u043a\u0430 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432 \u0444\u0430\u0439\u043b\u0443", None))
         self.pushButton_select_standard_files.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u0456 \u0444\u0430\u0439\u043b\u0438", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0430\u0431\u043e", None))
         self.pushButton_select_input_file.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0432\u0445\u0456\u0434\u043d\u0438\u0439 \u0444\u0430\u0439\u043b", None))

@@ -57,10 +57,10 @@ class Ui_MainWindow(object):
         self.scrollArea = QScrollArea(self.centralwidget)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 830, 528))
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.scrollArea_content = QWidget()
+        self.scrollArea_content.setObjectName(u"scrollArea_content")
+        self.scrollArea_content.setGeometry(QRect(0, 0, 830, 528))
+        self.scrollArea.setWidget(self.scrollArea_content)
 
         self.verticalLayout.addWidget(self.scrollArea)
 
@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.title.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043c\u0443\u043b\u044f\u0446\u0456\u044f \u0447\u0435\u0440\u0433\u0438 \u0432 \u043f\u043e\u043b\u0456\u043a\u043b\u0456\u043d\u0456\u0446\u0456", None))
-        self.label_patient_name.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0456\u043c'\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0430", None))
+        self.label_patient_name.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0456\u043c'\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0430:", None))
         self.pushButton_add_patient.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u0438\u0441\u044f", None))
         self.label_status.setText("")
     # retranslateUi
