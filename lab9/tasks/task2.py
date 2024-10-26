@@ -29,6 +29,20 @@ class ProductChecker(QMainWindow):
         self.stores_buttons = {}
         # Налаштування зв'язків кнопок
         self.setup_connections()
+        # Застосування стилів
+        self.apply_styles("static/styles/styles.qss")
+
+    def apply_styles(self, style_file_path):
+        """Застосування стилів з файлу CSS"""
+        with open(style_file_path, "r") as style_file:
+            style = style_file.read()
+            self.setStyleSheet(style)
+
+    def show_message(self, message, is_error=False):
+        """Відображення повідомлення"""
+        color = "red" if is_error else "green"
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
 
     @staticmethod
     def clear_layout(layout):
@@ -39,7 +53,6 @@ class ProductChecker(QMainWindow):
                 child.widget().deleteLater()
 
     def update_stores_list(self):
-        # Очищення поточного макету
         self.clear_layout(self.grid_layout)
         # Рядок і колонка для сітки
         row = 0
@@ -77,12 +90,6 @@ class ProductChecker(QMainWindow):
             self.update_stores_list()
             self.show_message(f"Магазин {store_name} був успішно доданий.")
             self.ui.input_store_name.clear()
-
-    def show_message(self, message, is_error=False):
-        """Відображення повідомлення у labelMessages"""
-        color = "red" if is_error else "green"
-        self.ui.label_status.setStyleSheet(f"color: {color};")  # Задаємо колір тексту
-        self.ui.label_status.setText(message)  # Встановлюємо текст повідомлення
 
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""

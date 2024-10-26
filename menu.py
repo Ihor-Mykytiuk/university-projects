@@ -47,8 +47,8 @@ class MainMenu(QMainWindow):
             },
             'Лабораторна робота №9': {
                 'Завдання 1': MapStudentApp,
-                'Завдання 2': PhoneBook,
-                'Завдання 3': ProductChecker,
+                'Завдання 2': ProductChecker,
+                'Завдання 3': PhoneBook,
             },
             'Лабораторна робота №10': {
                 'Калькулятор': Calculator,

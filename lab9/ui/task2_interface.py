@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(683, 600)
+        MainWindow.resize(850, 750)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_5 = QVBoxLayout(self.centralwidget)
@@ -59,7 +59,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea_content = QWidget()
         self.scrollArea_content.setObjectName(u"scrollArea_content")
-        self.scrollArea_content.setGeometry(QRect(0, 0, 663, 326))
+        self.scrollArea_content.setGeometry(QRect(0, 0, 830, 476))
         self.scrollArea.setWidget(self.scrollArea_content)
 
         self.verticalLayout_5.addWidget(self.scrollArea)
@@ -160,6 +160,6 @@ class Ui_MainWindow(object):
         self.label_products_in_at_least_one_shop.setText("")
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u0422\u043e\u0432\u0430\u0440\u0438, \u044f\u043a\u0438\u0445 \u043d\u0435\u043c\u0430\u0454 \u043d\u0456 \u0432 \u043e\u0434\u043d\u043e\u043c\u0443 \u043c\u0430\u0433\u0430\u0437\u0438\u043d\u0456:", None))
         self.label_products_in_no_shop.setText("")
-        self.label_status.setText(QCoreApplication.translate("MainWindow", u"Status", None))
+        self.label_status.setText("")
     # retranslateUi
 
