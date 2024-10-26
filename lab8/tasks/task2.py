@@ -1,6 +1,6 @@
 import sys, random
 from PySide6.QtWidgets import QMainWindow, QApplication
-from lab8.utils.data_structures import Queue  # Переконайся, що в тебе є реалізація черги
+from lab8.utils.data_structures import Queue
 from lab8.ui.task2_interface import Ui_MainWindow
 
 

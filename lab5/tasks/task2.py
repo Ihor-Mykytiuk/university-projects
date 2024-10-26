@@ -1,8 +1,8 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from lab5.ui.task2_interface import Ui_Form
-from lab5.utils.base_widget import BaseWidget
 from lab5.utils.array_handler import SortArray
+from lab5.utils.base_widget import BaseWidget
+from lab5.ui.task2_interface import Ui_Form
 
 
 class ArraySort(BaseWidget):
@@ -10,13 +10,18 @@ class ArraySort(BaseWidget):
         super().__init__(Ui_Form)
         self.array_handler = SortArray()
 
-        # Підключення сигналів до функцій
+        # Налаштування зв'язків кнопок
+        self.setup_connections()
+
+    def setup_connections(self):
+        """Налаштування зв'язків кнопок"""
         self.ui.pushButton_create_array.clicked.connect(self.create_array)
         self.ui.pushButton_sort_array.clicked.connect(self.perform_transformation)
 
         # Обробка змін в полях введення
         self.ui.size_input.textChanged.connect(self.input_changed)
         self.ui.array_input.textChanged.connect(self.input_changed)
+
 
     def create_array(self):
         """Обробка натискання кнопки створення масиву"""

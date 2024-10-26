@@ -18,6 +18,7 @@ class FileSwapper(QMainWindow):
         # Налаштування зв'язків кнопок
         self.setup_connections()
 
+        # Застосування стилів
         self.apply_styles("static/styles/styles.qss")
 
     def apply_styles(self, style_file_path):
@@ -29,8 +30,8 @@ class FileSwapper(QMainWindow):
     def show_message(self, message, is_error=False):
         """Відображення повідомлення у labelMessages"""
         color = "red" if is_error else "green"
-        self.ui.label_status.setStyleSheet(f"color: {color};")  # Задаємо колір тексту
-        self.ui.label_status.setText(message)  # Встановлюємо текст повідомлення
+        self.ui.label_status.setStyleSheet(f"color: {color};")
+        self.ui.label_status.setText(message)
 
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""
@@ -59,7 +60,7 @@ class FileSwapper(QMainWindow):
 
     def select_standard_files(self):
         """Вибір стандартних файлів"""
-        base_path = os.path.dirname(os.path.abspath(__file__))  # Отримуємо шлях до поточної директорії
+        base_path = os.path.dirname(os.path.abspath(__file__))
         first_file_name = "f1.txt"
         second_file_name = "f2.txt"
         self.f1_path = os.path.join(base_path, "../", "files", first_file_name)
@@ -77,8 +78,8 @@ class FileSwapper(QMainWindow):
 
         try:
             help_file = QFile(help_file_path)
-            if help_file.open(QIODevice.OpenModeFlag.WriteOnly):  # Відкриваємо файл для запису
-                help_file.write(b"")  # Записуємо порожній вміст
+            if help_file.open(QIODevice.OpenModeFlag.WriteOnly):
+                help_file.write(b"")
                 return help_file_path
         except Exception as e:
             self.show_message(f"Помилка створення файлу: {str(e)}", is_error=True)
@@ -101,19 +102,19 @@ class FileSwapper(QMainWindow):
 
             file1.open(QIODevice.OpenModeFlag.ReadOnly)
             help_file.open(QIODevice.OpenModeFlag.WriteOnly)
-            help_file.write(file1.readAll())  # Записуємо вміст першого файлу у допоміжний
+            help_file.write(file1.readAll())  # Запис вмісту першого файлу у допоміжний
             file1.close()
             help_file.close()
 
             file1.open(QIODevice.OpenModeFlag.WriteOnly)
             file2.open(QIODevice.OpenModeFlag.ReadOnly)
-            file1.write(file2.readAll())  # Записуємо вміст другого файлу у перший
+            file1.write(file2.readAll())  # Запис вмісту другого файлу у перший
             file1.close()
             file2.close()
 
             help_file.open(QIODevice.OpenModeFlag.ReadOnly)
             file2.open(QIODevice.OpenModeFlag.WriteOnly)
-            file2.write(help_file.readAll())  # Записуємо вміст допоміжного файлу у другий
+            file2.write(help_file.readAll())  # Запис вмісту допоміжного файлу у другий
             help_file.close()
             file2.close()
 
@@ -124,7 +125,7 @@ class FileSwapper(QMainWindow):
             self.show_message(f"Помилка обміну вмісту файлів: {str(e)}", is_error=True)
 
     def clear_results(self):
-        """Очищення"""
+        """Очищення результатів"""
         self.ui.label_status.clear()
         self.ui.label_first_file.clear()
         self.ui.label_second_file.clear()

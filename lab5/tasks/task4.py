@@ -1,8 +1,8 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from lab5.ui.task4_interface import Ui_Form
-from lab5.utils.base_widget import BaseWidget
 from lab5.utils.matrix_handler import MatrixHandler
+from lab5.utils.base_widget import BaseWidget
+from lab5.ui.task4_interface import Ui_Form
 
 
 class MatrixTransform(BaseWidget):
@@ -10,7 +10,11 @@ class MatrixTransform(BaseWidget):
         super().__init__(Ui_Form)
         self.matrix_handler = MatrixHandler()
 
-        # Підключення сигналів
+        # Налаштування зв'язків кнопок
+        self.setup_connections()
+
+    def setup_connections(self):
+        """Налаштування зв'язків кнопок"""
         self.ui.pushButton_create_matrix.clicked.connect(self.create_matrix)
         self.ui.pushButton_transform_matrix.clicked.connect(self.transform_matrix)
 

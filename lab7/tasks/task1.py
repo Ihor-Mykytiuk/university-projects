@@ -1,10 +1,7 @@
-import os
-import sys
-
+import os, sys
 from PySide6.QtCore import QFile, QTextStream
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QTableWidgetItem, \
     QHeaderView
-
 from lab7.ui.task1_interface import Ui_MainWindow
 
 
@@ -60,7 +57,7 @@ class FileProcessor(QMainWindow):
         file_name, _ = QFileDialog.getOpenFileName(self, "Вибрати вхідний файл", "",
                                                    "Text Files (*.txt);;All Files (*)")
         if file_name:  # Якщо користувач вибрав файл
-            self.input_file_path = file_name  # Зберігаємо шлях до вибраного файлу
+            self.input_file_path = file_name
             self.ui.label_input_file.setText(f"Вхідний файл: {os.path.basename(file_name)}")
         else:
             self.show_message("Помилка: вхідний файл не вибрано.", is_error=True)
@@ -70,7 +67,7 @@ class FileProcessor(QMainWindow):
         file_name, _ = QFileDialog.getSaveFileName(self, "Вибрати вихідний файл", "",
                                                    "Text Files (*.txt);;All Files (*)")
         if file_name:
-            self.output_file_path = file_name  # Зберігаємо шлях до вибраного файлу
+            self.output_file_path = file_name
             self.ui.label_output_file.setText(f"Вихідний файл: {os.path.basename(file_name)}")
         else:
             self.show_message("Помилка: вихідний файл не вибрано.", is_error=True)
@@ -88,7 +85,7 @@ class FileProcessor(QMainWindow):
     def read_input_file(self):
         """Зчитування даних з вхідного файлу за допомогою QFile."""
         file = QFile(self.input_file_path)
-        if not file.open(QFile.OpenModeFlag.ReadOnly | QFile.OpenModeFlag.Text):  # Спробуємо відкрити файл
+        if not file.open(QFile.OpenModeFlag.ReadOnly | QFile.OpenModeFlag.Text):
             self.show_message(f"Не вдалося відкрити вхідний файл: {file.errorString()}", is_error=True)
             return []
         try:
@@ -111,7 +108,7 @@ class FileProcessor(QMainWindow):
             return
         try:
             stream = QTextStream(file)
-            stream << ' '.join(map(str, results))  # Записуємо всі значення через пробіл
+            stream << ' '.join(map(str, results))
         except Exception as e:
             self.show_message(f"Помилка при записі даних: {str(e)}", is_error=True)
         finally:
@@ -128,7 +125,7 @@ class FileProcessor(QMainWindow):
                 results.append(max_in_group)
                 self.update_result_table(i // 5, group, max_in_group)
 
-            return results  # Повертаємо список максимальних значень
+            return results
 
         except Exception as e:
             self.show_message(f"Помилка при обробці даних: {str(e)}", is_error=True)

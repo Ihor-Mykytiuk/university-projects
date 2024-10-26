@@ -1,7 +1,5 @@
 import sys
-
 from PySide6.QtWidgets import QApplication, QMainWindow
-
 from lab9.ui.task1_interface import Ui_MainWindow
 
 

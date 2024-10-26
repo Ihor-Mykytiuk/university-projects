@@ -24,7 +24,7 @@
     <item>
      <widget class="QLabel" name="title">
       <property name="text">
-       <string>Обробка файлів</string>
+       <string>Обробка компонентів файлу</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
