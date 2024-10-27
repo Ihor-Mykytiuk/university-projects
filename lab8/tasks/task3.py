@@ -48,7 +48,7 @@ class HospitalQueueSystem(QMainWindow):
 
         self.MAX_QUEUE_SIZE = 10  # Максимум 10 пацієнтів в черзі до одного лікаря
 
-        # Створюємо контейнера для контенту в QScrollArea
+        # Створення контейнера для контенту в QScrollArea
         self.scroll_content = QWidget()
         self.grid_layout = QGridLayout(self.scroll_content)
         self.scroll_content.setLayout(self.grid_layout)
@@ -97,20 +97,17 @@ class HospitalQueueSystem(QMainWindow):
             doctor_group = QGroupBox(doctor_name)
             doctor_layout = QVBoxLayout()
 
-            # Створюємо список черги для пацієнтів цього лікаря
-            doctor_queue = QListWidget()
-            doctor_layout.addWidget(doctor_queue)
-            self.doctors[doctor_name]['list'] = doctor_queue  # Зберігаємо список черги
+            # Список черги для пацієнтів цього лікаря
+            doctor_layout.addWidget(self.doctors[doctor_name]['list'])
 
-            # Додаємо індикатор кількості пацієнтів
-            queue_indicator = QLabel(f"Пацієнтів у черзі: {self.doctors[doctor_name]['queue'].size()}")
-            doctor_layout.addWidget(queue_indicator)
-            self.doctors[doctor_name]['indicator'] = queue_indicator  # Зберігаємо індикатор
+            # Індикатор кількості пацієнтів у черзі
+            doctor_layout.addWidget(self.doctors[doctor_name]['indicator'])
+            self.update_queue_indicator(doctor_name)
 
             # Кнопка для прийому пацієнта
             serve_button = QPushButton(f"Прийняти пацієнта")
             serve_button.clicked.connect(
-                lambda _, name=doctor_name, queue=doctor_queue: self.serve_patient(name, queue))
+                lambda _, name=doctor_name: self.serve_patient(name))
             doctor_layout.addWidget(serve_button)
 
             doctor_group.setLayout(doctor_layout)
@@ -128,37 +125,46 @@ class HospitalQueueSystem(QMainWindow):
         patient_name = self.ui.input_patient_name.text()
         selected_doctor = self.ui.comboBox_doctor_select.currentText()
 
-        # Перевірка, чи введено ім'я пацієнта
         if not patient_name:
             self.show_message("Помилка: Введіть ім'я пацієнта.", is_error=True)
             return
 
-        # Перевірка, чи не перевищено кількість пацієнтів у черзі
         if self.doctors[selected_doctor]['queue'].size() >= self.MAX_QUEUE_SIZE:
             self.show_message(f"Помилка: Черга до лікаря {selected_doctor} вже заповнена.")
             return
 
-        # Додавання пацієнта в чергу
         self.doctors[selected_doctor]['queue'].enqueue(patient_name)
-        self.doctors[selected_doctor]['list'].addItem(patient_name)
+        self.update_doctor_queue(selected_doctor)
         self.ui.input_patient_name.clear()
-
-        self.update_queue_indicator(selected_doctor)
 
         self.show_message(f"Пацієнт {patient_name} успішно доданий до черги лікаря {selected_doctor}.")
 
-    def serve_patient(self, doctor_name, doctor_queue):
+    def serve_patient(self, doctor_name):
         """Прийом пацієнта лікарем"""
         if not self.doctors[doctor_name]['queue'].is_empty():
             served_patient = self.doctors[doctor_name]['queue'].dequeue()  # Беремо пацієнта з початку черги
-            doctor_queue.takeItem(0)  # Видаляємо його зі списку в інтерфейсі
-            self.update_queue_indicator(doctor_name)
+            self.update_doctor_queue(doctor_name)
             self.show_message(f"Пацієнт {served_patient} прийнятий лікарем {doctor_name}.")
         else:
             self.show_message(f"Помилка: Черга до лікаря {doctor_name} порожня.", is_error=True)
 
     def update_queue_indicator(self, doctor_name):
+        """Оновлення індикатора кількості пацієнтів у черзі"""
         self.doctors[doctor_name]['indicator'].setText(f"Пацієнтів у черзі: {self.doctors[doctor_name]['queue'].size()}")
+
+    def update_doctor_queue(self, doctor_name):
+        """Оновлення відображення черги лікаря"""
+        self.doctors[doctor_name]['list'].clear()
+        if self.doctors[doctor_name]['queue'].is_empty():
+            self.show_message(f"Помилка: Черга до лікаря {doctor_name} порожня.", is_error=True)
+            return
+
+        for i in range(self.doctors[doctor_name]['queue'].size()):
+            patient = self.doctors[doctor_name]['queue'].dequeue()
+            self.doctors[doctor_name]['list'].addItem(patient)
+            self.doctors[doctor_name]['queue'].enqueue(patient)
+
+        self.update_queue_indicator(doctor_name)
 
 
 if __name__ == "__main__":
