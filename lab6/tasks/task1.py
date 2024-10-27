@@ -68,26 +68,13 @@ class ListManipulator(QWidget):
         if n < 0 or k > self.list.size or n >= k:
             self.show_message("Помилка: некоректні значення N та K", is_error=True)
             return
-        iterator = sllistnodeiterator(self.list)
 
-        for _ in range(n):
-            print(next(iterator))
-
-            # Тепер ми знаходимося на позиції n
-            # Видаляємо елементи з n по k
-
-        # Збираємо всі елементи, які потрібно видалити
-        elements_to_remove = []
-        for _ in range(k - n + 1):
-            try:
-                elements_to_remove.append(next(iterator))
-            except StopIteration:
-                break
-
-        # Видаляємо зібрані елементи
-        for element in elements_to_remove:
-            self.list.remove(element)
-
+        current_node = self.list.nodeat(n)
+        while current_node is not None and n < k:
+            next_node = current_node.next
+            self.list.remove(current_node)
+            current_node = next_node
+            n += 1
         self.show_list()
 
 
