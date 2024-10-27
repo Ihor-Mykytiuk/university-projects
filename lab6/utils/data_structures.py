@@ -271,3 +271,41 @@ class DLinkedList:
             self.head = current1
 
         current1.prev, current1.next, current2.prev, current2.next = current2.prev, current2.next, current1.prev, current1.next
+
+        if current1.next is not None:
+            current1.next.prev = current1
+        else:
+            self.tail = current1
+        if current2.next is not None:
+            current2.next.prev = current2
+        else:
+            self.tail = current2
+
+    def insert(self, index, data):
+        """Вставляє новий вузол на зазначену позицію"""
+        if index == 0:
+            self.prepend(data)
+            return
+        new_node = DNode(data)
+        current = self.head
+        for i in range(index - 1):
+            if current.next is None:
+                return
+            current = current.next
+        new_node.prev = current
+        new_node.next = current.next
+        if current.next is not None:
+            current.next.prev = new_node
+        current.next = new_node
+        if new_node.next is None:
+            self.tail = new_node
+
+    def __str__(self):
+        """Повертає рядкове представлення списку"""
+        def node_generator():
+            current = self.head
+            while current:
+                yield str(current.data)
+                current = current.next
+
+        return " <-> ".join(node_generator())
