@@ -135,6 +135,10 @@ class SLinkedList:
         new_node.next = current.next
         current.next = new_node
 
+    def clear(self):
+        """Очищує список"""
+        self.head = None
+
     def __str__(self):
         """Повертає рядкове представлення списку"""
         def node_generator():
@@ -303,6 +307,11 @@ class DLinkedList:
         current.next = new_node
         if new_node.next is None:
             self.tail = new_node
+
+    def clear(self):
+        """Очищує список"""
+        self.head = None
+        self.tail = None
 
     def __str__(self):
         """Повертає рядкове представлення списку"""

@@ -1,8 +1,8 @@
 import sys
 import random
 from PySide6.QtWidgets import QApplication, QWidget, QMessageBox
+from lab6.utils.data_structures import SLinkedList, SNode
 from lab6.ui.task1_interface import Ui_Form
-from llist import sllist, sllistnode, sllistiterator, sllistnodeiterator
 
 
 class ListManipulator(QWidget):
@@ -12,7 +12,7 @@ class ListManipulator(QWidget):
         self.ui.setupUi(self)
 
         # Список для роботи
-        self.list = sllist()
+        self.list = SLinkedList()
 
         # Налаштування зв'язків кнопок
         self.setup_connections()
@@ -42,39 +42,43 @@ class ListManipulator(QWidget):
         self.list.clear()
         size = self.ui.input_size.text()
         for i in range(int(size)):
-            self.list.append(sllistnode(random.randint(1, 100)))
+            self.list.append(random.randint(1, 100))
         self.show_list()
 
     def show_list(self):
         """Відображення списку"""
         self.ui.label_result_list.clear()
-        iterator = sllistiterator(self.list)
-        try:
-            # Перший елемент
-            item = next(iterator)
-            label_text = str(item)
+        self.ui.label_result_list.setText(str(self.list))
 
-            while True:
-                item = next(iterator)
-                label_text += " -> " + str(item)
-        except StopIteration:
-            self.ui.label_result_list.setText(label_text)
 
     def delete_elements(self):
         """Видалення елементів з позицій N по K"""
         n = int(self.ui.input_n.text())
         k = int(self.ui.input_k.text())
 
-        if n < 0 or k > self.list.size or n >= k:
-            self.show_message("Помилка: некоректні значення N та K", is_error=True)
+        if n < 0 or k < 0:
+            self.show_message("Помилка: Некоректні дані.", is_error=True)
+            return
+        if n >= k:
+            self.show_message("Помилка: Позиція N має бути менша за K.", is_error=True)
             return
 
-        current_node = self.list.nodeat(n)
-        while current_node is not None and n < k:
-            next_node = current_node.next
-            self.list.remove(current_node)
-            current_node = next_node
-            n += 1
+        current = self.list.head
+        for i in range(n - 1):
+            if current.next is None:
+                self.show_message("Помилка: Позиція N виходить за межі списку.", is_error=True)
+                return
+            current = current.next
+        node1 = current
+
+        for i in range(k - n + 1):
+            if current.next is None:
+                self.show_message("Помилка: Позиція K виходить за межі списку.", is_error=True)
+                return
+            current = current.next
+        node2 = current
+
+        node1.next = node2.next
         self.show_list()
 
 
