@@ -201,6 +201,8 @@ class DLinkedList:
         self.head = self.head.next
         if self.head is not None:
             self.head.prev = None
+        else:
+            self.tail = None
         return data
 
     def take_last(self):
@@ -211,6 +213,8 @@ class DLinkedList:
         self.tail = self.tail.prev
         if self.tail is not None:
             self.tail.next = None
+        else:
+            self.head = None
         return data
 
     def take_at(self, index):
