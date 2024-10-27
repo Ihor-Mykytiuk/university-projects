@@ -8,28 +8,6 @@ class ExtendedDLinkedList(DLinkedList):
     def __init__(self):
         super().__init__()
 
-    def swap_nodes(self, node1, node2):
-        """Міняє місцями два вузли списку"""
-        if node1 is None or node2 is None:
-            return
-        if node1.prev is not None:
-            node1.prev.next = node2
-        else:
-            self.head = node2
-        if node2.prev is not None:
-            node2.prev.next = node1
-        else:
-            self.head = node1
-        node1.prev, node1.next, node2.prev, node2.next = node2.prev, node2.next, node1.prev, node1.next
-        if node1.next is not None:
-            node1.next.prev = node1
-        else:
-            self.tail = node1
-        if node2.next is not None:
-            node2.next.prev = node2
-        else:
-            self.tail = node2
-
     def count(self, first, last, value):
         """Підраховує кількість входжень значення value в діапазоні позицій від first до last"""
         if first < 0 or last < 0:
@@ -73,7 +51,7 @@ class ExtendedDLinkedList(DLinkedList):
 
         last_node = current
         while first_node != last_node and first_node.prev != last_node:
-            self.swap_nodes(first_node, last_node)
+            first_node.data, last_node.data = last_node.data, first_node.data
             first_node = first_node.next
             last_node = last_node.prev
 
@@ -164,31 +142,41 @@ class LinkedListOperationApp(QMainWindow):
     def execute_operation(self):
         """Виконує обрану операцію"""
         operation = self.ui.comboBox_select_operation.currentText()
+        first = self.ui.input_first.text()
+        last = self.ui.input_last.text()
+
+        if not first or not last:
+            self.show_message("Помилка: Позиції не вказані.", is_error=True)
+            return
+        try:
+            first = int(first)
+            last = int(last)
+        except ValueError:
+            self.show_message("Помилка: Позиції мають бути цілими числами.", is_error=True)
+            return
         if operation == "count":
-            first = self.ui.input_first.text()
-            last = self.ui.input_last.text()
             value = self.ui.input_value.text()
+            if not value:
+                self.show_message("Помилка: Значення не вказане.", is_error=True)
+                return
             try:
-                count = self.list.count(int(first), int(last), int(value))
+                count = self.list.count(first, last, int(value))
                 self.show_message(f"Кількість входжень: {count}")
             except ValueError as e:
-                self.show_message(str(e), is_error=True)
+                self.show_message(f"Помилка: {str(e)}", is_error=True)
         if operation == "reverse":
-            first = self.ui.input_first.text()
-            last = self.ui.input_last.text()
             try:
-                self.list.reverse(int(first), int(last))
+                self.list.reverse(first, last)
                 self.show_list()
             except ValueError as e:
-                self.show_message(str(e), is_error=True)
+                self.show_message(f"Помилка: {str(e)}", is_error=True)
         if operation == "iter_swap":
-            first = self.ui.input_first.text()
-            last = self.ui.input_last.text()
             try:
-                self.list.iter_swap(int(first), int(last))
+                self.list.iter_swap(first, last)
                 self.show_list()
             except ValueError as e:
-                self.show_message(str(e), is_error=True)
+                self.show_message(f"Помилка: {str(e)}", is_error=True)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
