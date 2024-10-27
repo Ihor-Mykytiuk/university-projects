@@ -2,12 +2,12 @@ import sys
 from PySide6.QtWidgets import QApplication
 from lab5.utils.matrix_handler import MatrixHandler
 from lab5.utils.base_widget import BaseWidget
-from lab5.ui.task4_interface import Ui_Form
+from lab5.ui.task4_interface import Ui_MainWindow
 
 
-class MatrixTransform(BaseWidget):
+class MatrixTransformApp(BaseWidget):
     def __init__(self):
-        super().__init__(Ui_Form)
+        super().__init__(Ui_MainWindow)
         self.matrix_handler = MatrixHandler()
 
         # Налаштування зв'язків кнопок
@@ -21,8 +21,8 @@ class MatrixTransform(BaseWidget):
     def create_matrix(self):
         """Генерування випадкової матриці"""
         try:
-            m = int(self.ui.m_input.text())
-            n = int(self.ui.n_input.text())
+            m = int(self.ui.input_m.text())
+            n = int(self.ui.input_n.text())
             self.matrix_handler.generate_matrix(m, n)
             self.display_matrix(self.matrix_handler.matrix)
             self.display_message("Матрицю згенеровано!")
@@ -41,6 +41,6 @@ class MatrixTransform(BaseWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MatrixTransform()
+    window = MatrixTransformApp()
     window.show()
     sys.exit(app.exec())

@@ -2,12 +2,12 @@ import sys
 from PySide6.QtWidgets import QApplication
 from lab5.utils.array_handler import TransformArray
 from lab5.utils.base_widget import BaseWidget
-from lab5.ui.task1_interface import Ui_Form
+from lab5.ui.task1_interface import Ui_MainWindow
 
 
-class ArrayTransform(BaseWidget):
+class ArrayTransformApp(BaseWidget):
     def __init__(self):
-        super().__init__(Ui_Form)
+        super().__init__(Ui_MainWindow)
         self.array_handler = TransformArray()
 
         self.setup_connections()
@@ -18,14 +18,14 @@ class ArrayTransform(BaseWidget):
         self.ui.pushButton_transform_array.clicked.connect(self.perform_transformation)
 
         # Обробка змін в полях введення
-        self.ui.size_input.textChanged.connect(self.input_changed)
-        self.ui.array_input.textChanged.connect(self.input_changed)
+        self.ui.input_size.textChanged.connect(self.input_changed)
+        self.ui.input_array.textChanged.connect(self.input_changed)
 
     def create_array(self):
         """Обробка натискання кнопки створення масиву"""
         try:
-            size_text = self.ui.size_input.text()
-            array_text = self.ui.array_input.text()
+            size_text = self.ui.input_size.text()
+            array_text = self.ui.input_array.text()
             if not size_text and not array_text:
                 raise ValueError("Помилка: введіть розмір масиву або сам масив.")
             if size_text:
@@ -49,6 +49,6 @@ class ArrayTransform(BaseWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = ArrayTransform()
+    window = ArrayTransformApp()
     window.show()
     sys.exit(app.exec())

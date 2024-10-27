@@ -2,8 +2,8 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
 # Імпорти всіх завдання
 from lab4.tasks import NumberDescriptionApp, VariableCheckApp, StudentLoginApp
-from lab5.tasks import ArrayTransform, ArraySort, MatrixSum, MatrixTransform
-from lab6.tasks import ListManipulator, LinkedListSort, LinkedListOperationsApp
+from lab5.tasks import ArrayTransformApp, ArraySortApp, MatrixSumApp, MatrixTransformApp
+from lab6.tasks import ListManipulatorApp, LinkedListSortApp, LinkedListOperationsApp
 from lab7.tasks import FileProcessor, FileSwapper
 from lab8.tasks import StackProcessor, QueueProcessor, HospitalQueueSystem
 from lab9.tasks import MapStudentApp, ProductCheckerApp, PhoneBookApp
@@ -27,14 +27,14 @@ class MainMenu(QMainWindow):
                 'Завдання 3': StudentLoginApp,
             },
             'Лабораторна робота №5': {
-                'Завдання 1': ArrayTransform,
-                'Завдання 2': ArraySort,
-                'Завдання 3': MatrixSum,
-                'Завдання 4': MatrixTransform,
+                'Завдання 1': ArrayTransformApp,
+                'Завдання 2': ArraySortApp,
+                'Завдання 3': MatrixSumApp,
+                'Завдання 4': MatrixTransformApp,
             },
             'Лабораторна робота №6': {
-                'Завдання 1': ListManipulator,
-                'Завдання 2': LinkedListSort,
+                'Завдання 1': ListManipulatorApp,
+                'Завдання 2': LinkedListSortApp,
                 'Завдання 3': LinkedListOperationsApp,
             },
             'Лабораторна робота №7': {

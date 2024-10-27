@@ -1,3 +1,3 @@
-from .task1 import ListManipulator
-from .task2 import LinkedListSort
+from .task1 import ListManipulatorApp
+from .task2 import LinkedListSortApp
 from .task3 import LinkedListOperationsApp

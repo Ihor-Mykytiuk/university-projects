@@ -4,7 +4,7 @@ from lab6.utils.data_structures import SLinkedList
 from lab6.ui.task2_interface import Ui_MainWindow
 
 
-class LinkedListSort(QMainWindow):
+class LinkedListSortApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -88,6 +88,6 @@ class LinkedListSort(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = LinkedListSort()
+    window = LinkedListSortApp()
     window.show()
     sys.exit(app.exec())

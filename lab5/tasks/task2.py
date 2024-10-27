@@ -2,12 +2,12 @@ import sys
 from PySide6.QtWidgets import QApplication
 from lab5.utils.array_handler import SortArray
 from lab5.utils.base_widget import BaseWidget
-from lab5.ui.task2_interface import Ui_Form
+from lab5.ui.task2_interface import Ui_MainWindow
 
 
-class ArraySort(BaseWidget):
+class ArraySortApp(BaseWidget):
     def __init__(self):
-        super().__init__(Ui_Form)
+        super().__init__(Ui_MainWindow)
         self.array_handler = SortArray()
 
         # Налаштування зв'язків кнопок
@@ -19,15 +19,15 @@ class ArraySort(BaseWidget):
         self.ui.pushButton_sort_array.clicked.connect(self.perform_transformation)
 
         # Обробка змін в полях введення
-        self.ui.size_input.textChanged.connect(self.input_changed)
-        self.ui.array_input.textChanged.connect(self.input_changed)
+        self.ui.input_size.textChanged.connect(self.input_changed)
+        self.ui.input_array.textChanged.connect(self.input_changed)
 
 
     def create_array(self):
         """Обробка натискання кнопки створення масиву"""
         try:
-            size_text = self.ui.size_input.text()
-            array_text = self.ui.array_input.text()
+            size_text = self.ui.input_size.text()
+            array_text = self.ui.input_array.text()
             if not size_text and not array_text:
                 raise ValueError("Помилка: введіть розмір масиву або сам масив.")
             if size_text:
@@ -51,6 +51,6 @@ class ArraySort(BaseWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = ArraySort()
+    window = ArraySortApp()
     window.show()
     sys.exit(app.exec())

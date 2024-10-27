@@ -54,9 +54,10 @@ QLabel#error {
     color: red;
 }
 
-QLabel#array_result, Qlabel#matrix_result, QLabel#label_result_list, QLabel#label_stack_result, QLabel#label_queue_result {
+QLabel#label_result_array, QLabel#label_result_matrix, QLabel#label_result_list, QLabel#label_stack_result, QLabel#label_queue_result {
     color: #87CEFA;
     font-weight: bold;
+    font-size: 18px;
 }
 
 QLabel#label_status {

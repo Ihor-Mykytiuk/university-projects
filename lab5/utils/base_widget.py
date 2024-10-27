@@ -1,11 +1,11 @@
 #base_widget.py
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QMainWindow
 
 
-class BaseWidget(QWidget):
-    def __init__(self, Ui_Form):
+class BaseWidget(QMainWindow):
+    def __init__(self, Ui_MainWindow):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.apply_styles("static/styles/styles.qss")
 
@@ -17,11 +17,11 @@ class BaseWidget(QWidget):
 
     def display_array(self, array):
         """Відображає масив у QLabel"""
-        self.ui.array_result.setText(", ".join(map(str, array)))
+        self.ui.label_result_array.setText(", ".join(map(str, array)))
 
     def display_matrix(self, matrix):
         """Відображає матрицю у QLabel"""
-        self.ui.matrix_result.setText("\n".join(" ".join(map(str, row)) for row in matrix))
+        self.ui.label_result_matrix.setText("\n".join(" ".join(map(str, row)) for row in matrix))
 
     def display_message(self, message, is_error=False):
         """Виводить повідомлення у QLabel для статусу."""
@@ -31,9 +31,9 @@ class BaseWidget(QWidget):
 
     def input_changed(self):
         """Блокує одне поле, якщо введено дані в інше."""
-        size_text = self.ui.size_input.text()
-        array_text = self.ui.array_input.text()
+        size_text = self.ui.input_size.text()
+        array_text = self.ui.input_array.text()
 
         # Якщо є текст в одному з полів, блокуємо інше
-        self.ui.array_input.setDisabled(bool(size_text))
-        self.ui.size_input.setDisabled(bool(array_text))
+        self.ui.input_array.setDisabled(bool(size_text))
+        self.ui.input_size.setDisabled(bool(array_text))

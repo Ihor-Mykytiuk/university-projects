@@ -5,7 +5,7 @@ from lab6.utils.data_structures import SLinkedList
 from lab6.ui.task1_interface import Ui_MainWindow
 
 
-class ListManipulator(QMainWindow):
+class ListManipulatorApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -97,6 +97,6 @@ class ListManipulator(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = ListManipulator()
+    window = ListManipulatorApp()
     window.show()
     sys.exit(app.exec())
