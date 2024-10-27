@@ -41,7 +41,7 @@ class QueueProcessor(QMainWindow):
             random_integer = random.randint(-10, 10)
             self.queue.enqueue(random_integer)
 
-        self.show_message("Черга створена успішно.")
+        self.show_message("Черга успішно створена")
         self.update_queue_label()
 
     def process_queue(self):
@@ -74,18 +74,7 @@ class QueueProcessor(QMainWindow):
             self.show_message("Помилка: черга порожня.", is_error=True)
             return
 
-        temp_queue = Queue()
-        output_str = ""
-
-        while not self.queue.is_empty():
-            value = self.queue.dequeue()
-            output_str += str(value) + " -> "
-            temp_queue.enqueue(value)
-
-        self.ui.label_queue_result.setText(output_str)
-
-        while not temp_queue.is_empty():
-            self.queue.enqueue(temp_queue.dequeue())
+        self.ui.label_queue_result.setText(str(self.queue))
 
 
 if __name__ == "__main__":

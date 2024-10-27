@@ -6,19 +6,24 @@ class Stack:
         self.__stack.append(item)
 
     def pop(self):
-        if not self.is_empty():
-            return self.__stack.pop()
-        else:
+        if self.is_empty():
             raise IndexError("Attempt to pop from an empty stack")
-
-    def is_empty(self):
-        return len(self.__stack) == 0
+        return self.__stack.pop()
 
     def top(self):
-        if not self.is_empty():
-            return self.__stack[-1]
-        else:
-            raise IndexError("Attempt to peek at an empty stack")
+        if self.is_empty():
+            raise IndexError("Attempt to get top element from an empty stack")
+        return self.__stack[-1]
+
+    def is_empty(self):
+        return not bool(self.__stack)
+
+    def swap(self, other_stack):
+        """Swaps stack other with this stack"""
+        self.__stack, other_stack.__stack = other_stack.__stack, self.__stack
+
+    def __str__(self):
+        return "top\n " + "\n".join(map(str, self.__stack[::-1])) + "\n bottom"
 
 
 class Queue:
@@ -29,19 +34,22 @@ class Queue:
         self.__queue.append(item)
 
     def dequeue(self):
-        if not self.is_empty():
-            return self.__queue.pop(0)
-        else:
+        if self.is_empty():
             raise IndexError("Attempt to dequeue from an empty queue")
-
-    def is_empty(self):
-        return len(self.__queue) == 0
+        return self.__queue.pop(0)
 
     def head(self):
-        if not self.is_empty():
-            return self.__queue[0]
-        else:
-            raise IndexError("Attempt to get the head element of an empty queue")
+        if self.is_empty():
+            raise IndexError("Attempt to get head element from an empty queue")
+        return self.__queue[0]
 
+    def is_empty(self):
+        return not bool(self.__queue)
+
+    def swap(self, other_queue):
+        """Swaps queue other with this queue"""
+        self.__queue, other_queue.__queue = other_queue.__queue, self.__queue
     def size(self):
         return len(self.__queue)
+    def __str__(self):
+        return "head\n" + "\n".join(map(str, self.__queue)) + "\n tail"

@@ -41,7 +41,7 @@ class StackProcessor(QMainWindow):
             random_integer = random.randint(-10, 10)
             self.stack.push(random_integer)
 
-        self.ui.label_status.setText("Stack created.")
+        self.show_message("Стек успішно створено")
         self.update_stack_label()
 
     def process_stack(self):
@@ -66,15 +66,7 @@ class StackProcessor(QMainWindow):
             self.show_message("Помилка: Cтек порожній.", is_error=True)
             return
 
-        temp_stack = Stack()
-        output_str = ""
-        while not self.stack.is_empty():
-            value = self.stack.pop()
-            output_str += str(value) + " -> "
-            temp_stack.push(value)
-        self.ui.label_stack_result.setText(output_str)
-        while not temp_stack.is_empty():
-            self.stack.push(temp_stack.pop())
+        self.ui.label_stack_result.setText(str(self.stack))
 
 
 if __name__ == "__main__":
