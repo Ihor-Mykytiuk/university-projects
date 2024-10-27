@@ -44,9 +44,21 @@ class LinkedListSort(QWidget):
         """Генерація випадкового списку на основі введеної кількості елементів"""
         self.list.clear()
         size = self.ui.input_size.text()
+        if not size:
+            self.show_message("Помилка: Введіть кількість елементів.", is_error=True)
+            return
+        if int(size) <= 0:
+            self.show_message("Помилка: Кількість елементів має бути більше 0.", is_error=True)
+            return
+        try:
+            int(size)
+        except ValueError:
+            self.show_message("Помилка: Некоректні дані.", is_error=True)
+            return
         for i in range(int(size)):
             self.list.append(random.randint(1, 100))
         self.show_list()
+        self.show_message("Список успішно створено.")
 
     def sort_list(self):
         """Сортування зв'язного списку за спаданням"""
@@ -65,16 +77,13 @@ class LinkedListSort(QWidget):
 
             while current is not None and current.next is not None:
                 next_node = current.next
-
                 if current.data < next_node.data:
                     self.list.swap(index, index + 1)
                     is_sorted = False
-
                 current = next_node
                 index += 1
-
         self.show_list()
-
+        self.show_message("Список успішно відсортовано.")
 
 
 if __name__ == "__main__":

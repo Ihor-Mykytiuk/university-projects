@@ -118,13 +118,28 @@ class LinkedListOperationsApp(QMainWindow):
         """Генерація випадкового списку на основі введеної кількості елементів"""
         self.list.clear()
         size = self.ui.input_size.text()
+        if not size:
+            self.show_message("Помилка: Введіть кількість елементів.", is_error=True)
+            return
+        if int(size) <= 0:
+            self.show_message("Помилка: Кількість елементів має бути більше 0.", is_error=True)
+            return
+        try:
+            int(size)
+        except ValueError:
+            self.show_message("Помилка: Некоректні дані.", is_error=True)
+            return
         for i in range(int(size)):
             self.list.append(random.randint(1, 100))
         self.show_list()
+        self.show_message("Список успішно створено.")
 
     def change_layout(self):
         """Змінює кількість полів для введення залежно від обраної операції"""
         operation = self.ui.comboBox_select_operation.currentText()
+        self.ui.input_first.clear()
+        self.ui.input_last.clear()
+        self.ui.input_value.clear()
         if operation == "count":
             self.ui.input_first.setVisible(True)
             self.ui.input_last.setVisible(True)

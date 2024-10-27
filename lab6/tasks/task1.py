@@ -38,12 +38,24 @@ class ListManipulator(QWidget):
         self.ui.pushButton_delete_elements.clicked.connect(self.delete_elements)
 
     def generate_list(self):
-        """Генерація списку"""
+        """Генерація випадкового списку на основі введеної кількості елементів"""
         self.list.clear()
         size = self.ui.input_size.text()
+        if not size:
+            self.show_message("Помилка: Введіть кількість елементів.", is_error=True)
+            return
+        if int(size) <= 0:
+            self.show_message("Помилка: Кількість елементів має бути більше 0.", is_error=True)
+            return
+        try:
+            int(size)
+        except ValueError:
+            self.show_message("Помилка: Некоректні дані.", is_error=True)
+            return
         for i in range(int(size)):
             self.list.append(random.randint(1, 100))
         self.show_list()
+        self.show_message("Список успішно створено.")
 
     def show_list(self):
         """Відображення списку"""
@@ -80,6 +92,7 @@ class ListManipulator(QWidget):
 
         node1.next = node2.next
         self.show_list()
+        self.show_message("Елементи успішно видалені.")
 
 
 if __name__ == "__main__":
