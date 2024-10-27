@@ -1,7 +1,7 @@
 import sys, random
-from PySide6.QtWidgets import QApplication, QWidget, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow
 from lab6.ui.task3_interface import Ui_MainWindow
-from lab6.utils.data_structures import DLinkedList, DNode
+from lab6.utils.data_structures import DLinkedList
 
 
 class ExtendedDLinkedList(DLinkedList):

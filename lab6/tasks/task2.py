@@ -1,13 +1,13 @@
 import sys, random
-from PySide6.QtWidgets import QApplication, QWidget
-from lab6.utils.data_structures import SLinkedList, SNode
-from lab6.ui.task2_interface import Ui_Form
+from PySide6.QtWidgets import QApplication, QMainWindow
+from lab6.utils.data_structures import SLinkedList
+from lab6.ui.task2_interface import Ui_MainWindow
 
 
-class LinkedListSort(QWidget):
+class LinkedListSort(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         self.list = SLinkedList()

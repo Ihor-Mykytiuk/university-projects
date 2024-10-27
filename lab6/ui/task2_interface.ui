@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,83 +11,85 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>MainWindow</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QLabel" name="title">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>140</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Впорядкування елементів списку</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QLineEdit" name="input_size">
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="placeholderText">
-        <string>Введіть розмір списку N</string>
-       </property>
-       <property name="clearButtonEnabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_create_list">
-       <property name="text">
-        <string>Згенерувати список</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_result_list">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>140</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="pushButton_sort_list">
-     <property name="text">
-      <string>Сортувати</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_status">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-  </layout>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="2,2,4,2,1">
+    <item>
+     <widget class="QLabel" name="title">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>140</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Впорядкування елементів списку</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLineEdit" name="input_size">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Введіть розмір списку N</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_create_list">
+        <property name="text">
+         <string>Згенерувати список</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_result_list">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_sort_list">
+      <property name="text">
+       <string>Сортувати</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_status">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections/>

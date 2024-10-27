@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,120 +11,122 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>MainWindow</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_4">
-   <item>
-    <widget class="QLabel" name="title">
-     <property name="text">
-      <string>Видалення елементів списку</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QLineEdit" name="input_size">
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="placeholderText">
-        <string>Введіть розмір масиву N</string>
-       </property>
-       <property name="clearButtonEnabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_create_list">
-       <property name="text">
-        <string>Згенерувати список</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_result_list">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Введіть позицію для видалення</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLineEdit" name="input_n">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="placeholderText">
-            <string>N</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>по</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="input_k">
-           <property name="placeholderText">
-            <string>K</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_delete_elements">
-       <property name="text">
-        <string>Видалити елементи</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_status">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-  </layout>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_4" stretch="2,2,3,2,1">
+    <item>
+     <widget class="QLabel" name="title">
+      <property name="text">
+       <string>Видалення елементів списку</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLineEdit" name="input_size">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Введіть розмір масиву N</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_create_list">
+        <property name="text">
+         <string>Згенерувати список</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_result_list">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Введіть позицію для видалення</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLineEdit" name="input_n">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>N</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>по</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="input_k">
+            <property name="placeholderText">
+             <string>K</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_delete_elements">
+        <property name="text">
+         <string>Видалити елементи</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_status">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections/>
