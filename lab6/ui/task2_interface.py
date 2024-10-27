@@ -34,12 +34,12 @@ class Ui_Form(object):
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.size_input = QLineEdit(Form)
-        self.size_input.setObjectName(u"size_input")
-        self.size_input.setStyleSheet(u"")
-        self.size_input.setClearButtonEnabled(True)
+        self.input_size = QLineEdit(Form)
+        self.input_size.setObjectName(u"input_size")
+        self.input_size.setStyleSheet(u"")
+        self.input_size.setClearButtonEnabled(True)
 
-        self.verticalLayout_3.addWidget(self.size_input)
+        self.verticalLayout_3.addWidget(self.input_size)
 
         self.pushButton_create_list = QPushButton(Form)
         self.pushButton_create_list.setObjectName(u"pushButton_create_list")
@@ -52,13 +52,14 @@ class Ui_Form(object):
         self.label_result_list = QLabel(Form)
         self.label_result_list.setObjectName(u"label_result_list")
         self.label_result_list.setMaximumSize(QSize(16777215, 140))
+        self.label_result_list.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout.addWidget(self.label_result_list)
 
-        self.pushButton_sort = QPushButton(Form)
-        self.pushButton_sort.setObjectName(u"pushButton_sort")
+        self.pushButton_sort_list = QPushButton(Form)
+        self.pushButton_sort_list.setObjectName(u"pushButton_sort_list")
 
-        self.verticalLayout.addWidget(self.pushButton_sort)
+        self.verticalLayout.addWidget(self.pushButton_sort_list)
 
         self.label_status = QLabel(Form)
         self.label_status.setObjectName(u"label_status")
@@ -74,11 +75,11 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.title.setText(QCoreApplication.translate("Form", u"\u0412\u043f\u043e\u0440\u044f\u0434\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0441\u043f\u0438\u0441\u043a\u0443", None))
-        self.size_input.setText("")
-        self.size_input.setPlaceholderText(QCoreApplication.translate("Form", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0440\u043e\u0437\u043c\u0456\u0440 \u0441\u043f\u0438\u0441\u043a\u0443 N", None))
+        self.input_size.setText("")
+        self.input_size.setPlaceholderText(QCoreApplication.translate("Form", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0440\u043e\u0437\u043c\u0456\u0440 \u0441\u043f\u0438\u0441\u043a\u0443 N", None))
         self.pushButton_create_list.setText(QCoreApplication.translate("Form", u"\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u0441\u043f\u0438\u0441\u043e\u043a", None))
         self.label_result_list.setText("")
-        self.pushButton_sort.setText(QCoreApplication.translate("Form", u"\u0421\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438", None))
+        self.pushButton_sort_list.setText(QCoreApplication.translate("Form", u"\u0421\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438", None))
         self.label_status.setText("")
     # retranslateUi
 

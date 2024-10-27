@@ -1,6 +1,6 @@
-import random
-import sys
+import sys, random
 from PySide6.QtWidgets import QApplication, QWidget
+from lab6.utils.data_structures import SLinkedList, SNode
 from lab6.ui.task2_interface import Ui_Form
 
 
@@ -10,7 +10,7 @@ class LinkedListSort(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        self.linked_list = deque()
+        self.list = SLinkedList()
 
         # Налаштування зв'язків кнопок
         self.setup_connections()
@@ -32,37 +32,49 @@ class LinkedListSort(QWidget):
 
     def setup_connections(self):
         """Налаштування зв'язків кнопок"""
-        self.ui.pushButton_create_list.clicked.connect(self.generate_linked_list)
-        self.ui.pushButton_sort.clicked.connect(self.sort_list)
+        self.ui.pushButton_create_list.clicked.connect(self.generate_list)
+        self.ui.pushButton_sort_list.clicked.connect(self.sort_list)
 
-    def generate_linked_list(self):
-        """Генеруємо випадковий зв'язний список на основі введеної кількості елементів"""
-        try:
-            size = int(self.ui.size_input.text())
-            if size <= 0:
-                raise ValueError
-            # Генеруємо випадковий зв'язний список
-            self.linked_list = deque(random.randint(1, 100) for _ in range(size))
-            self.display_list(self.linked_list)
-            self.show_message("Список згенеровано успішно")
-        except ValueError:
-            self.show_message("Помилка: Введіть коректне значення для розміру списку", is_error=True)
+    def show_list(self):
+        """Відображення списку"""
+        self.ui.label_result_list.clear()
+        self.ui.label_result_list.setText(str(self.list))
+
+    def generate_list(self):
+        """Генерація випадкового списку на основі введеної кількості елементів"""
+        self.list.clear()
+        size = self.ui.input_size.text()
+        for i in range(int(size)):
+            self.list.append(random.randint(1, 100))
+        self.show_list()
 
     def sort_list(self):
         """Сортування зв'язного списку за спаданням"""
-        if not self.linked_list:
-            self.show_message("Помилка: Список порожній", is_error=True)
+        if not self.list.head:
+            self.show_message("Помилка: Список порожній.", is_error=True)
+            return
+        if self.list.head.next is None:
+            self.show_message("Помилка: Список має тільки один елемент.", is_error=True)
             return
 
-        sorted_list = deque(sorted(self.linked_list, reverse=True))
+        is_sorted = False
+        while not is_sorted:
+            is_sorted = True
+            current = self.list.head
+            index = 0
 
-        self.linked_list = sorted_list
-        self.display_list(self.linked_list)
-        self.show_message("Список відсортовано успішно")
+            while current is not None and current.next is not None:
+                next_node = current.next
 
-    def display_list(self, linked_list):
-        """Відображає список у QLabel"""
-        self.ui.label_result_list.setText(", ".join(map(str, linked_list)))
+                if current.data < next_node.data:
+                    self.list.swap(index, index + 1)
+                    is_sorted = False
+
+                current = next_node
+                index += 1
+
+        self.show_list()
+
 
 
 if __name__ == "__main__":

@@ -33,7 +33,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLineEdit" name="size_input">
+      <widget class="QLineEdit" name="input_size">
        <property name="styleSheet">
         <string notr="true"/>
        </property>
@@ -68,10 +68,13 @@
      <property name="text">
       <string/>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton_sort">
+    <widget class="QPushButton" name="pushButton_sort_list">
      <property name="text">
       <string>Сортувати</string>
      </property>
