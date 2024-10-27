@@ -14,16 +14,37 @@ class HospitalQueueSystem(QMainWindow):
 
         # Список лікарів і черги пацієнтів
         self.doctors = {
-            "Терапевт": Queue(),
-            "Стоматолог": Queue(),
-            "Кардіолог": Queue(),
-            "Хірург": Queue(),
-            "Офтальмолог": Queue(),
-            "Дерматолог": Queue(),
+            "Терапевт": {
+                "queue": Queue(),
+                "list": QListWidget(),
+                "indicator": QLabel()
+            },
+            "Стоматолог": {
+                "queue": Queue(),
+                "list": QListWidget(),
+                "indicator": QLabel()
+            },
+            "Кардіолог": {
+                "queue": Queue(),
+                "list": QListWidget(),
+                "indicator": QLabel()
+            },
+            "Хірург": {
+                "queue": Queue(),
+                "list": QListWidget(),
+                "indicator": QLabel()
+            },
+            "Офтальмолог": {
+                "queue": Queue(),
+                "list": QListWidget(),
+                "indicator": QLabel()
+            },
+            "Дерматолог": {
+                "queue": Queue(),
+                "list": QListWidget(),
+                "indicator": QLabel()
+            },
         }
-
-        self.queues = {}  # Словник для зберігання списків черг для кожного лікаря
-        self.indicators = {}  # Індикатори черг для відображення кількості пацієнтів
 
         self.MAX_QUEUE_SIZE = 10  # Максимум 10 пацієнтів в черзі до одного лікаря
 
@@ -79,12 +100,12 @@ class HospitalQueueSystem(QMainWindow):
             # Створюємо список черги для пацієнтів цього лікаря
             doctor_queue = QListWidget()
             doctor_layout.addWidget(doctor_queue)
-            self.queues[doctor_name] = doctor_queue  # Зберігаємо список черги
+            self.doctors[doctor_name]['list'] = doctor_queue  # Зберігаємо список черги
 
             # Додаємо індикатор кількості пацієнтів
-            queue_indicator = QLabel(f"Пацієнтів у черзі: {self.doctors[doctor_name].size()}")
+            queue_indicator = QLabel(f"Пацієнтів у черзі: {self.doctors[doctor_name]['queue'].size()}")
             doctor_layout.addWidget(queue_indicator)
-            self.indicators[doctor_name] = queue_indicator  # Зберігаємо індикатор
+            self.doctors[doctor_name]['indicator'] = queue_indicator  # Зберігаємо індикатор
 
             # Кнопка для прийому пацієнта
             serve_button = QPushButton(f"Прийняти пацієнта")
@@ -113,13 +134,13 @@ class HospitalQueueSystem(QMainWindow):
             return
 
         # Перевірка, чи не перевищено кількість пацієнтів у черзі
-        if self.doctors[selected_doctor].size() >= self.MAX_QUEUE_SIZE:
+        if self.doctors[selected_doctor]['queue'].size() >= self.MAX_QUEUE_SIZE:
             self.show_message(f"Помилка: Черга до лікаря {selected_doctor} вже заповнена.")
             return
 
         # Додавання пацієнта в чергу
-        self.doctors[selected_doctor].enqueue(patient_name)
-        self.queues[selected_doctor].addItem(patient_name)
+        self.doctors[selected_doctor]['queue'].enqueue(patient_name)
+        self.doctors[selected_doctor]['list'].addItem(patient_name)
         self.ui.input_patient_name.clear()
 
         self.update_queue_indicator(selected_doctor)
@@ -128,8 +149,8 @@ class HospitalQueueSystem(QMainWindow):
 
     def serve_patient(self, doctor_name, doctor_queue):
         """Прийом пацієнта лікарем"""
-        if not self.doctors[doctor_name].is_empty():
-            served_patient = self.doctors[doctor_name].dequeue()  # Беремо пацієнта з початку черги
+        if not self.doctors[doctor_name]['queue'].is_empty():
+            served_patient = self.doctors[doctor_name]['queue'].dequeue()  # Беремо пацієнта з початку черги
             doctor_queue.takeItem(0)  # Видаляємо його зі списку в інтерфейсі
             self.update_queue_indicator(doctor_name)
             self.show_message(f"Пацієнт {served_patient} прийнятий лікарем {doctor_name}.")
@@ -137,7 +158,7 @@ class HospitalQueueSystem(QMainWindow):
             self.show_message(f"Помилка: Черга до лікаря {doctor_name} порожня.", is_error=True)
 
     def update_queue_indicator(self, doctor_name):
-        self.indicators[doctor_name].setText(f"Пацієнтів у черзі: {self.doctors[doctor_name].size()}")
+        self.doctors[doctor_name]['indicator'].setText(f"Пацієнтів у черзі: {self.doctors[doctor_name]['queue'].size()}")
 
 
 if __name__ == "__main__":
