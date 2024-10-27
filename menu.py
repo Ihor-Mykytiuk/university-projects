@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayou
 # Імпорти всіх завдання
 from lab4.tasks import NumberDescriptionApp, VariableCheckApp, StudentLoginApp
 from lab5.tasks import ArrayTransform, ArraySort, MatrixSum, MatrixTransform
-from lab6.tasks import ListManipulator, LinkedListSort #LinkedList
+from lab6.tasks import ListManipulator, LinkedListSort, LinkedListOperationsApp
 from lab7.tasks import FileProcessor, FileSwapper
 from lab8.tasks import StackProcessor, QueueProcessor, HospitalQueueSystem
 from lab9.tasks import MapStudentApp, ProductCheckerApp, PhoneBookApp
@@ -35,7 +35,7 @@ class MainMenu(QMainWindow):
             'Лабораторна робота №6': {
                 'Завдання 1': ListManipulator,
                 'Завдання 2': LinkedListSort,
-                #'Завдання 3': LinkedList,
+                'Завдання 3': LinkedListOperationsApp,
             },
             'Лабораторна робота №7': {
                 'Завдання 1': FileProcessor,

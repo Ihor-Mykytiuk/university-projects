@@ -77,7 +77,7 @@ class ExtendedDLinkedList(DLinkedList):
         first_node.data, last_node.data = last_node.data, first_node.data
 
 
-class LinkedListOperationApp(QMainWindow):
+class LinkedListOperationsApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -89,8 +89,7 @@ class LinkedListOperationApp(QMainWindow):
         self.setup_connections()
 
         # Застосування стилів
-        #self.apply_styles()
-
+        self.apply_styles()
 
     def apply_styles(self):
         """Застосування стилів з файлу CSS"""
@@ -164,22 +163,25 @@ class LinkedListOperationApp(QMainWindow):
                 self.show_message(f"Кількість входжень: {count}")
             except ValueError as e:
                 self.show_message(f"Помилка: {str(e)}", is_error=True)
+
         if operation == "reverse":
             try:
                 self.list.reverse(first, last)
                 self.show_list()
+                self.show_message("Елементи успішно переставлені у зворотньому порядку")
             except ValueError as e:
                 self.show_message(f"Помилка: {str(e)}", is_error=True)
         if operation == "iter_swap":
             try:
                 self.list.iter_swap(first, last)
                 self.show_list()
+                self.show_message("Елементи успішно переставлені місцями")
             except ValueError as e:
                 self.show_message(f"Помилка: {str(e)}", is_error=True)
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = LinkedListOperationApp()
+    window = LinkedListOperationsApp()
     window.show()
     sys.exit(app.exec())
