@@ -1,3 +1,4 @@
+import sys
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QLabel, QListWidget, QPushButton,
                                QGroupBox, QMainWindow, QGridLayout)
 from lab8.ui.task3_interface import Ui_MainWindow
@@ -93,7 +94,7 @@ class HospitalQueueSystem(QMainWindow):
         row = 0
         col = 0
         for doctor_name in self.doctors:
-            # Створюємо групу для кожного лікаря з рамкою
+            # Група для кожного лікаря
             doctor_group = QGroupBox(doctor_name)
             doctor_layout = QVBoxLayout()
 
@@ -168,7 +169,7 @@ class HospitalQueueSystem(QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QApplication([])
+    app = QApplication(sys.argv)
     window = HospitalQueueSystem()
     window.show()
     app.exec()
