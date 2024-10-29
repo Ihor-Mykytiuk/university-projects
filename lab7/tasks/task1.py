@@ -1,11 +1,10 @@
 import os, sys
 from PySide6.QtCore import QFile, QTextStream
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QTableWidgetItem, \
-    QHeaderView
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView
 from lab7.ui.task1_interface import Ui_MainWindow
 
 
-class FileProcessor(QMainWindow):
+class FileProcessorApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -44,7 +43,7 @@ class FileProcessor(QMainWindow):
         self.ui.pushButton_select_output_file.clicked.connect(self.select_output_file)
         self.ui.pushButton_select_standard_files.clicked.connect(self.select_standard_files)
         self.ui.pushButton_run_processing.clicked.connect(self.process_file)
-        self.ui.pushButton_clear_results.clicked.connect(self.clear_results)
+        self.ui.pushButton_clear_results.clicked.connect(self.clear_all)
 
     def init_results_table(self):
         """Ініціалізація таблиці результатів"""
@@ -57,11 +56,11 @@ class FileProcessor(QMainWindow):
         """Вибір вхідного файлу через QFileDialog"""
         file_name, _ = QFileDialog.getOpenFileName(self, "Вибрати вхідний файл", "",
                                                    "Text Files (*.txt);;All Files (*)")
-        if file_name:  # Якщо користувач вибрав файл
+        if file_name:
             self.input_file_path = file_name
             self.ui.label_input_file.setText(f"Вхідний файл: {os.path.basename(file_name)}")
         else:
-            self.show_message("Помилка: вхідний файл не вибрано.", is_error=True)
+            self.show_message("Помилка: Вхідний файл не вибрано.", is_error=True)
 
     def select_output_file(self):
         """Вибір вихідного файлу через QFileDialog"""
@@ -71,7 +70,7 @@ class FileProcessor(QMainWindow):
             self.output_file_path = file_name
             self.ui.label_output_file.setText(f"Вихідний файл: {os.path.basename(file_name)}")
         else:
-            self.show_message("Помилка: вихідний файл не вибрано.", is_error=True)
+            self.show_message("Помилка: Вихідний файл не вибрано.", is_error=True)
 
     def select_standard_files(self):
         """Вибір стандартних файлів з директорії проєкту"""
@@ -95,7 +94,7 @@ class FileProcessor(QMainWindow):
             numbers = list(map(int, data.split()))
             return numbers
 
-        except Exception as e:  # Обробка помилок
+        except Exception as e:
             self.show_message(f"Помилка при зчитуванні даних: {str(e)}", is_error=True)
             return []
         finally:
@@ -136,23 +135,23 @@ class FileProcessor(QMainWindow):
         self.ui.table_results.setItem(index, 0, QTableWidgetItem(str(group)))
         self.ui.table_results.setItem(index, 1, QTableWidgetItem(str(max_value)))
 
-    def clear_results(self):
-        """Очищення результатів"""
+    def clear_all(self):
+        """Очищення всіх даних"""
         self.ui.table_results.setRowCount(0)
         self.ui.label_status.clear()
         self.input_file_path = ""
         self.output_file_path = ""
+        self.ui.label_input_file.clear()
+        self.ui.label_output_file.clear()
         self.ui.table_results.clear()
         self.ui.table_results.clear()
+        self.ui.table_results.setHorizontalHeaderLabels(["Група", "Максимальне значення"])
 
     def process_file(self):
         """Обробка файлів"""
-        if not self.input_file_path:
-            self.show_message("Помилка: виберіть вхідний файл.", is_error=True)
-            return
-        if not self.output_file_path:
-            self.show_message("Помилка: виберіть вихідний файл.", is_error=True)
-            return
+        if not self.input_file_path or not self.output_file_path:
+            self.show_message("Помилка: Необхідні файли не вибрано.", is_error=True)
+
         results = self.process_numbers()
         if results:
             self.write_output_file(results)
@@ -161,6 +160,6 @@ class FileProcessor(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = FileProcessor()
+    window = FileProcessorApp()
     window.show()
     sys.exit(app.exec())

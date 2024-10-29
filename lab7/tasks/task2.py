@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from lab7.ui.task2_interface import Ui_MainWindow
 
 
-class FileSwapper(QMainWindow):
+class FileSwapperApp(QMainWindow):
     def __init__(self):
         super().__init__()
         # Ініціалізація інтерфейсу
@@ -46,7 +46,7 @@ class FileSwapper(QMainWindow):
         """Вибір файлу через QFileDialog"""
         file_name, _ = QFileDialog.getOpenFileName(self, f"Вибрати файл {file_type}", "",
                                                    "Text Files (*.txt);;All Files (*)")
-        if file_name:  # Якщо користувач вибрав файл
+        if file_name:
             if file_type == "f1":
                 self.f1_path = file_name
                 label = self.ui.label_first_file
@@ -74,7 +74,7 @@ class FileSwapper(QMainWindow):
 
     def create_help_file(self):
         """Створення порожнього допоміжного файлу"""
-        help_file_path = os.path.join(os.path.dirname(self.f1_path), "h.txt")  # Шлях до допоміжного файлу
+        help_file_path = os.path.join(os.path.dirname(self.f1_path), "h.txt")  # Шлях де буде створено файл
 
         try:
             help_file = QFile(help_file_path)
@@ -146,6 +146,6 @@ class FileSwapper(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = FileSwapper()
+    window = FileSwapperApp()
     window.show()
     sys.exit(app.exec())

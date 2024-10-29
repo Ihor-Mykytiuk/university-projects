@@ -8,7 +8,7 @@ from PySide6.QtCore import Qt
 from lab4.tasks import NumberDescriptionApp, VariableCheckApp, StudentLoginApp
 from lab5.tasks import ArrayTransformApp, ArraySortApp, MatrixSumApp, MatrixTransformApp
 from lab6.tasks import ListManipulatorApp, LinkedListSortApp, LinkedListOperationsApp
-from lab7.tasks import FileProcessor, FileSwapper
+from lab7.tasks import FileProcessorApp, FileSwapperApp
 from lab8.tasks import StackProcessor, QueueProcessor, HospitalQueueSystem
 from lab9.tasks import MapStudentApp, ProductCheckerApp, PhoneBookApp
 from lab10.calculator import Calculator
@@ -47,8 +47,8 @@ class MainMenu(QMainWindow):
                 'Завдання 3': LinkedListOperationsApp,
             },
             'Лабораторна робота №7': {
-                'Завдання 1': FileProcessor,
-                'Завдання 2': FileSwapper,
+                'Завдання 1': FileProcessorApp,
+                'Завдання 2': FileSwapperApp,
             },
             'Лабораторна робота №8': {
                 'Завдання 1': StackProcessor,

@@ -1,2 +1,2 @@
-from .task1 import FileProcessor
-from .task2 import FileSwapper
+from .task1 import FileProcessorApp
+from .task2 import FileSwapperApp

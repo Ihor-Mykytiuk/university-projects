@@ -107,7 +107,7 @@
       <item>
        <widget class="QPushButton" name="pushButton_clear_results">
         <property name="text">
-         <string>Очистити резултьтат</string>
+         <string>Очистити</string>
         </property>
        </widget>
       </item>
