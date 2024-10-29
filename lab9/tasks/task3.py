@@ -1,5 +1,4 @@
 from PySide6.QtWidgets import (QApplication, QMainWindow)
-
 from lab9.ui.task3_interface import Ui_MainWindow
 
 
@@ -66,11 +65,11 @@ class PhoneBookApp(QMainWindow):
         if not name or not phone:
             self.show_message("Помилка: Заповніть всі поля", is_error=True)
             return
-
-        if self.ui.radioButton_phone_book1.isChecked():
-            self.phone_book1[name] = phone
-        else:
-            self.phone_book2[name] = phone
+        phone_book = self.phone_book1 if self.ui.radioButton_phone_book1.isChecked() else self.phone_book2
+        if name in phone_book:
+            self.show_message("Помилка: Контакт вже існує", is_error=True)
+            return
+        phone_book[name] = phone
 
         self.update_lists()
         self.show_message("Контакт успішно додано")
@@ -84,18 +83,12 @@ class PhoneBookApp(QMainWindow):
             self.show_message("Помилка: Заповніть всі поля", is_error=True)
             return
 
-        if self.ui.radioButton_phone_book1.isChecked():
-            if name in self.phone_book1:
-                self.phone_book1[name] = phone
-                self.show_message("Контакт успішно відредаговано")
-            else:
-                self.show_message("Помилка: Контакт не знайдено", is_error=True)
+        phone_book = self.phone_book1 if self.ui.radioButton_phone_book1.isChecked() else self.phone_book2
+        if name in phone_book:
+            phone_book[name] = phone
+            self.show_message("Контакт успішно відредаговано")
         else:
-            if name in self.phone_book2:
-                self.phone_book2[name] = phone
-                self.show_message("Контакт успішно відредаговано")
-            else:
-                self.show_message("Помилка: Контакт не знайдено", is_error=True)
+            self.show_message("Помилка: Контакт не знайдено", is_error=True)
 
         self.update_lists()
 
@@ -103,7 +96,7 @@ class PhoneBookApp(QMainWindow):
         """Обмін контактів між телефонними книгами"""
         self.phone_book1, self.phone_book2 = self.phone_book2, self.phone_book1
         self.update_lists()
-        self.show_message("Контакти обмінено")
+        self.show_message("Обмін контактів між телефонними книгами виконано успішно")
 
     def clear_phone_books(self):
         """Очищення телефонних книг"""
