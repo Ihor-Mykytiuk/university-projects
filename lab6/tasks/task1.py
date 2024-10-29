@@ -11,7 +11,7 @@ class ListManipulatorApp(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # Список для роботи
+        # Однозв'язний список
         self.list = SLinkedList()
 
         # Налаштування зв'язків кнопок
