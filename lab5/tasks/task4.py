@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from lab5.utils.matrix_handler import MatrixHandler
+from lab5.utils.array_handlers import MatrixHandler
 from lab5.utils.base_widget import BaseWidget
 from lab5.ui.task4_interface import Ui_MainWindow
 

@@ -1,4 +1,3 @@
-#base_widget.py
 from PySide6.QtWidgets import QMainWindow
 
 
@@ -17,7 +16,7 @@ class BaseWidget(QMainWindow):
 
     def display_array(self, array):
         """Відображає масив у QLabel"""
-        self.ui.label_result_array.setText(", ".join(map(str, array)))
+        self.ui.label_result_array.setText(" ".join(map(str, array)))
 
     def display_matrix(self, matrix):
         """Відображає матрицю у QLabel"""

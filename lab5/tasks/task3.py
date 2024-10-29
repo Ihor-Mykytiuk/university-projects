@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from lab5.utils.matrix_handler import MatrixHandler
+from lab5.utils.array_handlers import MatrixHandler
 from lab5.utils.base_widget import BaseWidget
 from lab5.ui.task3_interface import Ui_MainWindow
 
@@ -25,7 +25,7 @@ class MatrixSumApp(BaseWidget):
             n = int(self.ui.input_n.text())
             self.matrix_handler.generate_matrix(m, n)
             self.display_matrix(self.matrix_handler.matrix)
-            self.display_message("Матрицю згенеровано!")
+            self.display_message("Матрицю згенеровано успішно")
         except ValueError:
             self.display_message("Помилка: Введіть коректні розміри матриці.", is_error=True)
 

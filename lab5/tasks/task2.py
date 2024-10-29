@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from lab5.utils.array_handler import SortArray
+from lab5.utils.array_handlers import SortArray
 from lab5.utils.base_widget import BaseWidget
 from lab5.ui.task2_interface import Ui_MainWindow
 
@@ -29,7 +29,7 @@ class ArraySortApp(BaseWidget):
             size_text = self.ui.input_size.text()
             array_text = self.ui.input_array.text()
             if not size_text and not array_text:
-                raise ValueError("Помилка: введіть розмір масиву або сам масив.")
+                raise ValueError("Помилка: Введіть розмір масиву або сам масив.")
             if size_text:
                 self.array_handler.create_random_array(size_text)
             elif array_text:
@@ -44,7 +44,7 @@ class ArraySortApp(BaseWidget):
         try:
             transformed_array = self.array_handler.transform()
             self.display_array(transformed_array)
-            self.display_message("Масив успішно перетворено.")
+            self.display_message("Масив успішно відсортовано")
         except ValueError as e:
             self.display_message(f"Помилка перетворення масиву: {str(e)}", is_error=True)
 

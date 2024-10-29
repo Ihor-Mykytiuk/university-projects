@@ -76,6 +76,7 @@ class Ui_MainWindow(object):
 
         self.label_result_array = QLabel(self.centralwidget)
         self.label_result_array.setObjectName(u"label_result_array")
+        self.label_result_array.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_3.addWidget(self.label_result_array)
 
@@ -88,7 +89,7 @@ class Ui_MainWindow(object):
 
         self.label_status = QLabel(self.centralwidget)
         self.label_status.setObjectName(u"label_status")
-        self.label_status.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_status.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.verticalLayout_3.addWidget(self.label_status)
 
