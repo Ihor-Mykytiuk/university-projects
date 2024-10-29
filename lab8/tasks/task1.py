@@ -4,7 +4,7 @@ from lab8.utils.data_structures import Stack
 from lab8.ui.task1_interface import Ui_MainWindow
 
 
-class StackProcessor(QMainWindow):
+class StackProcessorApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -58,6 +58,7 @@ class StackProcessor(QMainWindow):
             self.stack.push(temp_stack.pop())
 
         self.update_stack_label()
+        self.show_message("Стек успішно перетворено")
 
     def update_stack_label(self):
         """Оновлення відображення стека"""
@@ -71,6 +72,6 @@ class StackProcessor(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = StackProcessor()
+    window = StackProcessorApp()
     window.show()
     sys.exit(app.exec())

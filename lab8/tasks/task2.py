@@ -4,7 +4,7 @@ from lab8.utils.data_structures import Queue
 from lab8.ui.task2_interface import Ui_MainWindow
 
 
-class QueueProcessor(QMainWindow):
+class QueueProcessorApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -47,7 +47,7 @@ class QueueProcessor(QMainWindow):
     def process_queue(self):
         """Збільшення кожного значення на максимальне значення у черзі"""
         if self.queue.is_empty():
-            self.show_message("Помилка: черга порожня.", is_error=True)
+            self.show_message("Помилка: Черга порожня.", is_error=True)
             return
 
         temp_queue = Queue()
@@ -71,7 +71,7 @@ class QueueProcessor(QMainWindow):
         """Оновлення відображення черги"""
         self.ui.label_queue_result.clear()
         if self.queue.is_empty():
-            self.show_message("Помилка: черга порожня.", is_error=True)
+            self.show_message("Помилка: Черга порожня.", is_error=True)
             return
 
         self.ui.label_queue_result.setText(str(self.queue))
@@ -79,6 +79,6 @@ class QueueProcessor(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = QueueProcessor()
+    window = QueueProcessorApp()
     window.show()
     sys.exit(app.exec())

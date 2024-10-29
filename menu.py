@@ -9,7 +9,7 @@ from lab4.tasks import NumberDescriptionApp, VariableCheckApp, StudentLoginApp
 from lab5.tasks import ArrayTransformApp, ArraySortApp, MatrixSumApp, MatrixTransformApp
 from lab6.tasks import ListManipulatorApp, LinkedListSortApp, LinkedListOperationsApp
 from lab7.tasks import FileProcessorApp, FileSwapperApp
-from lab8.tasks import StackProcessor, QueueProcessor, HospitalQueueSystem
+from lab8.tasks import StackProcessorApp, QueueProcessorApp, HospitalQueueSystem
 from lab9.tasks import MapStudentApp, ProductCheckerApp, PhoneBookApp
 from lab10.calculator import Calculator
 
@@ -51,8 +51,8 @@ class MainMenu(QMainWindow):
                 'Завдання 2': FileSwapperApp,
             },
             'Лабораторна робота №8': {
-                'Завдання 1': StackProcessor,
-                'Завдання 2': QueueProcessor,
+                'Завдання 1': StackProcessorApp,
+                'Завдання 2': QueueProcessorApp,
                 'Завдання 3': HospitalQueueSystem,
             },
             'Лабораторна робота №9': {

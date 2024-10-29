@@ -134,7 +134,7 @@ class Ui_MainWindow(object):
         self.label_input_file.setText("")
         self.label_output_file.setText("")
         self.pushButton_run_processing.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043a\u0443", None))
-        self.pushButton_clear_results.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0440\u0435\u0437\u0443\u043b\u0442\u044c\u0442\u0430\u0442", None))
+        self.pushButton_clear_results.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438", None))
         self.label_status.setText("")
     # retranslateUi
 

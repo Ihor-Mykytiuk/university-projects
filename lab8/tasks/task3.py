@@ -143,7 +143,7 @@ class HospitalQueueSystem(QMainWindow):
     def serve_patient(self, doctor_name):
         """Прийом пацієнта лікарем"""
         if not self.doctors[doctor_name]['queue'].is_empty():
-            served_patient = self.doctors[doctor_name]['queue'].dequeue()  # Беремо пацієнта з початку черги
+            served_patient = self.doctors[doctor_name]['queue'].dequeue()
             self.update_doctor_queue(doctor_name)
             self.show_message(f"Пацієнт {served_patient} прийнятий лікарем {doctor_name}.")
         else:
@@ -156,9 +156,6 @@ class HospitalQueueSystem(QMainWindow):
     def update_doctor_queue(self, doctor_name):
         """Оновлення відображення черги лікаря"""
         self.doctors[doctor_name]['list'].clear()
-        if self.doctors[doctor_name]['queue'].is_empty():
-            self.show_message(f"Помилка: Черга до лікаря {doctor_name} порожня.", is_error=True)
-            return
 
         for i in range(self.doctors[doctor_name]['queue'].size()):
             patient = self.doctors[doctor_name]['queue'].dequeue()

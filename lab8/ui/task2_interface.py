@@ -40,6 +40,7 @@ class Ui_MainWindow(object):
 
         self.label_queue_result = QLabel(self.centralwidget)
         self.label_queue_result.setObjectName(u"label_queue_result")
+        self.label_queue_result.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout.addWidget(self.label_queue_result)
 
