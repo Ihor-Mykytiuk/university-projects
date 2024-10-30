@@ -162,12 +162,7 @@ class LinkedListOperationsApp(QMainWindow):
         if not first or not last:
             self.show_message("Помилка: Позиції не вказані.", is_error=True)
             return
-        try:
-            first = int(first)
-            last = int(last)
-        except ValueError:
-            self.show_message("Помилка: Позиції мають бути цілими числами.", is_error=True)
-            return
+
         if operation == "count":
             value = self.ui.input_value.text()
             if not value:

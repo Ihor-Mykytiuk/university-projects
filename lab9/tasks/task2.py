@@ -58,6 +58,7 @@ class ProductCheckerApp(QMainWindow):
                 child.widget().deleteLater()
 
     def update_stores_list(self):
+        """Оновлення списку магазинів"""
         self.clear_layout(self.grid_layout)
         # Рядок і колонка для сітки
         row = 0
@@ -84,6 +85,7 @@ class ProductCheckerApp(QMainWindow):
                 row += 1
 
     def add_store(self):
+        """Додавання магазину"""
         store_name = self.ui.input_store_name.text().strip()
         if not store_name:
             self.show_message("Помилка: Будь ласка, введіть назву магазину.", is_error=True)
@@ -97,6 +99,7 @@ class ProductCheckerApp(QMainWindow):
             self.ui.input_store_name.clear()
 
     def process_buttons_group(self):
+        """Обробка вибраних товарів у магазинах"""
         for store_name, store_buttons in self.stores_buttons.items():
             store_products = set()
             for checkbox in store_buttons.buttons():
@@ -107,10 +110,11 @@ class ProductCheckerApp(QMainWindow):
         print(self.stores)
 
     def process_products(self):
+        """Обробка товарів"""
         self.process_buttons_group()
         products_in_all_stores = set.intersection(*self.stores.values())
         products_in_at_least_one_shop = set.union(*self.stores.values())
-        products_in_no_shop = self.products - products_in_at_least_one_shop
+        products_in_no_shop = self.products.difference(products_in_at_least_one_shop)
 
         self.ui.label_products_in_all_stores.setText(", ".join(products_in_all_stores))
         self.ui.label_products_in_at_least_one_shop.setText(", ".join(products_in_at_least_one_shop))

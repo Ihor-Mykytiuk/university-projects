@@ -79,6 +79,7 @@ class ListManipulatorApp(QMainWindow):
         for i in range(n - 1):
             if current.next is None:
                 self.show_message("Помилка: Позиція N виходить за межі списку.", is_error=True)
+
                 return
             current = current.next
         node1 = current
