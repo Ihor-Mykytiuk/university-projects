@@ -21,7 +21,7 @@ class ProductCheckerApp(QMainWindow):
 
         # Створення контейнера для контенту в QScrollArea
         self.scroll_content = QWidget()
-        self.grid_layout = QGridLayout(self.scroll_content)  # Порожній QGridLayout
+        self.grid_layout = QGridLayout(self.scroll_content)
         self.scroll_content.setLayout(self.grid_layout)
 
         self.ui.scrollArea.setWidget(self.scroll_content)
@@ -64,11 +64,11 @@ class ProductCheckerApp(QMainWindow):
         col = 0
 
         for (store_name, products) in self.stores.items():
-            # Створюємо групу для кожного магазину з рамкою
+            # Група для кожного магазину
             store_group = QGroupBox(store_name)
             store_layout = QVBoxLayout()
 
-            # Створюємо групу радіокнопок для цього магазину
+            # Група радіокнопок для цього магазину
             store_buttons = QButtonGroup()
             store_buttons.setExclusive(False)
             self.stores_buttons[store_name] = store_buttons

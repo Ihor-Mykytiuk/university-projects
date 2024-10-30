@@ -112,7 +112,7 @@
         <item>
          <widget class="QLineEdit" name="input_name">
           <property name="placeholderText">
-           <string>Прізвище та ім'я</string>
+           <string>Ім'я</string>
           </property>
          </widget>
         </item>

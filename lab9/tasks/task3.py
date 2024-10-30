@@ -96,7 +96,7 @@ class PhoneBookApp(QMainWindow):
         """Обмін контактів між телефонними книгами"""
         self.phone_book1, self.phone_book2 = self.phone_book2, self.phone_book1
         self.update_lists()
-        self.show_message("Обмін контактів між телефонними книгами виконано успішно")
+        self.show_message("Обмін контактів виконано успішно")
 
     def clear_phone_books(self):
         """Очищення телефонних книг"""

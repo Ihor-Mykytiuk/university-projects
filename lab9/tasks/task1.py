@@ -58,7 +58,7 @@ class MapStudentApp(QMainWindow):
         self.ui.list_students.setText(student_info)
 
     def dynamic_search(self):
-        """Виконує динамічний пошук за введеними критеріями"""
+        """Виконує пошук за введеними критеріями"""
         search_text = self.ui.input_search.text().strip().lower()
 
         if not search_text:
@@ -66,7 +66,6 @@ class MapStudentApp(QMainWindow):
             self.update_students_list()
             return
 
-        # Вибір типу пошуку
         if self.ui.radioButton_search_by_name.isChecked():
             filtered_students = {name: group for name, group in self.students.items()
                                  if search_text in name.lower()}
