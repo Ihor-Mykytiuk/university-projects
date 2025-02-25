@@ -1,0 +1,43 @@
+<form class="user-form" id="login-form">
+  <h2 class="user-form__title">Авторизація</h2>
+  <div class="user-form__close-button">X</div>
+  <div class="user-form__input-container">
+    <input
+      type="text"
+      name="email"
+      class="login-form__email user-form__input"
+      placeholder="Email"
+    />
+    <div class="user-form__input-message" id="email-message"></div>
+  </div>
+  <div class="user-form__input-container">
+    <input
+      type="password"
+      name="password"
+      class="login-form__password user-form__input"
+      placeholder="Пароль"
+    />
+    <div class="user-form__input-message" id="password-message"></div>
+  </div>
+  <div class="user-form__input-container">
+    <div class="user-form__user-category">
+      <input
+        type="radio"
+        name="role"
+        class="login-form__user-category user-form__input"
+        value="Seller"
+      />
+      Продавець
+      <input
+        type="radio"
+        name="role"
+        class="login-form__user-category user-form__input"
+        value="Buyer"
+      />
+      Покупець
+    </div>
+    <div class="user-form__input-message" id="role-message"></div>
+  </div>
+  <button type="submit" class="user-form__submit">Увійти</button>
+  <div class="user-form__result" id="login-result"></div>
+</form>

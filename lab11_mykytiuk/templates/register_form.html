@@ -1,0 +1,78 @@
+<!-- register_form.html -->
+<form class="user-form" id="register-form">
+  <h2 class="user-form__title">Реєстрація</h2>
+  <div class="user-form__close-button">X</div>
+  <div class="user-form__names">
+    <div class="user-form__input-container">
+      <input
+        type="text"
+        name="name"
+        id="name"
+        class="register-form__name user-form__input"
+        placeholder="Ім'я"
+      />
+      <div class="user-form__input-message" id="name-message"></div>
+    </div>
+    <div class="user-form__input-container">
+      <input
+        type="text"
+        name="surname"
+        id="surname"
+        class="register-form__surname user-form__input"
+        placeholder="Прізвище"
+      />
+      <div class="user-form__input-message" id="surname-message"></div>
+    </div>
+  </div>
+  <div class="user-form__input-container">
+    <input
+      type="text"
+      name="email"
+      id="email"
+      class="register-form__email-input user-form__input"
+      placeholder="Email"
+    />
+    <div class="user-form__input-message" id="email-message"></div>
+  </div>
+  <div class="user-form__input-container">
+    <input
+      type="password"
+      name="password"
+      id="password"
+      class="register-form__password-input user-form__input"
+      placeholder="Пароль"
+    />
+    <div class="user-form__input-message" id="password-message"></div>
+  </div>
+  <div class="user-form__input-container">
+    <input
+      type="password"
+      name="password_confirm"
+      id="password-confirm"
+      class="register-form__password-confirm-input user-form__input"
+      placeholder="Підтвердження паролю"
+    />
+    <div class="user-form__input-message" id="password_confirm-message"></div>
+  </div>
+  <div class="user-form__input-container">
+    <div class="user-form__user-category">
+      <input
+        type="radio"
+        name="role"
+        class="register-form__user-seller user-form__input"
+        value="Seller"
+      />
+      Продавець
+      <input
+        type="radio"
+        name="role"
+        class="register-form__user-buyer user-form__input"
+        value="Buyer"
+      />
+      Покупець
+    </div>
+    <div class="user-form__input-message" id="role-message"></div>
+  </div>
+  <button type="submit" class="user-form__submit">Зареєструватись</button>
+  <div class="user-form__result" id="register-result"></div>
+</form>

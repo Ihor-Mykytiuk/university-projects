@@ -1,0 +1,40 @@
+<form class="user-form" id="add-product-form" enctype="multipart/form-data">
+  <h2 class="user-form__title">Додавання товару</h2>
+  <div class="user-form__close-button">X</div>
+  <div class="user-form__input-container">
+    <input
+      type="text"
+      name="name"
+      class="add-product-form__name user-form__input"
+      placeholder="Назва"
+    />
+  </div>
+  <div class="user-form__input-container">
+    <input
+      type="text"
+      name="price"
+      class="add-product-form__price user-form__input"
+      placeholder="Ціна"
+    />
+  </div>
+
+  <div class="user-form__input-container">
+    <input
+      type="number"
+      name="quantity"
+      class="add-product-form__quantity user-form__input"
+      placeholder="Кількість"
+    />
+  </div>
+
+  <div class="user-form__input-container">
+    <input
+      type="file"
+      name="file"
+      class="add-product-form__image user-form__input"
+      placeholder="Зображення"
+    />
+  </div>
+  <button type="submit" class="user-form__submit">Додати</button>
+  <div class="user-form__result" id="add-product-result"></div>
+</form>
