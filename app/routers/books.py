@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from app.database import db
 from app.repository import BookRepository
-from app.models import Book
+from app.models import Book, BookCreate
 from typing import List
 from bson import ObjectId
 
@@ -25,9 +25,11 @@ async def get_book(book_id: str):
 
 
 @router.post("/", status_code=201, response_model=Book)
-async def add_book(book: Book):
-    await repo.save(book)
-    return book
+async def add_book(book: BookCreate):
+    db_book = Book(**book.dict())
+    await repo.save(db_book)
+    return db_book
+
 
 @router.delete("/{book_id}", status_code=204)
 async def delete_book(book_id: str):
