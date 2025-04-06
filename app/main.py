@@ -1,10 +1,11 @@
-import os
 from fastapi import FastAPI
-import motor.motor_asyncio
-from bson import ObjectId
+from .routers import books
 
-app = FastAPI()
+app = FastAPI(title="Books API", version="1.0.0")
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://mongo_admin:password@mongo_db:27017")
+app.include_router(books.router, prefix="/api/v1")
 
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
