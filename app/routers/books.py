@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Request
 
 from app.database import SessionDep
 from app.models import Book, BookCreate
@@ -12,12 +12,31 @@ router = APIRouter(
 
 @router.get("/")
 async def get_books(
+        request: Request,
         session: SessionDep,
         limit: int = Query(1, ge=1),
         offset: int = Query(0, ge=0),
 ):
     books = session.query(Book).offset(offset).limit(limit).all()
-    return {"books": books, "limit": limit, "offset": offset}
+    total_count = session.query(Book).count()
+
+    prev_url = None
+    next_url = None
+
+    if offset > 0:
+        prev_offset = max(0, offset - limit)
+        prev_url = f"{request.url.scheme}://{request.url.netloc}{request.url.path}?limit={limit}&offset={prev_offset}"
+
+    if offset + limit < total_count:
+        next_offset = offset + limit
+        next_url = f"{request.url.scheme}://{request.url.netloc}{request.url.path}?limit={limit}&offset={next_offset}"
+
+    return {
+        "books": books,
+        "total_count": total_count,
+        "prev_page": prev_url,
+        "next_page": next_url
+    }
 
 
 @router.get("/{book_id}", response_model=Book)
