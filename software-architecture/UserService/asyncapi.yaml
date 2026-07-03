@@ -1,0 +1,51 @@
+asyncapi: 3.0.0
+info:
+  title: User Service Events
+  version: 1.0.0
+  description: AsyncAPI definition for events published by User Service
+servers:
+  kafkaBroker:
+    host: 'kafka-broker:9092'
+    protocol: kafka
+channels:
+  user.created:
+    address: user.created
+    messages:
+      onUserCreated.message:
+        name: UserCreated
+        payload:
+          type: object
+          properties:
+            userId:
+              type: integer
+            email:
+              type: string
+    description: Event triggered when a new user is created
+  user.deleted:
+    address: user.deleted
+    messages:
+      onUserDeleted.message:
+        name: UserDeleted
+        payload:
+          type: object
+          properties:
+            userId:
+              type: integer
+            email:
+              type: string
+    description: Event triggered when a user is deleted
+operations:
+  onUserCreated:
+    action: send
+    channel:
+      $ref: '#/channels/user.created'
+    summary: React to a new user creation
+    messages:
+      - $ref: '#/channels/user.created/messages/onUserCreated.message'
+  onUserDeleted:
+    action: send
+    channel:
+      $ref: '#/channels/user.deleted'
+    summary: React to user deletion
+    messages:
+      - $ref: '#/channels/user.deleted/messages/onUserDeleted.message'
