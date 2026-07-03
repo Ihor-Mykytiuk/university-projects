@@ -1,0 +1,11 @@
+import os
+from dotenv import load_dotenv
+import motor.motor_asyncio
+
+load_dotenv()
+
+DATABASE_URL = os.getenv("MONGO_URI")
+
+client = motor.motor_asyncio.AsyncIOMotorClient(DATABASE_URL)
+
+db = client["books"]
