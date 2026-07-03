@@ -1,0 +1,46 @@
+import sys
+from PySide6.QtWidgets import QApplication
+from lab5.utils.array_handlers import MatrixHandler
+from lab5.utils.base_widget import BaseWidget
+from lab5.ui.task4_interface import Ui_MainWindow
+
+
+class MatrixTransformApp(BaseWidget):
+    def __init__(self):
+        super().__init__(Ui_MainWindow)
+        self.matrix_handler = MatrixHandler()
+
+        # Налаштування зв'язків кнопок
+        self.setup_connections()
+
+    def setup_connections(self):
+        """Налаштування зв'язків кнопок"""
+        self.ui.pushButton_create_matrix.clicked.connect(self.create_matrix)
+        self.ui.pushButton_transform_matrix.clicked.connect(self.transform_matrix)
+
+    def create_matrix(self):
+        """Генерування випадкової матриці"""
+        try:
+            m = int(self.ui.input_m.text())
+            n = int(self.ui.input_n.text())
+            self.matrix_handler.generate_matrix(m, n)
+            self.display_matrix(self.matrix_handler.matrix)
+            self.display_message("Матрицю згенеровано!")
+        except ValueError as e:
+            self.display_message(f"Помилка генерації матриці: {str(e)}", is_error=True)
+
+    def transform_matrix(self):
+        """Перетворення матриці: заміна місцями мінімального і максимального елементів"""
+        try:
+            transformed_matrix = self.matrix_handler.swap_min_max_in_rows()
+            self.display_matrix(transformed_matrix)
+            self.display_message("Матриця перетворена!")
+        except ValueError as e:
+            self.display_message(f"Помилка перетворення матриці: {str(e)}", is_error=True)
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MatrixTransformApp()
+    window.show()
+    sys.exit(app.exec())

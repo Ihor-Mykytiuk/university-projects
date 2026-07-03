@@ -1,0 +1,134 @@
+QWidget {
+    background-color: #2E2E2E;
+    color: #F0F0F0;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+}
+
+QPushButton {
+    background-color: #444444;
+    border: 2px solid #555555;
+    border-radius: 5px;
+    padding: 5px;
+    color: #F0F0F0;
+}
+
+QPushButton:hover {
+    background-color: #555555;
+    border-color: #666666;
+}
+
+QPushButton:pressed {
+    background-color: #333333;
+    border-color: #888888;
+}
+
+QLineEdit {
+    background-color: #3C3C3C;
+    border: 1px solid #666666;
+    color: #F0F0F0;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #AAAAAA;
+}
+
+QLineEdit:disabled {
+    background-color: #4D4D4D;
+    color: #AAAAAA;
+    border: 1px solid #666666;
+}
+
+QLabel {
+    color: #F0F0F0;
+}
+
+QLabel#title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#error {
+    color: red;
+}
+
+QLabel#label_result_array, QLabel#label_result_matrix, QLabel#label_result_list, QLabel#label_stack_result, QLabel#label_queue_result {
+    color: #87CEFA;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+QLabel#label_status {
+    font-style: italic;
+}
+
+QComboBox {
+    background-color: #3C3C3C;
+    color: #F0F0F0;
+    border: 1px solid #666666;
+}
+
+QScrollBar:vertical {
+    background-color: #F0F0F0;
+    width: 15px;
+    margin: 5px 0 5px 0;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #B3B3B3;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #A1A1A1;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background-color: #D6D6D6;
+    height: 15px;
+    subcontrol-origin: margin;
+    subcontrol-position: top;
+}
+
+QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {
+    background-color: #C4C4C4;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QLabel#menu_title {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+QLabel#menu_description {
+    font-size: 16px;
+    padding-bottom: 30px;
+    color: grey;
+}
+QLabel#tasks_title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+QFrame#menu_separator {
+    height: 2px;
+    margin-bottom: 10px;
+
+}
+QPushButton#back_button {
+    margin-top: 5px;
+    color: #D32F2F;
+    font-weight: bold;
+    background-color: #2E2E2E;
+}
+
+QPushButton#back_button:hover {
+    color: #F44336;
+}
